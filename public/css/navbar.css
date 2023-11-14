@@ -1,0 +1,28 @@
+.navbar-size{
+    padding-top: 0%;
+    height: 3.5rem;
+    background-color: #D0A2F7;
+}
+.container-nav{
+    padding-left: 2em;
+    
+}
+.nav-link{
+    font-weight: 6000;
+    font-size: 1em;
+}
+/* <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
+        <div class="container-fluid navbar-color navbar-size container-nav">
+            <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active text-size" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> */
