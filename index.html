@@ -21,24 +21,48 @@
     }
     h1 {
         font-weight: bold;
-
+        font-size: 4vh;
     }
     .screen {
          width: 80%;
-         padding-left: 2em;
-         padding-top: 2em;
+         padding-left: 5em;
+         padding-top: 5em;
     }
+    .label {
+        font-size: 2vh;
+        color: #000;
+    }
+    .form-control {
+        width: 50%; 
+        background-color: transparent; 
+        border: 2px solid #AFB3FF; 
+        border-radius: 50px;
+        padding: 5px;
+    }   
+    button {
+        margin-top: 10px;
+        width: 50%;
+        border-radius: 50px;
+        border: 2px solid #656ED3;
+        background-color: #656ED3;
+        display: block;
+        
+        
+    }
+    
 </style>
 <body>
     <div class="screen">
-        <h1>BuQC - ỨNG DỤNG QUẢN LÝ BIỂN QUẢNG CÁO HÀNG ĐẦU VIỆT NAM </h1>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Username:</label>
-        <input type="" class="form-control" id="exampleFormControlInput1">
-    </div>
-    <label for="inputPassword5" class="form-label">Password:</label>
-    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-    <div id="passwordHelpBlock" class="form-text"> </div>
+        <h1>BuQC - ỨNG DỤNG QUẢN LÝ BIỂN</h1>
+        <h1>QUẢNG CÁO HÀNG ĐẦU VIỆT NAM</h1>
+        <div class="mb-3">
+            <label for="Username" class="label">Username:</label>
+            <input type="text" class="form-control" id="Username_textfield">
+        </div>
+        <label for="Password" class="label">Password:</label>
+        <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock">
+        <button>Guest</button>
+        <button>Login</button>
     </div>
 </body>
 </html>
