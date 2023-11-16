@@ -3,6 +3,9 @@
     padding-bottom: 0%;
     height: 3.5rem;
     background-color: #D0A2F7;
+    width: 92.875rem;
+    z-index: 1;
+    position: fixed;
 }
 .container-nav{
     padding-left: 2rem;
