@@ -21,7 +21,7 @@
     padding: 0;
     height:100vh;
     width:100vw;
-    position: absolute;
+    position: relative;
   }
   /* Style cho popup */
   #popup {
@@ -58,7 +58,26 @@
 .qc-info p b{
   font-size: 1.5em;
 }
+/* Nhấp vào 1 điểm bất kì */
+.marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 1003;
+}
 
+.info {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1003;
+}
 /* Sytle cho swith button */
 .form-switch{
   font-weight: 500;
@@ -146,8 +165,12 @@ hr{
       </nav>
     
     <!--Map container  -->
-    <div class="map-user">
-
+    <div class="map-user" id="map">
+    <div id="marker" class="marker"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ff0f0f;"></i></div>
+    <div id="info" class="info">
+        <h3>Thông tin địa điểm</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
       <!-- button qc -->
       <button id="qc1" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
       <button id="qc2" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
@@ -245,6 +268,38 @@ function closePopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('popup').style.display = 'none';
 }
+
+
+// Nhap mot diem bat ki
+document.getElementById('map').addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+  // Lấy tọa độ x và y của sự kiện click
+  var x = event.clientX;
+  var y = event.clientY;
+
+  // Hiển thị marker ở vị trí click
+  var marker = document.getElementById('marker');
+  marker.style.left = x + 'px';
+  marker.style.top = y + 'px';
+  marker.style.display = 'block';
+
+  // Hiển thị thông tin ở vị trí click
+  var info = document.getElementById('info');
+  info.style.left = x + 'px';
+  info.style.top = y - 40 + 'px'; // Đặt thông tin lùi lên trên một chút
+  info.style.display = 'block';
+
+  document.addEventListener('click', function hidePopup(e) {
+    // Kiểm tra xem click có xảy ra bên ngoài pop-up không
+    if (!info.contains(e.target) && !marker.contains(e.target)) {
+        info.style.display = 'none';
+        marker.style.display = 'none';
+        document.removeEventListener('click', hidePopup); // Loại bỏ sự kiện click sau khi pop-up bị ẩn
+    }
+});
+  
+});
+
 
 </script>
 </body>
