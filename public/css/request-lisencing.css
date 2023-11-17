@@ -52,6 +52,20 @@ body {
     border: 1px solid black;
 }
 
+#imagePath {
+    color: blue;
+    /* Màu chữ là màu xanh */
+    text-decoration: none;
+    /* Loại bỏ gạch chân mặc định */
+    transition: text-decoration 0.3s;
+    /* Hiệu ứng hover trong 0.3s */
+}
+
+#imagePath:hover {
+    text-decoration: underline;
+    /* Hiển thị gạch chân khi di chuột qua */
+}
+
 input[type="submit"] {
     background-color: #007bff;
     color: #fff;

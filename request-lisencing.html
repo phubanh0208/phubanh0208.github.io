@@ -47,7 +47,12 @@
         <input type="text" class="form-control" id="adsInfor_textfield">
 
         <label for="adsContent" class="label">Nội dung quảng cáo:</label>
-        <input type="text" class="form-control" id="adsContent">
+        <div class="file-input">
+            <input type="file" accept="image/*" id="adsImage" class="form-control" style="display: none;"
+                onchange="displayImage(event)">
+            <button type="button" onclick="document.getElementById('adsImage').click()">Thêm ảnh</button>
+        </div>
+        <p id="imagePath"></p>
 
         <label for="companyName" class="label">Thông tin công ty đặt quảng cáo:</label>
         <input type="text" class="form-control" id="CompanyName_textfield">
@@ -70,5 +75,15 @@
         <input type="submit" value="Gửi">
     </div>
 </body>
+
+<script>
+    function displayImage(event) {
+        var file = event.target.files[0];
+        var imagePath = document.getElementById('imagePath');
+
+        // Hiển thị đường dẫn của ảnh
+        imagePath.innerText = file.name;
+    }
+</script>
 
 </html>
