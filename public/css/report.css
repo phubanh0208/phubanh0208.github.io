@@ -7,7 +7,7 @@ body{
     }
 main{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     height: 100vh;
 }
 .form-control {
@@ -18,7 +18,6 @@ main{
 }   
 .form-control::placeholder{
     color: lightgrey;
-
 }
 .left-section{
     margin: 20%;
