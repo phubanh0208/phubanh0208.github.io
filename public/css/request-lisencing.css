@@ -1,0 +1,19 @@
+.navbar-size {
+    padding-top: 0%;
+    padding-bottom: 0%;
+    height: 51px;
+    background-color: #D0A2F7;
+    width: 92.875rem;
+    z-index: 1;
+    position: fixed;
+}
+
+.container-nav {
+    padding-left: 2rem;
+
+}
+
+.nav-link {
+    font-weight: 6000;
+    font-size: 1em;
+}
