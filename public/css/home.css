@@ -1,0 +1,18 @@
+#detail_popup .details h1 {
+    border-radius: 20px;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 35px;
+    border: 1px solid;
+    margin-bottom: 20px;
+}
+
+#detail_popup .details p {
+    font-size: 12px;
+}
+
+#detail_image_popup .details img {
+    max-width: 100%;
+    height: auto;
+}
