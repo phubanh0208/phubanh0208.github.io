@@ -1,81 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/navbar.css  ">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="public/css/navbar.css  ">
 </head>
 <style>
-    body {
-        background-image: url('public/image/detail/detail-background.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-    }
-    .theme {
-        background-color: black;
-        opacity: 0.2;
-        height: 85vh;
-        width: 95%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-    }
+  body {
+    background-image: url('/public/image/map/map.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
 
-    .theme i {
-        padding: 20px;
-        font-size: 30px;
-        color: white;
-    
-    }
-    .theme > .container { 
-        width: 100%;
-        height: 100%;
-        display: flex; 
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: space-around;
-    }
-    .theme > .container > .banner { 
-        width: 30%;
-        height: 100%;
-        background-color: red;
-    }
-    .theme > .container > .details{ 
-        width: 30%;
-        height: 100%;
-        background-color: red;
-    }
-    </style>
+  .navbar {
+    z-index: 1000;
+  }
+
+  .theme {
+    position: relative;
+    top: 70px;
+    background-color: black;
+    opacity: 0.2;
+    height: calc(100vh - 90px);
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .theme i {
+    padding: 10px 0 0 10px;
+    font-size: 25px;
+    color: white;
+    display: inline;
+  }
+
+  .theme>.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: space-around;
+  }
+
+  .theme>.container>.banner {
+    width: 55%;
+    height: calc(100% - 40px);
+    background-color: red;
+  }
+
+  .theme>.container>.details {
+    width: 35%;
+    height: calc(100% - 40px);
+    background-color: red;
+  }
+</style>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
-        <div class="container-fluid navbar-color navbar-size container-nav">
-            <i class="fa-solid fa-house" style="color: #ffffff;"></i>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active text-size" aria-current="page" href="/home.html">Home</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    <div class="theme"> 
-        <i class="fa-solid fa-xmark"></i>
-        <div class="container">
-            <div class="details">1</div>
-            <div class="banner">1</div>
-        </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
+    <div class="container-fluid navbar-color navbar-size container-nav">
+      <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-size" aria-current="page" href="/home.html">Home</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <div class="theme">
+    <i class="fa-solid fa-xmark"></i>
+    <div class="container">
+      <div class="details">1</div>
+      <div class="banner">1</div>
+    </div>
+  </div>
 </body>
+
 </html>
