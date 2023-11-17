@@ -7,6 +7,16 @@
   z-index: 1;
   position: fixed;
 }
+.navbar-menu {
+  padding-top: 0%;
+  padding-bottom: 0%;
+  height: 90px;
+  background-color: #D0A2F7;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  margin: auto;
+}
 
 .container-nav {
   padding-left: 2rem;
