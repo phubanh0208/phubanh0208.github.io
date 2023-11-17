@@ -1,8 +1,12 @@
+body {
+    background-color: #EBEFFF;
+}
+
 .navbar-size {
     padding-top: 0%;
     padding-bottom: 0%;
     height: 51px;
-    background-color: #D0A2F7;
+    background-color: #afb3ff;
     width: 92.875rem;
     z-index: 1;
     position: fixed;
@@ -16,4 +20,16 @@
 .nav-link {
     font-weight: 6000;
     font-size: 1em;
+}
+
+.container-request {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    top: 11%;
+    left: 7.5%;
+    background-color: white;
+    border: #848bdc 1px solid;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px lightgray;
 }
