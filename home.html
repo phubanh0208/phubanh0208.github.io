@@ -8,8 +8,146 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/home.css">
     <link rel="stylesheet" href="public/css/navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    
 </head>
+<style>
+   /* Style cho map */
+  .map-user {
+    background-image:url('public/image/map/map.png');
+    background-size: 100% 100%;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    width:100vw;
+    position: relative;
+  }
+  /* Style cho popup */
+  #popup {
+    font-size:0.51em;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 20vw;
+    height: 90vh;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+}
+/* Sytle cho qc-info*/
+.qc-info{
+  height: 25vh;
+  margin-top: 1em;
+  margin-bottom:0.7em;
+  border-style: solid;
+  border-radius: 20px;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+.qc-info p{
+  margin-top: 0.7em;
+  line-height: 1.5em;
+  font-size: 1em;
+}
+.qc-info p b{
+  font-size: 1.5em;
+}
+/* Nhấp vào 1 điểm bất kì */
+.marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 1003;
+}
+
+.info {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1003;
+}
+/* Sytle cho swith button */
+.form-switch{
+  font-weight: 500;
+  position: fixed;
+  top: 90%;
+  left:5%;
+  padding-top: 0.2vh;
+  padding-left: 3em;
+  width:90vw;
+  height:5vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius:20px ;
+  }
+/* Style cho overlay */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+/* location qc*/
+#qc1{
+  margin-left: 20em;
+  margin-top: 10em;
+}
+#qc2{
+  margin-left: 40em;
+  margin-top: 15em;
+}
+#qc3{
+  margin-left: 20em;
+  margin-top: 10em;
+}
+#qc4{
+  margin-left: 20em;
+  margin-top: 10em;
+}
+#qc5{
+  margin-left: 20em;
+  margin-top: 10em;
+}
+button{
+  border: none;
+  background: none;
+
+}
+h2{
+  font-size: medium;
+}
+/* style button*/
+.fa-info{
+  margin-left: 6em;
+  margin-top: 0.6em;
+}
+.fa-circle-exclamation{
+  margin-top: 0.6em;
+  margin-left: 0.8em;
+}
+hr{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+</style>
 <body>
+    <!-- nav-barr -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
         <div class="container-fluid navbar-color navbar-size container-nav">
             <i class="fa-solid fa-house" style="color: #ffffff;"></i>
@@ -19,12 +157,150 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active text-size" aria-current="page" href="#">Home</a>
+                <a class="nav-link active text-size" aria-current="page" href="/home.html">Home</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     
+    <!--Map container  -->
+    <div class="map-user" id="map">
+    <div id="marker" class="marker"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ff0f0f;"></i></div>
+    <div id="info" class="info">
+        <h3>Thông tin địa điểm</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+      <!-- button qc -->
+      <button id="qc1" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc2" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc3" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc4" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc5" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <!-- popup -->
+      <div id="overlay" onclick="closePopup()"></div>
+      <div id="popup">
+        <h2>Thông tin quảng cáo:</h2>
+        <div class="qc-info">
+          <p>
+              <b>Trụm, cụm pano</b><br>
+              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
+              <hr>
+              Kích thước: 2.5m x 10m<br>
+              Số lượng: 1 trụ/bảng<br>
+              Hình thức: Cổ đông chính trị<br>
+              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
+              <a href="/detail.html"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
+              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+
+          </p> 
+          
+          
+        </div>
+        <div class="qc-info">
+          <p>
+              <b>Trụm, cụm pano</b><br>
+              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
+              <hr>
+              Kích thước: 2.5m x 10m<br>
+              Số lượng: 1 trụ/bảng<br>
+              Hình thức: Cổ đông chính trị<br>
+              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
+              <a href="/detail.html"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
+              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+
+          </p> 
+        </div>
+        <div class="qc-info">
+          <p>
+              <b>Trụm, cụm pano</b><br>
+              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
+              <hr>
+              Kích thước: 2.5m x 10m<br>
+              Số lượng: 1 trụ/bảng<br>
+              Hình thức: Cổ đông chính trị<br>
+              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
+              <a href="/detail.html"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
+              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+
+          </p> 
+        </div>
+
+        <button onclick="closePopup()">X</button>
+      </div>
+      <!-- button qc -->
+
+    </div>
+
+
+    <!-- Switch button (on/off) -->
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch"id="flexSwitchCheckDefault" checked="false">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Bật biển QC</label>
+    </div>
+   
+    
+
+
+<script>
+  // Bật nút mở biển Qc
+  $(document).ready(function() {
+    // Khi switch thay đổi trạng thái
+    $("#flexSwitchCheckDefault").change(function() {
+        
+        // Nếu switch được bật
+        if ($(this).prop("checked")) {
+            $(".hidden-button").fadeIn(); // Hiển thị các button với hiệu ứng fadeIn
+
+        } else {
+            $(".hidden-button").fadeOut(); // Ẩn các button với hiệu ứng fadeOut
+        }
+    });
+});
+
+  /* Mơ popup qc*/
+  function openPopup() {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('popup').style.display = 'block';
+}
+
+function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
+}
+
+
+// Nhap mot diem bat ki
+document.getElementById('map').addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+  // Lấy tọa độ x và y của sự kiện click
+  var x = event.clientX;
+  var y = event.clientY;
+
+  // Hiển thị marker ở vị trí click
+  var marker = document.getElementById('marker');
+  marker.style.left = x + 'px';
+  marker.style.top = y + 'px';
+  marker.style.display = 'block';
+
+  // Hiển thị thông tin ở vị trí click
+  var info = document.getElementById('info');
+  info.style.left = x + 'px';
+  info.style.top = y - 40 + 'px'; // Đặt thông tin lùi lên trên một chút
+  info.style.display = 'block';
+
+  document.addEventListener('click', function hidePopup(e) {
+    // Kiểm tra xem click có xảy ra bên ngoài pop-up không
+    if (!info.contains(e.target) && !marker.contains(e.target)) {
+        info.style.display = 'none';
+        marker.style.display = 'none';
+        document.removeEventListener('click', hidePopup); // Loại bỏ sự kiện click sau khi pop-up bị ẩn
+    }
+});
+  
+});
+
+
+</script>
 </body>
 </html>
