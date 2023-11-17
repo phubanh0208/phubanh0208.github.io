@@ -33,3 +33,28 @@ body {
     border-radius: 25px;
     box-shadow: 5px 5px 5px lightgray;
 }
+
+.container-request {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form-control {
+    padding: 6px;
+    font-size: 12px;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
