@@ -1,0 +1,91 @@
+body{
+    background-image: url('../image/report/rp-bg.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:top;
+    background-attachment: local;
+    }
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+.form-control {
+    background-color: #AFB3FF; 
+    border: 2px solid #656ED3; 
+    border-radius: 1rem;
+    padding: 5px;
+}   
+.form-control::placeholder{
+    color: lightgrey;
+
+}
+.left-section{
+    margin: 20%;
+    border-radius: 5.5rem;
+    position: relative;
+}
+.left-section form{ 
+    padding-left: 40px;
+    position: absolute;
+    bottom: 0;
+    top:0;
+    right:0;
+    left:16%;
+}
+.col-8{
+    display: block;
+}
+.card{
+    background-color: inherit;
+    border: none;
+}
+.card-text-container{
+    border: solid 1px rgb(212, 212, 212) ;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 1px 1px black 1px;
+}
+.card-text-1{
+    color: lightgray;
+}
+.right-section{
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    padding-right: 25%;
+    padding-left: 10%;
+
+}
+.report-info{
+    margin-top: 20%;
+}
+.card-items{
+    margin-top: 6vh;
+}
+.right-item .btn{
+    background-color: #656ED3;
+    padding: 5px 30px;
+    border: 0;
+}
+.left-item{
+    font-size: 20px;
+    color:#656ED3;
+}
+.sn-icon i{
+    color:#656ED3;
+}
+.modal{
+    max-width: 50ch;
+    background-color: white;
+}
+.modal::backdrop{
+    background: linear-gradient(rgb(purple, red));
+    opacity: 0.4;
+}
+.modal h3{
+    color: #656ED3;
+}
+.modal::backdrop {
+    background: rgb(0 0 0 / 0.4);
+}
