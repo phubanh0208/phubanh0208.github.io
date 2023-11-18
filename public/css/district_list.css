@@ -1,0 +1,52 @@
+body{
+    background-color: #EBEFFF;
+  }
+.navbar{
+    display: flex;
+}
+.container-nav{
+    width: 100vw;
+}
+.side-opener{
+    justify-items: end;
+    margin-top: 5px;
+    margin-right: 5%;
+}
+main{
+    padding-top: 5em;
+    height: 100vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 1182px;
+    height: 551px;
+    background-color: #ffffff;
+    border: solid 2px #848BDC;
+    border-radius: 30px;
+    margin:5% 10% 0 10%;
+    box-shadow: 1px 1px 4px 1px gray;
+}
+.navbar2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+.dropdown-address{
+    margin-left: 5%;
+    color: #8F9092;
+}
+th {
+    border: solid 1px black;
+}
+td {
+    background-color: #ffffff;
+    border: solid 1px black;
+}
+.icon_detail {
+    background-color: #ffffff;
+    border: 0;
+}
