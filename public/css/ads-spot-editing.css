@@ -24,7 +24,6 @@ main{
   align-items: center;
 }
 .main-content-box{
-  
   width: 100vw;
   height: 551px;
   background-color:   #fdfdfd;
@@ -33,7 +32,6 @@ main{
   margin:5% 10% 0 10%;
   box-shadow: 1px 1px 4px 1px gray;
   padding-bottom: 40px;
-
 }
 .navbar2{
   padding: 15px 0;
@@ -41,8 +39,8 @@ main{
   background-color: #EFF0F4;
   box-shadow: 0 1px 5px -2px grey;
   overflow:visible;
-
 }
+
 .dropdown-address{
   margin-left: 5%;
   color: #8F9092;
