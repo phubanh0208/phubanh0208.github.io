@@ -20,11 +20,11 @@ main{
   justify-content: center;
   align-items: center;
 }
-.ads-spot-container{
+.main-content-box{
   
   width: 1182px;
   height: 551px;
-  background-color: #ffffff;
+  background-color:   #fdfdfd;
   border: solid 2px #848BDC;
   border-radius: 30px;
   margin:5% 10% 0 10%;
@@ -35,6 +35,8 @@ main{
   padding: 15px 0;
   border-radius:28px 28px 0 0;
   background-color: #EFF0F4;
+  box-shadow: 0 1px 5px -2px grey;
+
 
 }
 .dropdown-address{
@@ -58,4 +60,38 @@ main{
 .search-btn{
   border-radius: 0 20px 20px 0;
 
+}
+.ads-spot-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 5%;
+  height: 80%;
+  width: 95%;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.ad-container{
+  width: 218px;
+  height: 140px;
+  background-color: white;
+  border: solid 2px #848BDC;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 1px grey;
+}
+.ad-container .title{
+  margin: 0;
+  background-color: #D1D4F2;
+  border-radius: 8px 8px 0 0;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  color:  #4F56AD;
+  -webkit-text-fill-color: #7B82D9;
+  -webkit-text-stroke: 1px;
+  padding-left: 4%;
+}
+.ad-container .ad-info{
+  font-size: 10px;
+  margin-left: 4%;
 }
