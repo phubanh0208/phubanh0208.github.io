@@ -32,6 +32,7 @@ main{
   border-radius: 30px;
   margin:5% 10% 0 10%;
   box-shadow: 1px 1px 4px 1px gray;
+  padding-bottom: 40px;
 
 }
 .navbar2{
@@ -66,24 +67,24 @@ main{
 }
 .ads-spot-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 218px);
   margin: 0 5%;
   height: 80%;
   width: 95%;
   justify-content: space-around;
   align-items: center;
   overflow-y: auto;
-
+  padding-top: 20px;
 }
 .ad-container{
-  width: 218px;
   height: 140px;
   background-color: white;
   border: solid 2px #848BDC;
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px grey;
   cursor: pointer;
-  margin-top: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .ad-container .title{
   margin: 0;

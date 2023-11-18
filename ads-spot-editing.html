@@ -41,11 +41,26 @@
       <div class="main-content-box">
         <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
             <div class="container-fluid left-content justify-content-start" style="color: #8F9092;">
-              <a href="#" class="dropdown-address">
-                <i class="fa-solid fa-chevron-down"></i>
-                <span class="addr-text">Quận 1, Phường Bến Nghé</span>
-              </a>
-              
+              <div class="btn-group">
+                <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" class="dropdown-address dropdown-toggle text-decoration-none">
+                  <span class="addr-text">Quận 1, <span id="ward">Phường Bến Nghé</span></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-start" style="background-color: #EFF0F4; opacity: 0.9; border-top: none; border-top-right-radius: 0; border-top-left-radius: 0;" aria-labelledby="triggerId">
+                  <h6 class="dropdown-header">Quận 1</h6>
+                  <div class="dropdown-divider"></div>
+                  <a id="ward-1" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Bến Nghé</a>
+                  <a id="ward-2" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Bến Thành</a>
+                  <a id="ward-3" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cô Giang</a>
+                  <a id="ward-4" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cầu Kho</a>
+                  <a id="ward-5" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cầu Ông Lãnh</a>
+                  <a id="ward-6" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Đa Kao</a>
+                  <a id="ward-7" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Nguyễn Cư Trinh</a>
+                  <a id="ward-8" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Nguyễn Thái Bình</a>
+                  <a id="ward-9" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Phạm Ngũ Lão</a>
+                  <a id="ward-10" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Tân Định</a>
+                </div>
+              </div>
             </div>
             <div class="container-fluid">
               <span class="search-bar-item" style="color: #8F9092;">Nhập địa chỉ điểm đặt quảng cáo</span>
@@ -302,7 +317,7 @@
                   <label for="inputQuantity" class="col-0 col-form-label">Số lượng</label>
                   <input type="text" class="form-control" name="inputQuantity" id="inputQuantity" placeholder="1 trụ/bảng">
               </div>
-              <div class="col-0">
+              <div class="col-0"> 
                 <label for="inputFormality" class="col-0 col-form-label">Hình thức</label>
                 <input type="text" class="form-control" name="inputFormality" id="inputFormality" placeholder="Cổ động chính trị">
             </div>
@@ -339,6 +354,10 @@
       }
       function closeAdsEditor(){
         document.getElementById("edit-menu").style.display = "none";
+      }
+
+      function ChangeWard(clicked_id){
+        document.getElementById("ward").textContent =  document.getElementById(clicked_id).textContent;
       }
     </script>
   </body>
