@@ -50,3 +50,20 @@ td {
     background-color: #ffffff;
     border: 0;
 }
+.comboList-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+}
+.comboList {
+    padding: 2em;
+}
+.comboList label {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+select {
+    width: 15em; 
+}
