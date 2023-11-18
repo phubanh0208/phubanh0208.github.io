@@ -29,7 +29,7 @@
             </ul>
             
           </div>
-          <a href="#" class="side-opener">
+          <a type="button" class="side-opener" onclick="openSidebar()">
             <i class="fa-solid fa-list fa-lg" style="color:#ffffff"></i>  
           </a>
         </div>
@@ -179,7 +179,39 @@
           </div>
         </div>
       </div>
+      <div id="menu_popup">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid navbar-color navbar-menu">
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav"></ul>
+              </div>
+            </div>
+        </nav>
+        <!-- Menu buttons in the middle -->
+        <div class="menu_options_box">
+          <button class="menu_button" onclick="window.location.href='/DistrictList.html'">Danh sách Quận, Phường</button>
+          <button class="menu_button">Quản lý các điểm đặt quảng cáo</button>
+          <button class="menu_button">Các yêu cầu cấp phép quảng cáo</button>
+          <button class="menu_button">Các báo cáo & cách thức xử lý </button>
+          <button class="menu_button">Tạo tài khoản </button>
+          <button class="menu_button">Phân công khu vực quản lý </button>
+        </div>
+        
+        <!-- Logout button at the bottom -->
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="btn btn-danger btn-sm">Đăng xuất</button>
+        </div>
+      </div>
     </main>
+    <script>
+      function openSidebar(){
+        const sidebarStatus = document.getElementById("menu_popup").style.display;
+        if(sidebarStatus === "block")
+          document.getElementById("menu_popup").style.display = "none";
+        else
+          document.getElementById("menu_popup").style.display = "block";
 
+      }
+    </script>
   </body>
 </html>
