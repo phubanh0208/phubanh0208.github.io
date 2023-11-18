@@ -13,3 +13,49 @@ body{
   margin-top: 5px;
   margin-right: 5%;
 }
+main{
+  display: flex;
+  height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+}
+.ads-spot-container{
+  
+  width: 1182px;
+  height: 551px;
+  background-color: #ffffff;
+  border: solid 2px #848BDC;
+  border-radius: 30px;
+  margin:5% 10% 0 10%;
+  box-shadow: 1px 1px 4px 1px gray;
+
+}
+.navbar2{
+  padding: 15px 0;
+  border-radius:28px 28px 0 0;
+  background-color: #EFF0F4;
+
+}
+.dropdown-address{
+  margin-left: 5%;
+  color: #8F9092;
+
+}
+.dropdown-address:link{
+  text-decoration: none;
+}
+
+.search-bar{
+  border-radius: 20px 0 0 20px;
+
+}
+.search-bar:focus{
+  outline: solid #8F9092;
+  box-shadow: none;
+
+}
+.search-btn{
+  border-radius: 0 20px 20px 0;
+
+}
