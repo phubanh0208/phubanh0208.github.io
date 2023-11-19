@@ -164,14 +164,6 @@ main{
     font-weight: 500;
     border-radius: 2rem;
 }
-.fa-bars {
-  margin-left: 1em;
-  margin-right: 3em;
-}
-.left-icon{
-  position: relative;
-  left: 75%;
-}
 /*Style cho menu popup */
 #menu_popup {
   font-size: 0.51em;
@@ -197,4 +189,12 @@ main{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+}
+.fa-bars {
+  margin-left: 1em;
+  margin-right: 3em;
+}
+.left-icon{
+  position: relative;
+  left: 75%;
 }
