@@ -13,6 +13,9 @@ body{
   margin-top: 5px;
   margin-right: 5%;
 }
+.menu_popup  .navbar  .side-opener{
+ justify-items: start ;
+}
 main{
   display: flex;
   height: 100vh;
@@ -21,24 +24,23 @@ main{
   align-items: center;
 }
 .main-content-box{
-  
-  width: 1182px;
+  width: 100vw;
   height: 551px;
   background-color:   #fdfdfd;
   border: solid 2px #848BDC;
   border-radius: 30px;
   margin:5% 10% 0 10%;
   box-shadow: 1px 1px 4px 1px gray;
-
+  padding-bottom: 40px;
 }
 .navbar2{
   padding: 15px 0;
   border-radius:28px 28px 0 0;
   background-color: #EFF0F4;
   box-shadow: 0 1px 5px -2px grey;
-
-
+  overflow:visible;
 }
+
 .dropdown-address{
   margin-left: 5%;
   color: #8F9092;
@@ -63,21 +65,24 @@ main{
 }
 .ads-spot-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 218px);
   margin: 0 5%;
   height: 80%;
   width: 95%;
   justify-content: space-around;
   align-items: center;
-
+  overflow-y: auto;
+  padding-top: 20px;
 }
 .ad-container{
-  width: 218px;
   height: 140px;
   background-color: white;
   border: solid 2px #848BDC;
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px grey;
+  cursor: pointer;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .ad-container .title{
   margin: 0;
@@ -95,17 +100,67 @@ main{
   font-size: 10px;
   margin-left: 4%;
 }
-#menu_popup {
+#menu_popup{
   font-size: 0.51em;
   display: none;
   position: fixed;
   top: 50%;
-  right: 5%;
-  width: 40vw;
+  right: 0;
+  width: 30vw;
   height: 100%;
   transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-  background-color: #fff;
+  background-color: #EBEFFF;
+
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+}
+#edit-menu {
+  font-size: 0.51em;
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 30vw;
+  height: 100%;
+  transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
+  background-color: #EBEFFF;
+
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+} 
+.menu_options_box{
+  margin-top: 20%;
+}
+.menu_button {
+  display: block;
+  margin: 20px auto;
+  height: 50px;
+  width: 70%;
+  font-size: 17px;
+  color: white;
+  border: 0;
+  border-radius: 30px;
+  background-color: #7B82D9;
+  padding: auto 20px;
+  box-shadow: 1px 1px 2px 1px grey;
+  overflow: hidden;
+}
+.menu_button:hover{
+  opacity: 0.6;
+}
+.menu_button:active{
+  box-shadow: none;
+}
+.edit-form{
+  font-size: 17px;
+  padding-bottom: 5%;
+}
+.btn-style{
+    max-width: fit-content;
+    min-width: 85px;
+    max-height: 36px;
+    font-weight: 500;
+    border-radius: 2rem;
 }
