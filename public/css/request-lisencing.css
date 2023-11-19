@@ -3,27 +3,6 @@ body {
     background-color: #EBEFFF;
 }
 
-/* navbar */
-.navbar-size {
-    padding-top: 0%;
-    padding-bottom: 0%;
-    height: 51px;
-    background-color: #afb3ff;
-    width: 92.875rem;
-    z-index: 1;
-    position: fixed;
-}
-
-.container-nav {
-    padding-left: 2rem;
-}
-
-.nav-link {
-    font-weight: 6000;
-    font-size: 1em;
-}
-
-
 /* form input */
 .container-request {
     position: absolute;
