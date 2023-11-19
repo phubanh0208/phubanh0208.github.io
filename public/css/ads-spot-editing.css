@@ -25,7 +25,7 @@ main{
 }
 .main-content-box{
   width: 100vw;
-  height: 551px;
+  height: 70vh;
   background-color:   #fdfdfd;
   border: solid 2px #848BDC;
   border-radius: 30px;
@@ -100,9 +100,8 @@ main{
   font-size: 10px;
   margin-left: 4%;
 }
-#menu_popup{
+.sidebar-ui{
   font-size: 0.51em;
-  display: none;
   position: fixed;
   top: 50%;
   right: 0;
@@ -115,20 +114,8 @@ main{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
-#edit-menu {
-  font-size: 0.51em;
+#edit-menu , #menu_popup {
   display: none;
-  position: fixed;
-  top: 50%;
-  right: 0;
-  width: 30vw;
-  height: 100%;
-  transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-  background-color: #EBEFFF;
-
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
 } 
 .menu_options_box{
   margin-top: 20%;
