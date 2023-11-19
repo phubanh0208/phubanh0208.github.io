@@ -35,6 +35,7 @@ body {
 }
 
 .label {
+    width: 30%;
     font-size: 14px;
     margin-bottom: 4px;
 }
@@ -47,27 +48,66 @@ body {
 }
 
 .label,
+.form-control,
+.file-input {
+    display: inline-block;
+}
+
+.label {
+    margin: 20px 0px 16px 60px;
+}
+
+.label-1 {
+    margin-top: 35px;
+}
+
 .form-control {
-    display: inline;
+    width: 55%;
+}
+
+#adsContent_textfield,
+#Email,
+#phone {
+    width: 35%;
+}
+
+#startDate,
+#endDate {
+    width: 20%;
+    text-align: center;
 }
 
 #imagePath {
+    font-size: 12px;
     color: blue;
-    /* Màu chữ là màu xanh */
     text-decoration: none;
-    /* Loại bỏ gạch chân mặc định */
     transition: text-decoration 0.3s;
-    /* Hiệu ứng hover trong 0.3s */
 }
 
 #imagePath:hover {
     text-decoration: underline;
-    /* Hiển thị gạch chân khi di chuột qua */
 }
 
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #ff7777;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    float: right;
+    margin: 1em 5em;
+}
+
+.file-input button {
+    font-size: 15px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+.file-input button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }

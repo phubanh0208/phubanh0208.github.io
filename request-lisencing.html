@@ -43,37 +43,55 @@
     </nav>
 
     <div class="container-request">
-        <label for="adsInfor" class="label">Bảng quảng cáo & điểm đặt tương ứng:</label>
-        <input type="text" class="form-control" id="adsInfor_textfield">
-
-        <label for="adsContent" class="label">Nội dung quảng cáo:</label>
-        <div class="file-input">
-            <input type="file" accept="image/*" id="adsImage" class="form-control" style="display: none;"
-                onchange="displayImage(event)">
-            <button type="button" onclick="document.getElementById('adsImage').click()"><i
-                    class="fa-solid fa-file-image"></i></button>
+        <div class="form-adsInfor">
+            <label for="adsInfor" class="label label-1">Bảng quảng cáo & điểm đặt tương ứng:</label>
+            <input type="text" class="form-control" id="adsInfor_textfield">
         </div>
-        <p id="imagePath"></p>
 
-        <label for="companyName" class="label">Thông tin công ty đặt quảng cáo:</label>
-        <input type="text" class="form-control" id="CompanyName_textfield">
+        <div class="form-adsContent">
+            <label for="adsContent" class="label">Nội dung quảng cáo:</label>
+            <input type="text" class="form-control" id="adsContent_textfield">
+            <div class="file-input">
+                <input type="file" accept="image/*" id="adsImage" class="form-control" style="display: none;"
+                    onchange="displayImage(event)">
+                <button type="button" onclick="document.getElementById('adsImage').click()"><i
+                        class="fa-solid fa-file-image"></i></button>
+                <span id="imagePath"></span>
+            </div>
+        </div>
 
-        <label for="email" class="label">Email:</label>
-        <input type="email" class="form-control" id="Email">
+        <div class="form-companyName">
+            <label for="companyName" class="label">Thông tin công ty đặt quảng cáo:</label>
+            <input type="text" class="form-control" id="CompanyName_textfield">
+        </div>
 
-        <label for="phone" class="label">SĐT:</label>
-        <input type="tel" class="form-control" id="phone">
+        <div class="form-email">
+            <label for="email" class="label">Email:</label>
+            <input type="email" class="form-control" id="Email">
+        </div>
 
-        <label for="address" class="label">Địa chỉ:</label>
-        <input type="text" class="form-control" id="Address_textfield">
+        <div class="form-phone">
+            <label for="phone" class="label">SĐT:</label>
+            <input type="tel" class="form-control" id="phone">
+        </div>
 
-        <label for="startDate" class="label">Ngày bắt đầu hợp đồng:</label>
-        <input type="date" class="form-control" id="startDate">
 
-        <label for="endDate" class="label">Ngày kết thúc hợp đồng:</label>
-        <input type="date" class="form-control" id="endDate">
+        <div class="form-address">
+            <label for="address" class="label">Địa chỉ:</label>
+            <input type="text" class="form-control" id="Address_textfield">
+        </div>
 
-        <input type="submit" value="Gửi">
+        <div class="form-startDate">
+            <label for="startDate" class="label">Ngày bắt đầu hợp đồng:</label>
+            <input type="date" class="form-control" id="startDate">
+        </div>
+
+        <div class="form-endDate">
+            <label for="endDate" class="label">Ngày kết thúc hợp đồng:</label>
+            <input type="date" class="form-control" id="endDate">
+        </div>
+
+        <input type="submit" value="Submit">
     </div>
 </body>
 
