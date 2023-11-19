@@ -218,6 +218,10 @@ hr{
   margin-left: 1em;
   margin-right: 3em;
 }
+.left-icon{
+  position: relative;
+  left: 75%;
+}
 
 </style>
 <body>
@@ -234,7 +238,7 @@ hr{
                 <a class="nav-link active text-size" aria-current="page" href="/home.html">Home</a>
               </li>
             </ul>
-            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav left-icon">
               <li class="nav-item">
                 <i class="fa-regular fa-bell fa-xl"></i>
               </li>
@@ -338,12 +342,24 @@ hr{
       </nav>
       <!-- Menu buttons in the middle -->
       <div class="menu_options_box">
-        <button class="menu_button" onclick="window.location.href='/DistrictList.html'">Danh sách Quận, Phường</button>
-        <button class="menu_button" onclick="window.location.href='/Ad_Manage.html'">Quản lý các điểm đặt quảng cáo</button>
-        <button class="menu_button">Các yêu cầu cấp phép quảng cáo</button>
-        <button class="menu_button">Các báo cáo & cách thức xử lý </button>
-        <button class="menu_button">Tạo tài khoản </button>
-        <button class="menu_button">Phân công khu vực quản lý </button>
+        <button class="menu_button" onclick="window.location.href='/DistrictList.html'">
+          Danh sách Quận, Phường
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Ad_Manage.html'">
+          Quản lý các điểm đặt quảng cáo
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Ad_Approve.html'">
+          Các yêu cầu cấp phép quảng cáo
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Report&Solve.html'">
+          Các báo cáo & cách thức xử lý 
+        </button>
+        <button class="menu_button" onclick="window.location.href='/create-account.html'">
+          Tạo tài khoản
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Assign-Management-Area.html'">
+          Phân công khu vực quản lý 
+        </button>
       </div>
       
       <!-- Logout button at the bottom -->
