@@ -16,37 +16,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/navbar.css">
-  <link rel="stylesheet" href="/public/css/list-request.css">
-  
 
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size shadow">
       <div class="container-fluid navbar-color navbar-size container-nav">
-        <i class="fa-solid fa-house" style="color: #ffffff;"></i>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-angle-left" style="color: #ffffff;"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active text-size" aria-current="page" href="/home_DistrictUser.html">Home</a>
+              <a class="nav-link active text-size" style="color: white; font-weight:400" aria-current="page"
+                href="/home.html">Home</a>
             </li>
           </ul>
-          <ul class="navbar-nav left-icon">
-            <li class="nav-item">
-              <i class="fa-regular fa-bell fa-xl"></i>
-            </li>
-            <li class="nav-item">
-              <i class="fa-solid fa-bars fa-xl" onclick="openMenu()"></i>
-            </li>
-          </ul>
+
         </div>
+        <a type="button" class="side-opener" onclick="openSidebar()">
+          <i class="fa-solid fa-list fa-lg" style="color:#ffffff"></i>
+        </a>
       </div>
+
     </nav>
-  
   </header>
   <main>
     <div class="main-content-box">
@@ -270,25 +266,26 @@
         </div>
       </div>
     </div>
-    <!--Menu popup bar-->>
-    <div id="menu_overlay" onclick="closeMenu()"></div>
     <div id="menu_popup">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid navbar-color navbar-menu">
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav"></ul>
-            </div>
+        <div class="container-fluid navbar-color navbar-menu">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav"></ul>
           </div>
+          <a type="button" class="side-opener" onclick="openSidebar()" style="margin-top: 7%;">
+            <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>
+          </a>
+        </div>
       </nav>
       <!-- Menu buttons in the middle -->
-      <div class="menu_options_box">
-        <a href="/list-request.html"><button class="menu_button">Gửi yêu cầu chỉnh sửa thông tin 
-          điểm đặt quảng cáo</button></a>
-        <a href="/reports_list.html"><button class="menu_button" >Xem báo cáo</button></a>
-        <a href="/request-lisencing.html"><button class="menu_button">Tạo yêu cầu cấp phép quảng cáo</button></a>
-        <a href="/"><button class="menu_button">Danh sách các cấp phép</button></a>
+      <div class="menu_options_box" style="background-color: #EBEFFF;">
+        <button class="menu_button" onclick="window.location.href='/DistrictList.html'">Danh sách Quận, Phường</button>
+        <button class="menu_button">Quản lý các điểm đặt quảng cáo</button>
+        <button class="menu_button">Các yêu cầu cấp phép quảng cáo</button>
+        <button class="menu_button">Các báo cáo & cách thức xử lý </button>
+        <button class="menu_button">Tạo tài khoản </button>
+        <button class="menu_button">Phân công khu vực quản lý </button>
       </div>
-      
 
       <!-- Logout button at the bottom -->
       <div style="text-align: center; margin-top: 20px;">
@@ -378,16 +375,6 @@
     function ChangeWard(clicked_id) {
       document.getElementById("ward").textContent = document.getElementById(clicked_id).textContent;
     }
-    /* Mở popup Menu */
-  function openMenu() {
-    document.getElementById('menu_overlay').style.display = 'block';
-    document.getElementById('menu_popup').style.display = 'block';
-  }
-
-  function closeMenu() {
-    document.getElementById('menu_overlay').style.display = 'none';
-    document.getElementById('menu_popup').style.display = 'none';
-  }
   </script>
 </body>
 
