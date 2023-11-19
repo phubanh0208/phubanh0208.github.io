@@ -1,7 +1,9 @@
+/* body */
 body {
     background-color: #EBEFFF;
 }
 
+/* navbar */
 .navbar-size {
     padding-top: 0%;
     padding-bottom: 0%;
@@ -21,6 +23,8 @@ body {
     font-size: 1em;
 }
 
+
+/* form input */
 .container-request {
     position: absolute;
     width: 85%;
@@ -92,18 +96,29 @@ input[type="submit"] {
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 15px;
-    padding: 5px 10px;
-    border: none;
+    padding: 7px 14px;
+    border: 2px solid #ff7777;
     border-radius: 20px;
     float: right;
     margin: 1em 5em;
+    outline: none;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff9999;
+    border-color: #ff9999;
+}
+
+input[type="submit"]:active {
+    transform: translateY(2px);
 }
 
 .file-input button {
     font-size: 15px;
     border-radius: 5px;
     transition: box-shadow 0.3s ease;
+    border: 1px solid;
 }
 
 .file-input button:hover {
