@@ -27,3 +27,10 @@
   text-align: center;
   vertical-align: middle;
 }
+.btn-container{
+  padding: 0;
+}
+.btn-style{
+  font-size: 20px;
+  padding: 2px 10vw;
+}
