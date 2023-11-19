@@ -9,7 +9,7 @@
 #report-details-popup, #status-edit{
   display: none;
 }
-.reports-container{
+.table-container{
   height: 80%;
   overflow: auto;
 }

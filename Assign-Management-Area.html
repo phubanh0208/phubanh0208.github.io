@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ads Editting</title>
+    <title>Management Area Assign</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/reports_list.css">
+    <link rel="stylesheet" href="/public/css/btn-style.css">
 
   </head>
   <body>
@@ -72,187 +74,84 @@
               </div>
             </div>
         </nav>
-        <div class="ads-spot-container">
-          <div onclick="openAdsEditor()" class="ad-container">
-                <p class="title">
-                  Trụ cụm pano
-                </p>
-                <p class="ad-info">
-                  <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                  <b>Kích thước:</b> 2.5m x 10m
-                  <br>
-                  <b>Số lượng:</b> 1 trụ/bảng
-                  <br>  
-                  <b>Hình thức:</b> Cổ đông chính trị
-                  <br>  
-                  <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                </p>
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table
+            table-hover	
+            table-borderless
+            align-middle">
+              <thead class="table-primary">
+                <tr>
+                  <th>Mã khu vực</th>
+                  <th>Tên khu vực</th>
+                  <th>Loại khu vực</th>
+                  <th>Người quản lý khu vực</th>
+                </tr>
+              </thead>
+                <tbody class="table-group-divider">
+                  <tr class="table" >
+                    <td scope="row">P-12</td>
+                    <td>xã Vĩnh Lộc A</td>
+                    <td>Xã</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class="dropdown-address dropdown-toggle text-decoration-none">
+                        <span id="manager-name">Nguyễn Văn A</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start ward-dropdown" style=" background-color: #EFF0F4; opacity: 0.9; border-top: none; border-top-right-radius: 0; border-top-left-radius: 0;" aria-labelledby="triggerId">
+                        <a id="manager-1" onclick="changeManager()" class="dropdown-item" href="#">Phường Bến Nghé</a>
+                        <a id="manager-2" onclick="changeManager()" class="dropdown-item" href="#">Phường Bến Thành</a>
+                        <a id="manager-3" onclick="changeManager()" class="dropdown-item" href="#">Phường Cô Giang</a>
+                        <a id="manager-4" onclick="changeManager()" class="dropdown-item" href="#">Phường Cầu Kho</a>
+                        <a id="manager-5" onclick="changeManager()" class="dropdown-item" href="#">Phường Cầu Ông Lãnh</a>
+                        <a id="manager-6" onclick="changeManager()" class="dropdown-item" href="#">Phường Đa Kao</a>
+                        <a id="manager-7" onclick="changeManager()" class="dropdown-item" href="#">Phường Nguyễn Cư Trinh</a>
+                        <a id="manager-8" onclick="changeManager()" class="dropdown-item" href="#">Phường Nguyễn Thái Bình</a>
+                        <a id="manager-9" onclick="changeManager()" class="dropdown-item" href="#">Phường Phạm Ngũ Lão</a>
+                        <a id="manager-10" onclick="changeManager()" class="dropdown-item" href="#">Phường Tân Định</a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="table">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="table">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="table">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="table">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="table">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="table">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+            </table>
           </div>
-          <div onclick="openAdsEditor()" class="ad-container">                
-                <p class="title">
-                  Trụ cụm pano
-                </p>
-                <p class="ad-info">
-                  <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                  <b>Kích thước:</b> 2.5m x 10m
-                  <br>
-                  <b>Số lượng:</b> 1 trụ/bảng
-                  <br>  
-                  <b>Hình thức:</b> Cổ đông chính trị
-                  <br>  
-                  <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                </p>
-          </div>
-          <div class="ad-container" onclick="openAdsEditor()">                
-                <p class="title">
-                  Trụ cụm pano
-                </p>
-                <p class="ad-info">
-                  <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                  <b>Kích thước:</b> 2.5m x 10m
-                  <br>
-                  <b>Số lượng:</b> 1 trụ/bảng
-                  <br>  
-                  <b>Hình thức:</b> Cổ đông chính trị
-                  <br>  
-                  <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                </p>
-          </div>
-          <div class="ad-container" onclick="openAdsEditor()">
-                <p class="title">
-                  Trụ cụm pano
-                </p>
-                <p class="ad-info">
-                  <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                  <b>Kích thước:</b> 2.5m x 10m
-                  <br>
-                  <b>Số lượng:</b> 1 trụ/bảng
-                  <br>  
-                  <b>Hình thức:</b> Cổ đông chính trị
-                  <br>  
-                  <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                </p>
-          </div>
-            <div class="ad-container" onclick="openAdsEditor()">                
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">                
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">                
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">                
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
-            <div class="ad-container" onclick="openAdsEditor()">
-                  <p class="title">
-                    Trụ cụm pano
-                  </p>
-                  <p class="ad-info">
-                    <b>Đ/c:</b> Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1 <br>
-                    <b>Kích thước:</b> 2.5m x 10m
-                    <br>
-                    <b>Số lượng:</b> 1 trụ/bảng
-                    <br>  
-                    <b>Hình thức:</b> Cổ đông chính trị
-                    <br>  
-                    <b>Phân loại:</b> Đất công/Công viên/Hành lang an toàn giao thông
-                  </p>
-            </div>
+          
         </div>
       </div>
 
@@ -344,21 +243,31 @@
           document.getElementById("menu_popup").style.display = "block";
         }
       }
-      function openAdsEditor(){
-        const sidebarStatus = document.getElementById("edit-menu").style.display;
+      function openReportDetails(){
+        const sidebarStatus = document.getElementById("report-details-popup").style.display;
         if(sidebarStatus === "block"){
-          document.getElementById("edit-menu").style.display = "none";
+          document.getElementById("report-details-popup").style.display = "none";
         }
         else{
-          document.getElementById("edit-menu").style.display = "block";
+          document.getElementById("report-details-popup").style.display = "block";
         }
       }
       function closeAdsEditor(){
-        document.getElementById("edit-menu").style.display = "none";
+        document.getElementById("report-details-popup").style.display = "none";
       }
 
       function ChangeWard(clicked_id){
         document.getElementById("ward").textContent =  document.getElementById(clicked_id).textContent;
+      }
+
+      function openEditReport() {
+        const sidebarStatus = document.getElementById("status-edit").style.display;
+        if(sidebarStatus === "block"){
+          document.getElementById("status-edit").style.display = "none";
+        }
+        else{
+          document.getElementById("status-edit").style.display = "block";
+        }
       }
     </script>
   </body>
