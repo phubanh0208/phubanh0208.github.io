@@ -1,0 +1,29 @@
+.dropdown-manager{
+  display: flex;
+  color: #656ED3;
+  border: solid 1px rgb(201, 201, 201);
+  padding: 0px 20px;
+  border-radius: 20px;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.manager-dropdown{
+  /* background-color: #EFF0F4;  */
+  opacity: 0.9; 
+  border-top: none;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  overflow: auto;
+
+
+}
+.management-table th{
+  text-align: center;
+  vertical-align: middle;
+}
+.management-table .table-group-divider .table td{
+  text-align: center;
+  vertical-align: middle;
+}

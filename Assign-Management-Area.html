@@ -13,7 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/navbar.css">
     <link rel="stylesheet" href="/public/css/reports_list.css">
-    <link rel="stylesheet" href="/public/css/btn-style.css">
+
+    <link rel="stylesheet" href="/public/css/Assign-Management-Area.css">
+    
 
   </head>
   <body>
@@ -65,7 +67,7 @@
               </div>
             </div>
             <div class="container-fluid">
-              <span class="search-bar-item" style="color: #8F9092;">Nhập địa chỉ điểm đặt quảng cáo</span>
+              <span class="search-bar-item" style="color: #8F9092;">Nhập khu vực</span>
               <div class="input-group rounded">
                 <input type="search" class="form-control search-bar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <a href="#" class="input-group-text border-0 search-btn text-decoration-none"  id="search-addon" style="background-color: #AFB3FF;">
@@ -77,7 +79,7 @@
         <div class="table-container">
           <div class="table-responsive">
             <table class="table
-            table-hover	
+            management-table
             table-borderless
             align-middle">
               <thead class="table-primary">
@@ -91,63 +93,146 @@
                 <tbody class="table-group-divider">
                   <tr class="table" >
                     <td scope="row">P-12</td>
-                    <td>xã Vĩnh Lộc A</td>
+                    <td>Xã Vĩnh Lộc A</td>
                     <td>Xã</td>
                     <td>
                       <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" class="dropdown-address dropdown-toggle text-decoration-none">
-                        <span id="manager-name">Nguyễn Văn A</span>
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Nguyễn Văn A</span>
                       </a>
-                      <div class="dropdown-menu dropdown-menu-start ward-dropdown" style=" background-color: #EFF0F4; opacity: 0.9; border-top: none; border-top-right-radius: 0; border-top-left-radius: 0;" aria-labelledby="triggerId">
-                        <a id="manager-1" onclick="changeManager()" class="dropdown-item" href="#">Phường Bến Nghé</a>
-                        <a id="manager-2" onclick="changeManager()" class="dropdown-item" href="#">Phường Bến Thành</a>
-                        <a id="manager-3" onclick="changeManager()" class="dropdown-item" href="#">Phường Cô Giang</a>
-                        <a id="manager-4" onclick="changeManager()" class="dropdown-item" href="#">Phường Cầu Kho</a>
-                        <a id="manager-5" onclick="changeManager()" class="dropdown-item" href="#">Phường Cầu Ông Lãnh</a>
-                        <a id="manager-6" onclick="changeManager()" class="dropdown-item" href="#">Phường Đa Kao</a>
-                        <a id="manager-7" onclick="changeManager()" class="dropdown-item" href="#">Phường Nguyễn Cư Trinh</a>
-                        <a id="manager-8" onclick="changeManager()" class="dropdown-item" href="#">Phường Nguyễn Thái Bình</a>
-                        <a id="manager-9" onclick="changeManager()" class="dropdown-item" href="#">Phường Phạm Ngũ Lão</a>
-                        <a id="manager-10" onclick="changeManager()" class="dropdown-item" href="#">Phường Tân Định</a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
                       </div>
                     </td>
                   </tr>
-                  <tr class="table">
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr class="table" >
+                    <td scope="row">P-13</td>
+                    <td>Phường Tân Tạo </td>
+                    <td>Phường</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Nguyễn Ðình B</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="table">
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr class="table" >
+                    <td scope="row">P-14</td>
+                    <td>Phường 12</td>
+                    <td>Phường</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Trần Tuấn K</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="table">
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr class="table" >
+                    <td scope="row">Q-1</td>
+                    <td>Quận 1</td>
+                    <td>Quận</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Đoàn Gia Pú  </span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="table">
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr class="table" >
+                    <td scope="row">Q-2</td>
+                    <td>Quận 2</td>
+                    <td>Quận</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Lê Cầu F</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="table">
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr class="table" >
+                    <td scope="row">Q-3</td>
+                    <td>Quận Tân Phú</td>
+                    <td>Quận</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Nguyễn Lạc E</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="table">
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr class="table" >
+                    <td scope="row">H-1</td>
+                    <td>Huyện Nhà Bè</td>
+                    <td>Huyện</td>
+                    <td>
+                      <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class=" dropdown-manager dropdown-toggle text-decoration-none ">
+                      <span id="manager-name">Lý Hoàng N</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-start manager-dropdown" aria-labelledby="triggerId">
+                        <a id="manager-0" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Văn A</a>
+                        <a id="manager-1" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Ðình B</a>
+                        <a id="manager-2" onclick="changeManager(this.id)" class="dropdown-item" href="#">Đoàn Gia Pú</a>
+                        <a id="manager-3" onclick="changeManager(this.id)" class="dropdown-item" href="#">Trần Tuấn K</a>
+                        <a id="manager-4" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lê Cầu F</a>
+                        <a id="manager-5" onclick="changeManager(this.id)" class="dropdown-item" href="#">Nguyễn Lạc E</a>
+                        <a id="manager-6" onclick="changeManager(this.id)" class="dropdown-item" href="#">Lý Hoàng N</a>
+                      </div>
+                    </td>
                   </tr>
+
+                  
                 </tbody>
             </table>
           </div>
@@ -258,6 +343,9 @@
 
       function ChangeWard(clicked_id){
         document.getElementById("ward").textContent =  document.getElementById(clicked_id).textContent;
+      }
+      function changeManager(clicked_id){
+        document.getElementById("manager-name").textContent =  document.getElementById(clicked_id).textContent;
       }
 
       function openEditReport() {
