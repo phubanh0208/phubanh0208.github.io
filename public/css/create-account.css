@@ -1,9 +1,11 @@
-/* body */
+/*body*/
+
 body {
     background-color: #EBEFFF;
 }
 
-/* navbar */
+
+/*navbar*/
 .navbar-size {
     padding-top: 0%;
     padding-bottom: 0%;
@@ -23,14 +25,14 @@ body {
     font-size: 1em;
 }
 
-
-/* form input */
+/*form*/
 .container-request {
     position: absolute;
-    width: 85%;
-    height: 85%;
-    top: 11%;
-    left: 7.5%;
+    top: 53.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 75%;
     background-color: white;
     border: #848bdc 1px solid;
     border-radius: 25px;
@@ -38,7 +40,7 @@ body {
 }
 
 .label {
-    width: 30%;
+    width: 20%;
     font-size: 14px;
     margin-bottom: 4px;
 }
@@ -61,35 +63,24 @@ body {
 }
 
 .label-1 {
-    margin-top: 35px;
+    margin-top: 50px;
 }
 
 .form-control {
     width: 55%;
 }
 
-#adsContent_textfield,
-#Email,
-#phone {
-    width: 35%;
-}
 
-#startDate,
-#endDate {
-    width: 20%;
+#birthday {
+    width: 25%;
     text-align: center;
 }
 
-#imagePath {
-    font-size: 12px;
-    color: blue;
-    text-decoration: none;
-    transition: text-decoration 0.3s;
+.submit-container {
+    width: 100%;
+    text-align: center;
 }
 
-#imagePath:hover {
-    text-decoration: underline;
-}
 
 input[type="submit"] {
     background-color: #ff7777;
@@ -99,9 +90,8 @@ input[type="submit"] {
     padding: 7px 14px;
     border: 2px solid #ff7777;
     border-radius: 20px;
-    float: right;
-    margin: 1em 5em;
     outline: none;
+    margin-top: 1.2em;
     font-size: 14px;
 }
 
@@ -112,16 +102,4 @@ input[type="submit"]:hover {
 
 input[type="submit"]:active {
     transform: translateY(2px);
-}
-
-.file-input button {
-    font-size: 15px;
-    border-radius: 5px;
-    transition: box-shadow 0.3s ease;
-    border: 1px solid;
-}
-
-.file-input button:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
 }

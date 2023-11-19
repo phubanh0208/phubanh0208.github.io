@@ -3,3 +3,67 @@
   font-weight: 500;
   align-items: center;
 }
+.vertical-al-center{
+  vertical-align: middle;
+}
+#report-details-popup{
+  display: none;
+}
+.reports-container{
+  height: 80%;
+  overflow: auto;
+}
+.info-container{
+  display: flex; 
+  flex-wrap: wrap;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+  
+
+}
+.list-item{
+  font-size: 16px;
+  margin-top: 10%;
+  margin-right: 40px;
+}
+.list-title{
+  width: 70%;
+  height: 80%;
+  border: solid 2px #848BDC;
+  box-shadow: 1px 1px 4px 1px gray;
+  border-radius: 30px;
+  list-style-type: none;
+  background-color: #fdfdfd;
+  overflow-y: auto;
+
+}
+.inner-shadow{
+  width: 100%;
+  height: 5%;
+  background-color: black;
+}
+.info-container ::-webkit-scrollbar{
+  width: 10px;
+}
+/* Handle */
+.info-container ::-webkit-scrollbar-track{
+  margin: 20px 0;
+}
+.info-container ::-webkit-scrollbar-thumb {
+  background-color: #b6b9de;
+  border-radius: 20px;
+}
+.text-content{
+  margin: 0;
+  text-align: end;
+  word-wrap: break-word
+}
+.text-title{
+  margin: 0;  border-bottom: solid 1px gainsboro; 
+}
+.cancel-button{
+  align-self: stretch;
+  width: 100%;
+}
