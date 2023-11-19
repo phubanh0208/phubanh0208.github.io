@@ -24,7 +24,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active text-size" aria-current="page">Quản lý các điểm quảng cáo</a>
+                <a class="nav-link active text-size" aria-current="page">yYêu cầu cấp phép quảng cáo</a>
               </li>
             </ul>
           </div>
@@ -36,8 +36,10 @@
       <div class="ads-spot-container">
         <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
           <div class="header">
-            <h2 style="font-size: 2em;">QUẢN LÝ CÁC ĐIỂM QUẢNG CÁO </h2>
+            <h2 style="font-size: 2em;">YÊU CẦU CẤP PHÉP  QUẢNG CÁO </h2>
           </div>
+
+          <!-- ComboList lựa chọn khu vực-->
           <div class="comboList-container">
             <div class="comboList">
               <label for="district">Quận:</label>
@@ -56,15 +58,15 @@
               </select>
             </div>
           </div>
+
           <div class="table-container">
             <table style="background-color: #BABEFE;">
               <thead>
                 <tr>
                   <th style="width: 5em;">STT</th>
-                  <th style="width: 10em;">Mã số</th>
-                  <th style="width: 20em;">Tọa độ</th>
-                  <th style="width: 20em;">Khu vực</th>
-                  <th style="width: 20em;">Người thuê</th>
+                  <th style="width: 10em;">Ngày gửi</th>
+                  <th style="width: 15em;">Người gửi</th>
+                  <th style="width: 50em;">Nội dung yêu cầu</th>
                   <th class="icon_detail"></th>
                 </tr>
               </thead>
@@ -72,10 +74,9 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td>BT-123123</td>
-                  <td>10,154 45,5252</td>
-                  <td>Phường Tân Tạo quận 11</td>
-                  <td>Công ty A </td>
+                  <td>26/10/2023 </td>
+                  <td>Cao Hải D </td>
+                  <td>Xin phép đặt thêm địa điểm quảng cáo tại khu A, phố BB</td>
                   <td class="icon_detail">
                     <a href="#" onclick="openDetail()">
                       <i class="fa-solid fa-info-circle"></i>
@@ -84,10 +85,9 @@
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>BTC-HM-34 </td>
-                  <td>45,98 213,2323</td>
-                  <td>Vĩnh Lộc A, Bình Chánh</td>
-                  <td>Công ty B </td>
+                  <td>06/11/2023 </td>
+                  <td>Nguyễn Gia Bảo</td>
+                  <td>Xin phép thu hồi và sửa chữa các biển quảng cáo tại khu ĐĐ</td>
                   <td class="icon_detail">
                     <a href="#" onclick="openDetail()">
                       <i class="fa-solid fa-info-circle"></i>
@@ -96,22 +96,9 @@
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>BT-BH-784  </td>
-                  <td>99 78.2323</td>
-                  <td>Trần Phú, quận 5</td>
-                  <td>Đỗ Gia V  </td>
-                  <td class="icon_detail">
-                    <a href="#" onclick="openDetail()">
-                      <i class="fa-solid fa-info-circle"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>BT-OC-231  </td>
-                  <td>884 77,456456</td>
-                  <td>Bình Thạnh</td>
-                  <td>Nguyễn Gia Bảo  </td>
+                  <td>18/11/2023 </td>
+                  <td>Ngô Minh FF</td>
+                  <td>Xin phép đặt thêm điểm quảng cáo tại khu phức hợp tổ  phường  D</td>
                   <td class="icon_detail">
                     <a href="#" onclick="openDetail()">
                       <i class="fa-solid fa-info-circle"></i>
@@ -127,7 +114,7 @@
 
       <!--Ad detail-->
       <div id="detail_overlay" onclick="closeDetail()"></div>
-      <div id="detail_popup">
+      <div id="aprove_detail_popup">
         <div class="details">
           <p>
             <span class="detail_label">
@@ -135,14 +122,6 @@
             </span>
             <span class="detail_text">
               Trụ, cụm pano
-            </span>
-          </p>
-          <p>
-            <span class="detail_label">
-              Mã số:
-            </span>
-            <span class="detail_text">
-              BT-123123
             </span>
           </p>
           <p>
@@ -195,29 +174,17 @@
           </p>
           <p>
             <span class="detail_label">
-              Ngày bắt đầu hợp đồng:
+              Người phụ trách:
             </span>
             <span class="detail_text">
-              01/11/2023
-            </span>
-          </p>
-          <p>
-            <span class="detail_label">
-              Ngày kết thúc hợp đồng:
-            </span>
-            <span class="detail_text">
-              01/01/2024
+              Nguyễn Văn A
             </span>
           </p>
         </div>
         <!-- Remove button at the bottom -->
         <div class="remove_button">
+          <button class="btn btn-sm" style="background-color: #00FF1A; color: white;">Chấp thuận</button>
           <button class="btn btn-danger btn-sm">Yêu cầu gỡ bỏ</button>
-        </div>
-      </div>
-      <div id="detail_image_popup">
-        <div class="details_image">
-          <img src="/public/image/image_ads.png" alt="">
         </div>
       </div>
       
@@ -230,13 +197,11 @@
     /* Mở popup detail qc */
     function openDetail() {
       document.getElementById('detail_overlay').style.display = 'block';
-      document.getElementById('detail_popup').style.display = 'block';
-      document.getElementById('detail_image_popup').style.display = 'block';
+      document.getElementById('aprove_detail_popup').style.display = 'block';
     }
 
     function closeDetail() {
       document.getElementById('detail_overlay').style.display = 'none';
-      document.getElementById('detail_popup').style.display = 'none';
-      document.getElementById('detail_image_popup').style.display = 'none';
+      document.getElementById('aprove_detail_popup').style.display = 'none';
     }
 </script>
