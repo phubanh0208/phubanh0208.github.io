@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/navbar.css">
     <link rel="stylesheet" href="/public/css/reports_list.css">
+    <link rel="stylesheet" href="/public/css/btn-style.css">
 
   </head>
   <body>
@@ -92,12 +93,12 @@
               </thead>
               <tbody class="table-group-divider">
                 <tr class="table" >
-                  <td scope="row" id="report-time">11-10-2023</td>
-                  <td id="report-name">Nguyễn Xuân Quang</td>
+                  <td scope="row" id="report-time-1">11-10-2023</td>
+                  <td id="report-name-1">Nguyễn Xuân Quang</td>
                   <td><span id="ads-report-adr">Đồng Khởi - Nguyễn Du, Phường Bến Nghé, Quận 1</span></td>
                   <td>Khiếu nại về kích thước biển quảng cáo</td>
                   <td class="vertical-al-center">
-                    <a id="report-details" class="report-details" href="#" onclick="openReportDetails(); reportTimeUpdate(this.id)"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                    <a id="report-details" class="report-details" href="#" onclick="openReportDetails();"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                   <td class="vertical-al-center">
                     <div class=" d-flex status">
                       <span style="color:#ffffff; background-color: #2E8B57;
@@ -105,7 +106,7 @@
                     </div> 
                   </td>
                   <td class="vertical-al-center" >
-                    <a class="report-edit" href="#" onclick=""><i class="fa-solid fa-file-pen"></i></a>
+                    <a class="report-edit" href="#" onclick="openEditReport()"><i class="fa-solid fa-file-pen"></i></a>
                   </td>
                 </tr>
                 <tr class="table">
@@ -113,7 +114,7 @@
                   <td id="report-name">Phú Đoàn</td>
                   <td>Đồng Khởi - Nguyễn Du, Phường Bến Nghé, Quận 1</td>
                   <td>Khiếu nại về kích thước biển quảng cáo</td>
-                  <td class="vertical-al-center"><a id="report-details" class="report-details" href="#" onclick="openReportDetails(); reportTimeUpdate(this.id)"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                  <td class="vertical-al-center"><a id="report-details" class="report-details" href="#" onclick="openReportDetails(); "><i class="fa-solid fa-magnifying-glass"></i></a></td>
                   <td class="vertical-al-center">
                     <div class=" d-flex status">
                       <span style="color:#ffffff; background-color: #2E8B57;
@@ -121,26 +122,26 @@
                     </div> 
                   </td>
                   <td class="vertical-al-center" >
-                    <a class="report-edit" href="#" onclick=""><i class="fa-solid fa-file-pen"></i></a>
+                    <a class="report-edit" href="#" onclick="openEditReport()"><i class="fa-solid fa-file-pen"></i></a>
                   </td>
                 </tr>
                 <tr class="table">
-                  <td scope="row" id="report-time">01-09-2023</td>
-                  <td id="report-name">Đoàn Dự</td>
+                  <td scope="row" id="report-time-2">01-09-2023</td>
+                  <td id="report-name-2">Đoàn Dự</td>
                   <td><span id="ads-report-adr">Đồng Khởi - Nguyễn Du, Phường Bến Nghé, Quận 1</span></td>
                   <td>Khiếu nại về kích thước biển quảng cáo</td>
-                  <td class="vertical-al-center"><a id="report-details" class="report-details" href="#" onclick="openReportDetails(); reportTimeUpdate(this.id)"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                  <td class="vertical-al-center"><a id="report-details" class="report-details" href="#" onclick="openReportDetails();"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                   <td class="vertical-al-center"> <div class=" d-flex status">
                     <span style="color:#ffffff; background-color: rgb(255, 208, 0);
                     border-radius: 1rem;"><i class="fa-solid fa-clock-rotate-left"></i> Đang xử lý</span>
                   </div></td>
                   <td class="vertical-al-center" >
-                    <a class="report-edit" href="#" onclick=""><i class="fa-solid fa-file-pen"></i></a>
+                    <a class="report-edit" href="#" onclick="openEditReport()"><i class="fa-solid fa-file-pen"></i></a>
                   </td>
                 </tr>
                 <tr class="table">
-                  <td scope="row" id="report-time">08-08-2023</td>
-                  <td id="report-name">Hư Trúc</td>
+                  <td scope="row" id="report-time-3">08-08-2023</td>
+                  <td id="report-name-3">Hư Trúc</td>
                   <td><span id="ads-report-adr">Đồng Khởi - Nguyễn Du, Phường Bến Nghé, Quận 1</span></td>
                   <td>Khiếu nại về kích thước biển quảng cáo</td>
                   <td class="vertical-al-center"><a id="report-details" class="report-details" href="#" onclick="openReportDetails();"><i class="fa-solid fa-magnifying-glass"></i></a></td>
@@ -151,16 +152,16 @@
                     </div>
                   </td>
                   <td class="vertical-al-center"> 
-                    <a class="report-edit" href="#" onclick=""><i class="fa-solid fa-file-pen"></i></a>
+                    <a class="report-edit" href="#" onclick="openEditReport()"><i class="fa-solid fa-file-pen"></i></a>
                   </td>
                 </tr>
                 <tr class="table">
-                  <td  scope="row" id="report-time">07-07-2023</td>
-                  <td id="report-name">Phú Đoàn</td> 
+                  <td  scope="row" id="report-time-3">07-07-2023</td>
+                  <td id="report-name-3">Phú Đoàn</td> 
                   <td><span id="ads-report-adr">Đồng Khởi - Nguyễn Du, Phường Bến Nghé, Quận 1</span></td>
                   <td>Khiếu nại về kích thước biển quảng cáo</td>
                   <td class="vertical-al-center">
-                    <a id="report-details" class="report-details" href="#" onclick="openReportDetails(); reportTimeUpdate(this.id)"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a id="report-details" class="report-details" href="#" onclick="openReportDetails();"><i class="fa-solid fa-magnifying-glass"></i></a>
                   </td>
                   <td  class="vertical-al-center">
                     <div class=" d-flex status ">
@@ -169,7 +170,7 @@
                     </div>
                   </td>
                   <td class="vertical-al-center">
-                    <a class="report-edit" href="#" onclick=""><i class="fa-solid fa-file-pen"></i></a>
+                    <a class="report-edit" href="#" onclick="openEditReport()"><i class="fa-solid fa-file-pen"></i></a>
                   </td>
                 </tr>
               </tbody>
@@ -203,13 +204,40 @@
         </div>
       </div>
       
+      <div id="status-edit" class="sidebar-ui">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid navbar-color navbar-menu">
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav"></ul>
+              </div>
+              <a type="button" class="side-opener" onclick="openEditReport()" style="margin-top: 7%;">
+                <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
+              </a>
+            </div>
+        </nav>
+        <!-- Menu buttons in the middle -->
+        <div class="report-update-container" style="background-color: #EBEFFF;" >
+          <div class="details-report-update">
+            <h6 class="title-ui"><b>Cập nhật cách thức xử lí:</b></h6>
+            <textarea name="" id="report-update-info" cols="30" rows="10"></textarea>
+
+          </div>
+          <div class="btn-container d-flex justify-content-around">
+            <button onclick="closeAdsEditor()" type="button" class="btn btn-style" style="color: white; background-color: #ff7575;">Hủy</button>
+            <button type="button" class="btn btn-style" style="color: white; background-color: #2B2E4A;">Lưu</button>
+          </div>
+        </div> 
+        <!-- Logout button at the bottom -->
+      </div>
+      
+
       <div id="report-details-popup" class="sidebar-ui">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid navbar-color navbar-menu">
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav"></ul>
               </div>
-              <a type="button" class="side-opener" onclick="openReportDetails(); reportTimeUpdate(this.id)" style="margin-top: 7%;">
+              <a type="button" class="side-opener" onclick="openSidebar(); " style="margin-top: 7%;">
                 <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
               </a>
             </div>
@@ -281,14 +309,11 @@
                 img021.jpg
               </p>
             </li>
-            
           </ul>
-          
           <div class="btn-container d-flex justify-content-center cancel-button">
             <button onclick="closeAdsEditor()" type="button" class="btn btn-style" style="color: white; background-color: #ff7575;">Hủy</button>
           </div>
         </div>
-        
       </div>
     </main>
     <script>
@@ -317,11 +342,15 @@
       function ChangeWard(clicked_id){
         document.getElementById("ward").textContent =  document.getElementById(clicked_id).textContent;
       }
-      function reportNameUpdate(content_id){
-        document.getElementById("report-info-name").textContent =  document.getElementById(content_id).textContent;
-      }
-      function reportTimeUpdate(content_id){
-        document.getElementById("report-info-time").textContent =  document.getElementById(content_id).textContent;
+
+      function openEditReport() {
+        const sidebarStatus = document.getElementById("status-edit").style.display;
+        if(sidebarStatus === "block"){
+          document.getElementById("status-edit").style.display = "none";
+        }
+        else{
+          document.getElementById("status-edit").style.display = "block";
+        }
       }
     </script>
   </body>
