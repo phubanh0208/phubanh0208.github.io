@@ -19,12 +19,36 @@
         <label for="Password" class="label">Password:</label>
         <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock">
         <a href="home.html"><button>Guest</button></a>
-        <button>Login</button>
+        <button onclick="openPopup()">Login</button>
         <div class="icon">
             <i class="fa-brands fa-facebook"></i>
             <i class="fa-solid fa-comment-sms"></i>
             <i class="fa-brands fa-telegram"></i>
         </div>
     </div>
+    <div class="overlay" id="overlay"></div>
+
+<div class="popup-container" id="popup">
+  <div class="popup-content">
+    <a href="/home_DistrictUser.html"><button>Quận</button></a>
+  </div>
+  <div class="popup-content">
+    <a href="/home_DepartmentUser.html"><button>Sở</button></a>
+  </div>
+  <button class="close-popup" onclick="closePopup()">Đóng</button>
+</div>
 </body>
+<script>
+
+        function openPopup() {
+          document.getElementById('popup').style.display = 'block';
+          document.getElementById('overlay').style.display = 'block';
+        }
+      
+        function closePopup() {
+          document.getElementById('popup').style.display = 'none';
+          document.getElementById('overlay').style.display = 'none';
+        }
+   
+</script>
 </html>
