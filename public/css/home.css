@@ -39,3 +39,7 @@
     margin-bottom: 10px; 
     border-radius: 20px;
   }
+  .angle-left{
+    position: relative;
+    left: 75%;
+  } 
