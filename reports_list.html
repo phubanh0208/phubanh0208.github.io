@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/public/css/navbar.css">
     <link rel="stylesheet" href="/public/css/reports_list.css">
     <link rel="stylesheet" href="/public/css/btn-style.css">
-
+    <link rel="stylesheet" href="/public/css/list-request.css">
   </head>
   <body>
     <header>
@@ -204,7 +204,7 @@
         </div>
       </div>
       
-      <div id="status-edit" class="sidebar-ui">
+      <!-- <div id="status-edit" class="sidebar-ui">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid navbar-color navbar-menu">
               <div class="collapse navbar-collapse" id="navbarNav">
@@ -214,9 +214,11 @@
                 <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
               </a>
             </div>
-        </nav>
+        </nav> -->
+
         <!-- Menu buttons in the middle -->
-        <div class="report-update-container" style="background-color: #EBEFFF;" >
+
+        <!-- <div class="report-update-container" style="background-color: #EBEFFF;" >
           <div class="details-report-update">
             <h6 class="title-ui"><b>Cập nhật cách thức xử lí:</b></h6>
             <textarea name="" id="report-update-info" cols="30" rows="10"></textarea>
@@ -227,23 +229,22 @@
             <button type="button" class="btn btn-style" style="color: white; background-color: #2B2E4A;">Lưu</button>
           </div>
         </div> 
-        <!-- Logout button at the bottom -->
-      </div>
+      </div> -->
       
 
-      <div id="report-details-popup" class="sidebar-ui">
+      <div id="report-details-popup" class="sidebar-ui ">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid navbar-color navbar-menu">
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav"></ul>
               </div>
-              <a type="button" class="side-opener" onclick="openSidebar(); " style="margin-top: 7%;">
+              <a type="button" class="side-opener" onclick="openReportDetails(); " style="margin-top: 7%;">
                 <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
               </a>
             </div>
         </nav>
         <!-- Menu buttons in the middle -->
-        <div class="info-container" style="background-color: #EBEFFF;" >
+        <div class="info-container details-report-update" style="background-color: #EBEFFF;" >
           <ul class="list-title">
             <li class="d-block list-item">
               <p class="text-title"><i class="fa-regular fa-calendar-days"></i><b>

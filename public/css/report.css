@@ -88,7 +88,3 @@ main{
 .modal::backdrop {
     background: rgb(0 0 0 / 0.4);
 }
-.angle-left{
-    position: relative;
-    left: 75%;
-  } 
