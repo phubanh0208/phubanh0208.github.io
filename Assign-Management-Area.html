@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/navbar.css">
     <link rel="stylesheet" href="/public/css/reports_list.css">
-
+    <link rel="stylesheet" href="/public/css/list-request.css">
     <link rel="stylesheet" href="/public/css/Assign-Management-Area.css">
     
 
@@ -268,56 +268,7 @@
         </div>
       </div>
 
-      <div id="edit-menu" class="sidebar-ui">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid navbar-color navbar-menu">
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav"></ul>
-              </div>
-              <a type="button" class="side-opener" onclick="openAdsEditor()" style="margin-top: 7%;">
-                <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
-              </a>
-            </div>
-        </nav>
-        <!-- Menu buttons in the middle -->
-        <div class="menu_options_box" style="background-color: #EBEFFF;" >
-          <div class="container">
-            <h4 class="ads-title text-align-center">
-              Trụ cụm pano
-            </h4>
-            <form class="edit-form">
-              <div class="col-0">
-                  <label for="inputName" class="col-0 col-form-label">Tên biển quảng cáo </label>                        
-                  <input type="text" class="form-control w-100px" name="inputName" id="inputName" placeholder="Trụ cụm pano">
-              </div>
-              
-              <div class="col-0">
-                  <label for="inputAddr" class="col-0 col-form-label">Địa chỉ</label>
-                  <input type="text" class="form-control" name="inputAddr" id="inputAddr" placeholder="Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1">
-              </div>
-              <div class="col-0">
-                  <label for="inputSize" class="col-0 col-form-label">Kích thước</label>
-                  <input type="text" class="form-control" name="inputSize" id="inputSize" placeholder="2.5m x 10m">
-              </div>
-              <div class="col-0">
-                  <label for="inputQuantity" class="col-0 col-form-label">Số lượng</label>
-                  <input type="text" class="form-control" name="inputQuantity" id="inputQuantity" placeholder="1 trụ/bảng">
-              </div>
-              <div class="col-0"> 
-                <label for="inputFormality" class="col-0 col-form-label">Hình thức</label>
-                <input type="text" class="form-control" name="inputFormality" id="inputFormality" placeholder="Cổ động chính trị">
-            </div>
-              <div class="col-0">
-                  <label for="inputType" class="col-0 col-form-label">Phân loại</label>
-                  <input type="text" class="form-control" name="inputType" id="inputType" placeholder="Đất công/Công viên/Hành lang an toàn giao thông">
-              </div>
-          </form>
-          <div class="btn-container d-flex justify-content-between">
-            <button onclick="closeAdsEditor()" type="button" class="btn btn-style" style="color: white; background-color: #ff7575;">Hủy</button>
-            <button type="button" class="btn btn-style" style="color: white; background-color: #2B2E4A;">Lưu</button>
-          </div>
-        </div>
-      </div>
+     
     </main>
     <script>
       function openSidebar(){
