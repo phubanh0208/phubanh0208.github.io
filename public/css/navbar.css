@@ -3,7 +3,7 @@
   padding-bottom: 0%;
   height: 51px;
   background-color: #D0A2F7;
-  width: 92.875rem;
+  width: 100vw;
   z-index: 1;
   position: fixed;
 }
@@ -27,6 +27,10 @@
   font-weight: 6000;
   font-size: 1em;
 }
+.angle-left{
+  position: relative;
+  left: 90%;
+} 
 
 /* <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
         <div class="container-fluid navbar-color navbar-size container-nav">

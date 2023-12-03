@@ -23,6 +23,23 @@
   
 
 }
+.sidebar-ui{
+  font-size: 0.51em;
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 30vw;
+  height: 100%;
+  transform: translateY(-50%);
+  /* Đưa menu lên giữa theo chiều dọc */
+  background-color: #EBEFFF;
+  
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+}
 .list-item{
   font-size: 16px;
   margin-top: 10%;
@@ -42,7 +59,7 @@
 .report-update-container{
   width: 100%;
   height: 90%;
-  padding-top: 25%;
+  padding-top: 20%;
 }
 .details-report-update{
   padding-top: 5%;
