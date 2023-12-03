@@ -13,6 +13,7 @@
     
 </head>
 <style>
+  
    /* Style cho map */
   .map-user {
     background-image:url('public/image/map/map.png');
@@ -245,7 +246,7 @@ hr{
                 <i class="fa-regular fa-bell fa-xl"></i>
               </li>
               <li class="nav-item">
-                <i class="fa-solid fa-bars fa-xl" onclick="openMenu()"></i>
+                <i class="fa-solid fa-bars fa-xl" onclick="openSidebar()"></i>
               </li>
             </ul>
           </div>
@@ -334,12 +335,15 @@ hr{
 
     <!--Menu popup bar-->>
     <div id="menu_overlay" onclick="closeMenu()"></div>
-    <div id="menu_popup">
+    <div id="menu_popup" class="sidebar-ui">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid navbar-color navbar-menu">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav"></ul>
             </div>
+            <a type="button" class="side-opener" onclick="openSidebar()" style="margin-top: 7%;">
+              <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
+            </a>
           </div>
       </nav>
       <!-- Menu buttons in the middle -->
@@ -382,7 +386,17 @@ hr{
     });
 });
 
-  /* Mơ popup qc*/
+/* Mơ popup qc*/
+  function openSidebar(){
+    const sidebarStatus = document.getElementById("menu_popup").style.display;
+    if(sidebarStatus === "block"){
+      document.getElementById("menu_popup").style.display = "none";
+    }
+    else{
+      document.getElementById("menu_popup").style.display = "block";
+    }
+  }
+
   function openPopup() {
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('popup').style.display = 'block';
@@ -407,6 +421,7 @@ hr{
   }
 
   /* Mở popup Menu */
+
   function openMenu() {
     document.getElementById('menu_overlay').style.display = 'block';
     document.getElementById('menu_popup').style.display = 'block';

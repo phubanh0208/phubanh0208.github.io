@@ -5,6 +5,9 @@ body{
   .navbar{
     display: flex;
   }
+a:link{
+  text-decoration: none;
+}
 .container-nav{
   width: 100vw;
 }
@@ -162,23 +165,10 @@ main{
     font-weight: 500;
     border-radius: 2rem;
 }
-/*Style cho menu popup */
-#menu_popup {
-  font-size: 0.51em;
-  display: none;
-  position: fixed;
-  top: 50%;
-  right: 5%;
-  width: 40vw;
-  height: 100%;
-  transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
+
+
 /* Style cho overlay */
-#overlay,#detail_overlay,#menu_overlay {
+/* #overlay,#detail_overlay,#menu_overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -187,7 +177,7 @@ main{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-}
+} */
 .menu_options_box {
   text-align: center;
   font-size: 0.51em;

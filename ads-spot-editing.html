@@ -16,7 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/ads-spot-editing.css">
-  
+  <link rel="stylesheet" href="/public/css/reports_list.css">
+  <link rel="stylesheet" href="/public/css/btn-style.css">
 
 </head>
 
@@ -34,15 +35,11 @@
               <a class="nav-link active text-size" aria-current="page" href="/home_DistrictUser.html">Home</a>
             </li>
           </ul>
-          <ul class="navbar-nav left-icon">
-            <li class="nav-item">
-              <i class="fa-regular fa-bell fa-xl"></i>
-            </li>
-            <li class="nav-item">
-              <i class="fa-solid fa-bars fa-xl" onclick="openMenu()"></i>
-            </li>
-          </ul>
+          
         </div>
+        <a type="button" class="side-opener" onclick="openSidebar()">
+          <i class="fa-solid fa-list fa-lg" style="color:#ffffff"></i>  
+        </a>
       </div>
     </nav>
   
@@ -277,6 +274,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav"></ul>
             </div>
+            <a type="button" class="side-opener" onclick="openSidebar()" style="margin-top: 7%;">
+              <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>
+            </a>
           </div>
       </nav>
       <!-- Menu buttons in the middle -->
