@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script>
+  <script src="https://kit.fontawesome.com/0fd1307301.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="public/css/home.css">
+  <link rel="stylesheet" href="public/css/navbar.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+</head>
+<style>
+  /* map */
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+  /* Style cho map */
+ .map-user {
+   background-image:url('public/image/map/map.png');
+   background-size: 100% 100%;
+   margin: 0;
+   padding: 0;
+   height:100vh;
+   width:100vw;
+   position: relative;
+ }
+ /* Style cho popup */
+ #popup {
+   font-size:0.51em;
+   display: none;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   width: 20vw;
+   height: 90vh;
+   transform: translate(-50%, -50%);
+   padding: 20px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 1000;
+   border-radius: 20px;
+}
+/*style cho detail popup*/
+#detail_popup{
+ font-size:0.51em;
+   display: none;
+   position: fixed;
+   top: 50%;
+   left: 20%;
+   width: 20vw;
+   height: 90vh;
+   transform: translate(-50%, -50%);
+   padding: 20px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 1000;
+   border-radius: 20px;
+}
+/* Style cho detail image pop up */
+#detail_image_popup{
+ font-size:0.51em;
+   display: none;
+   position: fixed;
+   top: 50%;
+   left: 60%;
+   width: 40vw;
+   height: 90vh;
+   transform: translate(-50%, -50%);
+   padding: 20px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 1000;
+   border-radius: 20px;
+}
+
+/*Style cho menu popup */
+#menu_popup {
+   font-size: 0.51em;
+   display: none;
+   position: fixed;
+   top: 50%;
+   right: 5%;
+   width: 40vw;
+   height: 100%;
+   transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
+   background-color: #fff;
+   border: 1px solid #ccc;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 1000;
+}
+
+
+/* Sytle cho qc-info*/
+.qc-info{
+ height: 25vh;
+ margin-top: 1em;
+ margin-bottom:0.7em;
+ border-style: solid;
+ border-radius: 20px;
+ margin-bottom: 1em;
+ padding: 0.5em;
+}
+.qc-info p{
+ margin-top: 0.7em;
+ line-height: 1.5em;
+ font-size: 1em;
+}
+.qc-info p b{
+ font-size: 1.5em;
+}
+/* Nhấp vào 1 điểm bất kì */
+.marker {
+ position: absolute;
+ width: 32px;
+ height: 32px;
+ border-radius: 50%;
+ transform: translate(-50%, -50%);
+ display: none;
+ z-index: 1003;
+}
+
+.info {
+ position: absolute;
+ background-color: #fff;
+ padding: 10px;
+ border: 1px solid #ccc;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ display: none;
+ z-index: 1003;
+}
+/* Sytle cho swith button */
+.form-switch{
+ font-weight: 500;
+ position: fixed;
+ top: 90%;
+ left:5%;
+ padding-top: 0.2vh;
+ padding-left: 3em;
+ width:90vw;
+ height:5vh;
+ background-color: rgba(0, 0, 0, 0.5);
+ border-radius:20px ;
+ }
+/* Style cho overlay */
+#overlay,#detail_overlay,#menu_overlay {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+/* location qc*/
+#qc1{
+ margin-left: 20em;
+ margin-top: 10em;
+}
+#qc2{
+ margin-left: 40em;
+ margin-top: 15em;
+}
+#qc3{
+ margin-left: 20em;
+ margin-top: 10em;
+}
+#qc4{
+ margin-left: 20em;
+ margin-top: 10em;
+}
+#qc5{
+ margin-left: 20em;
+ margin-top: 10em;
+}
+button{
+ border: none;
+ background: none;
+
+}
+h2{
+ font-size: medium;
+}
+/* style button*/
+.fa-info{
+ margin-left: 6em;
+ margin-top: 0.6em;
+}
+.fa-circle-exclamation{
+ margin-top: 0.6em;
+ margin-left: 0.8em;
+}
+hr{
+ margin-top: 1em;
+ margin-bottom: 1em;
+}
+.theme > .container { 
+       width: 100%;
+       height: 100%;
+       display: flex; 
+       flex-direction: row;
+       justify-content: space-around;
+       align-items: space-around;
+}
+.theme > .container > .banner { 
+       width: 30%;
+       height: 100%;
+       background-color: red;
+}
+.theme > .container > .details{ 
+       width: 30%;
+       height: 100%;
+       background-color: red;
+}
+.fa-bars {
+ margin-left: 1em;
+ margin-right: 3em;
+}
+.left-icon{
+ position: relative;
+ left: 75%;
+}
+.menu_button {
+ width: 20em;
+}
+</style>
+
+<body>
+  <!-- nav-barr-->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-size">
+    <div class="container-fluid navbar-color navbar-size container-nav">
+      <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-size" aria-current="page" href="/home_DistrictUser.html">Home</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav left-icon">
+          <li class="nav-item">
+            <i class="fa-regular fa-bell fa-xl"></i>
+          </li>
+          <li class="nav-item">
+            <i class="fa-solid fa-bars fa-xl" onclick="openMenu()"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Map container  -->
+  <div id="map">
+  </div>
+
+
+
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JhbzQ3IiwiYSI6ImNscHBneGhzcDB3cjkyaXFuaHlhN3Jxcm0ifQ.l74B2ZgynwxH8OhjplzVmg';
+    
+    // Get the user's current location
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+        enableHighAccuracy: true
+    });
+
+    function successLocation(position) {
+        const { longitude, latitude } = position.coords;
+
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [longitude, latitude], // starting position [lng, lat]
+            zoom: 15 // starting zoom
+        });
+    }
+
+    function errorLocation() {
+        // Default location (if user denies location access)
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 12 // starting zoom
+        });
+    }
+
+  </script>
+</body>
+
+</html>
