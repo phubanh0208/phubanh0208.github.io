@@ -16,7 +16,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/ads-spot-editing.css">
-  <link rel="stylesheet" href="/public/css/reports_list.css">
   <link rel="stylesheet" href="/public/css/btn-style.css">
 
 </head>
@@ -46,42 +45,38 @@
   </header>
   <main>
     <div class="main-content-box">
-      <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
-        <div class="container-fluid left-content justify-content-start" style="color: #8F9092;">
-          <div class="btn-group">
-            <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              class="dropdown-address dropdown-toggle text-decoration-none">
-              <span class="addr-text">Quận 1, <span id="ward">Phường Bến Nghé</span></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-start ward-dropdown"
-              style=" background-color: #EFF0F4; opacity: 0.9; border-top: none; border-top-right-radius: 0; border-top-left-radius: 0;"
-              aria-labelledby="triggerId">
-              <h6 class="dropdown-header">Quận 1</h6>
-              <div class="dropdown-divider"></div>
-              <a id="ward-1" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Bến Nghé</a>
-              <a id="ward-2" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Bến Thành</a>
-              <a id="ward-3" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cô Giang</a>
-              <a id="ward-4" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cầu Kho</a>
-              <a id="ward-5" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cầu Ông Lãnh</a>
-              <a id="ward-6" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Đa Kao</a>
-              <a id="ward-7" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Nguyễn Cư Trinh</a>
-              <a id="ward-8" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Nguyễn Thái Bình</a>
-              <a id="ward-9" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Phạm Ngũ Lão</a>
-              <a id="ward-10" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Tân Định</a>
+        <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
+          <div class="container-fluid left-content justify-content-start" style="color: #8F9092;">
+            <div class="btn-group">
+              <a type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" class="dropdown-address dropdown-toggle text-decoration-none">
+                <span class="addr-text" style="color: #656ED3; font-weight: 500">Quận 1, <span id="ward">Phường Bến Nghé</span></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-start ward-dropdown" style=" background-color: #EFF0F4; opacity: 0.9; border-top: none; border-top-right-radius: 0; border-top-left-radius: 0;" aria-labelledby="triggerId">
+                <h6 class="dropdown-header">Quận 1</h6>
+                <div class="dropdown-divider"></div>
+                <a id="ward-1" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Bến Nghé</a>
+                <a id="ward-2" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Bến Thành</a>
+                <a id="ward-3" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cô Giang</a>
+                <a id="ward-4" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cầu Kho</a>
+                <a id="ward-5" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Cầu Ông Lãnh</a>
+                <a id="ward-6" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Đa Kao</a>
+                <a id="ward-7" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Nguyễn Cư Trinh</a>
+                <a id="ward-8" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Nguyễn Thái Bình</a>
+                <a id="ward-9" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Phạm Ngũ Lão</a>
+                <a id="ward-10" onclick="ChangeWard(this.id)" class="dropdown-item" href="#">Phường Tân Định</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="container-fluid">
-          <span class="search-bar-item" style="color: #8F9092;">Lọc</span>
-          <div class="input-group rounded">
-            <input type="search" class="form-control search-bar" placeholder="Search" aria-label="Search"
-              aria-describedby="search-addon" />
-            <a href="#" class="input-group-text border-0 search-btn text-decoration-none" id="search-addon"
-              style="background-color: #AFB3FF;">
-              <i class="fas fa-search"></i>
-            </a>
+          <div class="container-fluid">
+            <span class="search-bar-item" style="color: #656ED3; white-space: nowrap; margin-right: 5%; font-weight:500;">Tìm Kiếm</span>
+            <div class="input-group rounded">
+              <input type="search" class="form-control search-bar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+              <a href="#" class="input-group-text border-0 search-btn text-decoration-none"  id="search-addon" style="background-color: #AFB3FF;">
+                <i class="fas fa-search" ></i>
+              </a>
+            </div>
           </div>
-        </div>
       </nav>
       <div class="ads-spot-container">
         <div onclick="openAdsEditor()" class="ad-container">
@@ -267,8 +262,7 @@
       </div>
     </div>
     <!--Menu popup bar-->>
-    <div id="menu_overlay" onclick="closeMenu()"></div>
-    <div id="menu_popup">
+    <div id="menu_popup" class="sidebar-ui">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid navbar-color navbar-menu">
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -280,7 +274,7 @@
           </div>
       </nav>
       <!-- Menu buttons in the middle -->
-      <div class="menu_options_box">
+      <div class="menu_options_box" style="background-color: #EBEFFF;">
         <a href="/ads-spot-editing.html"><button class="menu_button">Gửi yêu cầu chỉnh sửa thông tin 
           điểm đặt quảng cáo</button></a>
         <a href="/reports_list.html"><button class="menu_button" >Xem báo cáo</button></a>
@@ -288,14 +282,13 @@
         <a href="/"><button class="menu_button">Danh sách các cấp phép</button></a>
       </div>
       
-
       <!-- Logout button at the bottom -->
       <div style="text-align: center; margin-top: 20px;">
         <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
       </div>
     </div>
 
-    <div id="edit-menu">
+    <div id="edit-menu" class="sidebar-ui">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid navbar-color navbar-menu">
           <div class="collapse navbar-collapse" id="navbarNav">
@@ -346,7 +339,7 @@
           <div class="btn-container d-flex justify-content-between">
             <button onclick="closeAdsEditor()" type="button" class="btn btn-style"
               style="color: white; background-color: #ff7575;">Hủy</button>
-            <button type="button" class="btn btn-style" style="color: white; background-color: #2B2E4A;">Lưu</button>
+            <button type="button" class="btn btn-style" style="color: white; background-color: #2B2E4A;">Gửi yêu cầu</button>
           </div>
         </div>
       </div>

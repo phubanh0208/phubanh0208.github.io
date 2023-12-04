@@ -11,7 +11,7 @@ body {
     padding-bottom: 0%;
     height: 51px;
     background-color: #afb3ff;
-    width: 92.875rem;
+    width: 100vw;
     z-index: 1;
     position: fixed;
 }
@@ -19,7 +19,12 @@ body {
 .container-nav {
     padding-left: 2rem;
 }
-
+.nav-right{
+    display: flex;
+    width: 5%;
+    margin-right: 20px;
+    justify-content: space-around;
+}
 .nav-link {
     font-weight: 6000;
     font-size: 1em;
