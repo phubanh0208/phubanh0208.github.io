@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/home.css">
     <link rel="stylesheet" href="public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/reports_list.css">
+    <link rel="stylesheet" href="/public/css/list-request.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     
@@ -77,20 +79,7 @@
 }
 
 /*Style cho menu popup */
-#menu_popup {
-    font-size: 0.51em;
-    display: none;
-    position: fixed;
-    top: 50%;
-    right: 5%;
-    width: 40vw;
-    height: 100%;
-    transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
+
 
 
 /* Sytle cho qc-info*/
@@ -241,15 +230,11 @@ hr{
                 <a class="nav-link active text-size" aria-current="page" href="/home_DistrictUser.html">Home</a>
               </li>
             </ul>
-            <ul class="navbar-nav left-icon">
-              <li class="nav-item">
-                <i class="fa-regular fa-bell fa-xl"></i>
-              </li>
-              <li class="nav-item">
-                <i class="fa-solid fa-bars fa-xl" onclick="openSidebar()"></i>
-              </li>
-            </ul>
+            
           </div>
+           <a type="button" class="side-opener" onclick="openSidebar()">
+            <i class="fa-solid fa-list fa-lg" style="color:#ffffff"></i>  
+          </a>
         </div>
       </nav>
     
@@ -334,7 +319,7 @@ hr{
     </div>
 
     <!--Menu popup bar-->>
-    <div id="menu_overlay" onclick="closeMenu()"></div>
+
     <div id="menu_popup" class="sidebar-ui">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid navbar-color navbar-menu">
@@ -347,17 +332,18 @@ hr{
           </div>
       </nav>
       <!-- Menu buttons in the middle -->
-      <div class="menu_options_box">
-        <a href="/ads-spot-editing.html"><button class="menu_button">Gửi yêu cầu chỉnh sửa thông tin 
-          điểm đặt quảng cáo</button></a>
-        <a href="/reports_list.html"><button class="menu_button" >Xem báo cáo</button></a>
-        <a href="/request-lisencing.html"><button class="menu_button">Tạo yêu cầu cấp phép quảng cáo</button></a>
-        <a href="/list-request.html"><button class="menu_button">Danh sách các cấp phép</button></a>
-      </div>
+      <div class="menu_options_box" style="background-color: #EBEFFF;" >
+        <button class="menu_button" onclick="window.location.href='/ads-spot-editing.html'">Gửi yêu cầu chỉnh sửa thông tin 
+          điểm đặt quảng cáo</button>
+        <button class="menu_button" onclick="window.location.href='/request-lisencing.html'">Các yêu cầu cấp phép quảng cáo</button>
+        <button class="menu_button" onclick="window.location.href='/reports_list.html'">Các báo cáo & cách thức xử lý </button>
+        <button class="menu_button" onclick="window.location.href='/list-request.html'">Danh sách các cấp phép </button>
       
-      <!-- Logout button at the bottom -->
-      <div style="text-align: center; margin-top: 20px;">
-        <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
+        
+        <!-- Logout button at the bottom -->
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
+        </div>
       </div>
     </div>
 
