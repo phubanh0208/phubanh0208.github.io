@@ -16,6 +16,10 @@ body {
   margin-top: 5px;
   margin-right: 5%;
 }
+.side-opener{
+  height: 50px;
+
+}
 
 .menu_popup .navbar .side-opener {
   justify-items: start;
@@ -225,8 +229,8 @@ input[type="submit"]:active {
   padding: auto 20px;
   box-shadow: 1px 1px 2px 1px grey;
   overflow: hidden;
+  transition: all 0.1s;
 }
-
 .menu_button:hover {
   opacity: 0.6;
 }
