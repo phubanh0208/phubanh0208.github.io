@@ -5,8 +5,15 @@ body{
   .navbar{
     display: flex;
   }
+a:link{
+  text-decoration: none;
+}
 .container-nav{
   width: 100vw;
+}
+.container{
+  padding-top: 20%;
+
 }
 .side-opener{
   justify-items: end;
@@ -100,41 +107,14 @@ main{
   font-size: 10px;
   margin-left: 4%;
 }
-#menu_popup{
-  font-size: 0.51em;
+#menu_popup, #edit-menu{
   display: none;
-  position: fixed;
-  top: 50%;
-  right: 0;
-  width: 30vw;
-  height: 100%;
-  transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-  background-color: #EBEFFF;
-
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
 }
-#edit-menu {
-  font-size: 0.51em;
-  display: none;
-  position: fixed;
-  top: 50%;
-  right: 0;
-  width: 30vw;
-  height: 100%;
-  transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-  background-color: #EBEFFF;
-
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-} 
 
 .menu_button {
   display: block;
   margin: 20px auto;
-  height: 50px;
+  height: 60px;
   width: 70%;
   font-size: 17px;
   color: white;
@@ -162,23 +142,10 @@ main{
     font-weight: 500;
     border-radius: 2rem;
 }
-/*Style cho menu popup */
-#menu_popup {
-  font-size: 0.51em;
-  display: none;
-  position: fixed;
-  top: 50%;
-  right: 5%;
-  width: 40vw;
-  height: 100%;
-  transform: translateY(-50%); /* Đưa menu lên giữa theo chiều dọc */
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
+
+
 /* Style cho overlay */
-#overlay,#detail_overlay,#menu_overlay {
+/* #overlay,#detail_overlay,#menu_overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -187,29 +154,36 @@ main{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+} */
+#menu_popup, #edit-menu {
+  font-size: 0.51em;
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 30vw;
+  height: 100%;
+  transform: translateY(-50%);
+  /* Đưa menu lên giữa theo chiều dọc */
+  background-color: #EBEFFF;
+  
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 .menu_options_box {
   text-align: center;
   font-size: 0.51em;
   width: 100%;
   height: 80%;
-  background-color: #fff;
+  background-color: #EBEFFF;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10em;
 }
 
-.menu_button {
-  background-color: #878DFF;
-  width: 80%; /* Adjusted button width */
-  height: 5em; /* Adjusted button height */
-  color: white;
-  font-size:medium;
-  margin-bottom: 10px; 
-  border-radius: 20px;
-}
+
 .fa-bars {
   margin-left: 1em;
   margin-right: 3em;

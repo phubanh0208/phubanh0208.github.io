@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request lisencing</title>
+    <link rel="icon" type="image/x-icon" href="/public/image/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,6 +13,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/request-lisencing.css">
     <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/reports_list.css">
+    
     
 </head>
 <style> 
@@ -33,15 +36,12 @@
                 <a class="nav-link active text-size" aria-current="page" href="/home_DistrictUser.html">Home</a>
               </li>
             </ul>
-            <ul class="navbar-nav left-icon">
-              <li class="nav-item">
-                <i class="fa-regular fa-bell fa-xl"></i>
-              </li>
-              <li class="nav-item">
-                <i class="fa-solid fa-bars fa-xl" onclick="openMenu()"></i>
-              </li>
-            </ul>
+            
           </div>
+          
+          <a type="button" class="side-opener" onclick="openSidebar()">
+            <i class="fa-solid fa-list fa-lg" style="color:#ffffff"></i>  
+          </a>
         </div>
       </nav>  
     <div class="container-request">
@@ -95,29 +95,33 @@
         <input type="submit" value="Submit">
     </div>
     <!--Menu popup bar-->>
-    <div id="menu_overlay" onclick="closeMenu()"></div>
-    <div id="menu_popup">
+   <div id="menu_popup" class="sidebar-ui">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid navbar-color navbar-menu">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav"></ul>
             </div>
+            <a type="button" class="side-opener" onclick="openSidebar()" style="margin-top: 7%;">
+              <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
+            </a>
           </div>
       </nav>
       <!-- Menu buttons in the middle -->
-      <div class="menu_options_box">
-        <a href="/ads-spot-editing.html"><button class="menu_button">Gửi yêu cầu chỉnh sửa thông tin 
-          điểm đặt quảng cáo</button></a>
-        <a href="/reports_list.html"><button class="menu_button" >Xem báo cáo</button></a>
-        <a href="/request-lisencing.html"><button class="menu_button">Tạo yêu cầu cấp phép quảng cáo</button></a>
-        <a href="/list-request.html"><button class="menu_button">Danh sách các cấp phép</button></a>
-      </div>
+      <div class="menu_options_box" style="background-color: #EBEFFF;" >
+        <button class="menu_button" onclick="window.location.href='/ads-spot-editing.html'">Gửi yêu cầu chỉnh sửa thông tin 
+          điểm đặt quảng cáo</button>
+        <button class="menu_button" onclick="window.location.href='/request-lisencing.html'">Các yêu cầu cấp phép quảng cáo</button>
+        <button class="menu_button" onclick="window.location.href='/reports_list.html'">Các báo cáo & cách thức xử lý </button>
+        <button class="menu_button" onclick="window.location.href='/list-request.html'">Danh sách các cấp phép </button>
       
-      <!-- Logout button at the bottom -->
-      <div style="text-align: center; margin-top: 20px;">
-        <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
+        
+        <!-- Logout button at the bottom -->
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
+        </div>
       </div>
     </div>
+    
 </body>
 
 <script>
@@ -129,6 +133,15 @@
         imagePath.innerText = file.name;
     }
     /* Mở popup Menu */
+    function openSidebar(){
+      const sidebarStatus = document.getElementById("menu_popup").style.display;
+      if(sidebarStatus === "block"){
+        document.getElementById("menu_popup").style.display = "none";
+      }
+      else{
+        document.getElementById("menu_popup").style.display = "block";
+      }
+    }
   function openMenu() {
     document.getElementById('menu_overlay').style.display = 'block';
     document.getElementById('menu_popup').style.display = 'block';
