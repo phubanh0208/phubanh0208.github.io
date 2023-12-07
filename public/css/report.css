@@ -17,7 +17,8 @@ main{
     padding: 5px;
 }   
 .form-control::placeholder{
-    color: lightgrey;
+    color: #656ED3;
+
 }
 .left-section{
     margin: 20%;
@@ -87,4 +88,8 @@ main{
 }
 .modal::backdrop {
     background: rgb(0 0 0 / 0.4);
+}
+.input-title{
+    color: #1d2685;
+    font-weight: 500;
 }
