@@ -1,0 +1,125 @@
+
+  /* Style cho popup */
+//   #popup {
+//     font-size:0.51em;
+//     display: none;
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     width: 20vw;
+//     height: 90vh;
+//     transform: translate(-50%, -50%);
+//     padding: 20px;
+//     background-color: #fff;
+//     border: 1px solid #ccc;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     z-index: 1000;
+//     border-radius: 20px;
+// }
+/*style cho detail popup*/
+#detail_popup{
+  font-size:0.51em;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    width: 20vw;
+    height: 90vh;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+}
+/* Style cho detail image pop up */
+#detail_image_popup{
+  font-size:0.51em;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    width: 40vw;
+    height: 90vh;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+/*Style cho menu popup */
+
+button{
+  border: none;
+  background: none;
+
+}
+h2{
+  font-size: medium;
+}
+.info {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1003;
+}
+/* Sytle cho qc-info*/
+.qc-info{
+  height: 25vh;
+  margin-top: 1em;
+  margin-bottom:0.7em;
+  border-style: solid;
+  border-radius: 20px;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+.qc-info p{
+  margin-top: 0.7em;
+  line-height: 1.5em;
+  font-size: 1em;
+}
+.qc-info p b{
+  font-size: 1.5em;
+}
+.fa-info{
+  margin-left: 6em;
+  margin-top: 0.6em;
+}
+.fa-circle-exclamation{
+  margin-top: 0.6em;
+  margin-left: 0.8em;
+}
+hr{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.theme > .container { 
+        width: 100%;
+        height: 100%;
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: space-around;
+}
+.theme > .container > .banner { 
+        width: 30%;
+        height: 100%;
+        background-color: red;
+}
+.theme > .container > .details{ 
+        width: 30%;
+        height: 100%;
+        background-color: red;
+}
+
+.left-icon{
+  position: relative;
+  left: 75%;
+}

@@ -1,0 +1,35 @@
+
+.navbar-size {
+  padding-top: 0%;
+  padding-bottom: 0%;
+  height: 51px;
+  background-color: #D0A2F7;
+  width: 100vw;
+  z-index: 1;
+  position: fixed;
+}
+.navbar-menu {
+  padding-top: 0%;
+  padding-bottom: 0%;
+  height: 90px;
+  background-color: #D0A2F7;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  margin: auto;
+}
+.container-nav {
+  padding-left: 2rem;
+
+}
+.angle-left{
+  position: relative;
+  left: 90%;
+}
+.nav-right{
+  display: flex;
+  width: 10%;
+  margin-right: 20px;
+  justify-content: space-around;
+  padding: 0;
+}

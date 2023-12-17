@@ -1,0 +1,40 @@
+.btn-nor{
+  margin-top: 10px;
+  width: 50%;
+  border-radius: 50px;
+  border: 2px solid #656ED3;
+  background-color: #656ED3;
+  display: block;
+  text-decoration: none;
+}
+.menu_button {
+  display: block;
+  margin: 20px auto;
+  height: 70px;
+  width: 70%;
+  font-size: 17px;
+  color: white;
+  border: 0;
+  border-radius: 50px;
+  padding: auto 20px;
+
+  background-color: #7B82D9;
+  box-shadow: 1px 1px 2px 1px grey;
+  overflow: hidden;
+  transition: all 0.1s;
+}
+
+.menu_button:hover {
+  opacity: 0.6;
+}
+
+.menu_button:active {
+  box-shadow: none;
+}
+.cancel-button{
+  align-self: stretch;
+  width: 100%;
+}
+.btn-container{
+  padding-top: 10%;
+}

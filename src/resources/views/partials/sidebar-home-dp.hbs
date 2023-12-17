@@ -1,0 +1,42 @@
+
+    <!--Menu popup bar-->
+    <div id="menu_overlay" onclick="closeMenu()"></div>
+    <div id="menu_popup" class="sidebar-ui">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid navbar-color navbar-menu">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav"></ul>
+            </div>
+            <a type="button" class="side-opener" onclick="closeMenu()" style="margin-top: 7%;">
+              <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
+            </a>
+          </div>
+
+      </nav>
+      <!-- Menu buttons in the middle -->
+      <div class="menu_options_box">
+        <button class="menu_button" onclick="window.location.href='/DistrictList.html'">
+          <span class="menu_button_text">Danh sách Quận, Phường</span>
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Ad_Manage.html'">
+          <span class="menu_button_text">Quản lý các điểm đặt quảng cáo</span>
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Ad_Approve.html'">
+          <span class="menu_button_text">Các yêu cầu cấp phép quảng cáo</span>
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Report&Solve.html'">
+          <span class="menu_button_text">Các báo cáo và cách thức xử lý </span>
+        </button>
+        <button class="menu_button" onclick="window.location.href='/create-account.html'">
+          <span class="menu_button_text">Tạo tài khoản</span>
+        </button>
+        <button class="menu_button" onclick="window.location.href='/Assign-Management-Area.html'">
+          <span class="menu_button_text">Phân công khu vực quản lý </span>
+        </button>
+      </div>
+      
+      <!-- Logout button at the bottom -->
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
+      </div>
+    </div>

@@ -1,0 +1,174 @@
+   {{> header-home-dp}}
+   <!--Map container  -->
+    <div class="map-user" id="map">
+    <div id="marker" class="marker"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ff0f0f;"></i></div>
+    <div id="info" class="info">
+        <h3>Thông tin địa điểm</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <!-- button qc -->
+      <button id="qc1" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc2" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc3" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc4" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <button id="qc5" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
+      <!-- popup -->
+      <div id="overlay" onclick="closePopup()"></div>
+      <div id="popup">
+
+        <h2>Thông tin quảng cáo:</h2>
+        <div class="qc-info">
+          <p>
+              <b>Trụm, cụm pano</b><br>
+              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
+              <hr>
+              Kích thước: 2.5m x 10m<br>
+              Số lượng: 1 trụ/bảng<br>
+              Hình thức: Cổ đông chính trị<br>
+              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
+              <a href="#" onclick="openDetail()"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
+              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+
+          </p> 
+          
+          
+        </div>
+        <div class="qc-info">
+          <p>
+              <b>Trụm, cụm pano</b><br>
+              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
+              <hr>
+              Kích thước: 2.5m x 10m<br>
+              Số lượng: 1 trụ/bảng<br>
+              Hình thức: Cổ đông chính trị<br>
+              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
+              <a href="/detail.html"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
+              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+
+          </p> 
+        </div>
+        <div class="qc-info">
+          <p>
+              <b>Trụm, cụm pano</b><br>
+              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
+              <hr>
+              Kích thước: 2.5m x 10m<br>
+              Số lượng: 1 trụ/bảng<br>
+              Hình thức: Cổ đông chính trị<br>
+              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
+              <a href="/detail.html"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
+              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+
+          </p> 
+        </div>
+        <button onclick="closePopup()">X</button>
+      </div>
+    <!-- button qc -->
+    </div>
+    <!--detail-->    
+      <div id="detail_overlay" onclick="closeDetail()"></div>
+      <div id="detail_popup">
+        <div class="details">
+          <h1>Chi tiết</h1>
+          <p>Tên : Trụm, cụm pano</p>
+          <p>Đc: Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1</p>
+          <p>Kích thước: 2.5m x 10m</p>
+          <p>Hình thức: Cổ đông chính trị</p>
+          <p>Ngày hết hạn: 20/11/2024</p>
+          <p>Ngày đăng ký: 20/11/2023</p>
+        </div>
+      </div>
+      <div id="detail_image_popup">
+        <div class="details"><img src="../images/image_ads.png" alt=""></div>
+      </div>
+
+
+    <!-- Switch button (on/off) -->
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch"id="flexSwitchCheckDefault" checked="false">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Bật biển QC</label>
+    </div>
+  {{> sidebar-home-dp}}
+<script>
+  // Bật nút mở biển Qc
+  $(document).ready(function() {
+    // Khi switch thay đổi trạng thái
+    $("#flexSwitchCheckDefault").change(function() {
+        
+        // Nếu switch được bật
+        if ($(this).prop("checked")) {
+            $(".hidden-button").fadeIn(); // Hiển thị các button với hiệu ứng fadeIn
+
+        } else {
+            $(".hidden-button").fadeOut(); // Ẩn các button với hiệu ứng fadeOut
+        }
+    });
+});
+
+  /* Mơ popup qc*/
+  function openPopup() {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('popup').style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  /* Mở popup detail qc */
+  function openDetail() {
+    document.getElementById('detail_overlay').style.display = 'block';
+    document.getElementById('detail_popup').style.display = 'block';
+    document.getElementById('detail_image_popup').style.display = 'block';
+  }
+
+  function closeDetail() {
+    document.getElementById('detail_overlay').style.display = 'none';
+    document.getElementById('detail_popup').style.display = 'none';
+    document.getElementById('detail_image_popup').style.display = 'none';
+  }
+
+  /* Mở popup Menu */
+  function openMenu() {
+    document.getElementById('menu_overlay').style.display = 'block';
+    document.getElementById('menu_popup').style.display = 'block';
+  }
+
+  function closeMenu() {
+    document.getElementById('menu_overlay').style.display = 'none';
+    document.getElementById('menu_popup').style.display = 'none';
+  }
+
+
+
+  // Nhap mot diem bat ki
+  document.getElementById('map').addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    // Lấy tọa độ x và y của sự kiện click
+    var x = event.clientX;
+    var y = event.clientY;
+
+    // Hiển thị marker ở vị trí click
+    var marker = document.getElementById('marker');
+    marker.style.left = x + 'px';
+    marker.style.top = y + 'px';
+    marker.style.display = 'block';
+
+    // Hiển thị thông tin ở vị trí click
+    var info = document.getElementById('info');
+    info.style.left = x + 'px';
+    info.style.top = y - 40 + 'px'; // Đặt thông tin lùi lên trên một chút
+    info.style.display = 'block';
+
+    document.addEventListener('click', function hidePopup(e) {
+      // Kiểm tra xem click có xảy ra bên ngoài pop-up không
+      if (!info.contains(e.target) && !marker.contains(e.target)) {
+          info.style.display = 'none';
+          marker.style.display = 'none';
+          document.removeEventListener('click', hidePopup); // Loại bỏ sự kiện click sau khi pop-up bị ẩn
+      }
+    });
+  
+  });
+</script>

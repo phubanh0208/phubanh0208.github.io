@@ -1,0 +1,82 @@
+body{
+  background-image: url('../images/rp-bg.png');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:top;
+  background-attachment: local;
+}
+main{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 100vh;
+}
+.form-control {
+  background-color: #AFB3FF; 
+  border: 2px solid #656ED3; 
+  border-radius: 1rem;
+  padding: 5px;
+}   
+.form-control::placeholder{
+  color: #656ED3;
+
+}
+.left-section{
+  margin-top: 20%;
+  margin-left: 20%;
+  border-radius: 5.5rem;
+  position: relative;
+}
+.left-section form{ 
+  padding-left: 40px;
+  position: absolute;
+  bottom: 0;
+  top:0;
+  right:0;
+  left:16%;
+}
+.col-8{
+ width: 100%;
+}
+.card{
+  background-color: inherit;
+  border: none;
+}
+.card-text-container{
+  border: solid 1px rgb(212, 212, 212) ;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 2px 2px black 1px;
+}
+.card-text-1{
+  color: lightgray;
+}
+.right-section{
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  padding-right: 25%;
+  padding-left: 10%;
+
+}
+.report-info{
+  margin-top: 20%;
+}
+.card-items{
+  margin-top: 6vh;
+}
+.right-item .btn{
+  background-color: #656ED3;
+  padding: 5px 30px;
+  border: 0;
+}
+.left-item{
+  font-size: 20px;
+  color:#656ED3;
+}
+.sn-icon i{
+  color:#656ED3;
+}
+.input-title{
+  color: #1d2685;
+  font-weight: 500;
+}

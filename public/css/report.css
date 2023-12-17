@@ -4,12 +4,11 @@ body{
     background-size:cover;
     background-position:top;
     background-attachment: local;
-    }
+}
 main{
     display: grid;
     grid-template-columns: 50% 50%;
     height: 100vh;
-    
 }
 .form-control {
     background-color: #AFB3FF; 
@@ -75,20 +74,6 @@ main{
 }
 .sn-icon i{
     color:#656ED3;
-}
-.modal{
-    max-width: 50ch;
-    background-color: white;
-}
-.modal::backdrop{
-    background: linear-gradient(rgb(purple, red));
-    opacity: 0.4;
-}
-.modal h3{
-    color: #656ED3;
-}
-.modal::backdrop {
-    background: rgb(0 0 0 / 0.4);
 }
 .input-title{
     color: #1d2685;
