@@ -1,11 +1,11 @@
-body{
+.report-body{
   background-image: url('../images/rp-bg.png');
   background-repeat: no-repeat;
   background-size:cover;
   background-position:top;
   background-attachment: local;
 }
-main{
+.report-body{
   display: grid;
   grid-template-columns: 50% 50%;
   height: 100vh;

@@ -1,0 +1,82 @@
+.sign-up{
+  width: 100vw;
+  height: 100vh;
+  background-color: #EBEFFF;
+}
+.container-request {
+  position: absolute;
+  top: 53.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 75%;
+  background-color: white;
+  border: #848bdc 1px solid;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px lightgray;
+}
+
+.label {
+  width: 20%;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 30px;
+  border: 1px solid black;
+}
+
+.label,
+.form-control,
+.file-input {
+  display: inline-block;
+}
+
+.label {
+  margin: 20px 0px 16px 60px;
+}
+
+.label-1 {
+  margin-top: 50px;
+}
+
+.form-control {
+  width: 55%;
+}
+
+
+#birthday {
+  width: 25%;
+  text-align: center;
+}
+
+.submit-container {
+  width: 100%;
+  text-align: center;
+}
+
+
+input[type="submit"] {
+  background-color: #ff7777;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 7px 14px;
+  border: 2px solid #ff7777;
+  border-radius: 20px;
+  outline: none;
+  margin-top: 1.2em;
+  font-size: 14px;
+}
+
+input[type="submit"]:hover {
+  background-color: #ff9999;
+  border-color: #ff9999;
+}
+
+input[type="submit"]:active {
+  transform: translateY(2px);
+}

@@ -1,0 +1,39 @@
+    {{> header-home}}
+    <main class="sign-up">
+      <div class="container-request">
+          <div class="form-name">
+              <label for="name" class="label label-1">Họ và tên:</label>
+              <input type="text" class="form-control" id="name_textfield">
+          </div>
+
+          <div class="form-birthday">
+              <label for="birthday" class="label">Ngày sinh:</label>
+              <input type="date" class="form-control" id="birthday">
+          </div>
+
+          <div class="form-email">
+              <label for="email" class="label">Email:</label>
+              <input type="email" class="form-control" id="Email">
+          </div>
+
+          <div class="form-phone">
+              <label for="phone" class="label">Số điện thoại:</label>
+              <input type="tel" class="form-control" id="phone">
+          </div>
+
+          <div class="form-idnumber">
+              <label for="idNumber" class="label">CMND/CCCD</label>
+              <input type="text" class="form-control" id="idNumber" pattern="[0-9]{9}"
+                  title="Số căn cước công dân cần phải có 9 chữ số.">
+          </div>
+
+          <div class="form-username">
+              <label for="username" class="label">Tên đăng nhập:</label>
+              <input type="text" class="form-control" id="username_textfield">
+          </div>
+
+          <div class="submit-container">
+              <input type="submit" value="Submit">
+          </div>
+      </div>
+    </main>

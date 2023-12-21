@@ -1,0 +1,210 @@
+{{> header-home-dp}}
+
+<main class="ads-manage">
+  <div class="ads-table-container">
+    <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
+      <div class="header">
+        <h2 style="font-size: 2em;">QUẢN LÝ CÁC ĐIỂM QUẢNG CÁO </h2>
+      </div>
+      <div class="comboList-container">
+        <div class="comboList">
+          <label for="district">Quận:</label>
+          <select id="district">
+            <option value="district1">Quận 1</option>
+            <option value="district2">Quận 2</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <div class="comboList">
+          <label for="ward">Phường:</label>
+          <select id="ward">
+            <option value="ward1">Phường 1</option>
+            <option value="ward2">Phường 2</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+      </div>
+      <div class="table-container">
+        <table style="background-color: #BABEFE;">
+          <thead>
+            <tr>
+              <th style="width: 5em;  border: solid 1px black;">STT</th>
+              <th style="width: 10em; border: solid 1px black;">Mã số</th>
+              <th style="width: 20em; border: solid 1px black;">Tọa độ</th>
+              <th style="width: 20em; border: solid 1px black;">Khu vực</th>
+              <th style="width: 20em; border: solid 1px black;">Người thuê</th>
+              <th class="icon_detail"></th>
+            </tr>
+          </thead>
+          <!-- Table data -->
+          <tbody>
+            <tr>
+              <td class="table-items">1</td>
+              <td class="table-items">BT-123123</td>
+              <td class="table-items">10,154 45,5252</td>
+              <td class="table-items">Phường Tân Tạo quận 11</td>
+              <td class="table-items">Công ty A </td>
+              <td class="icon_detail">
+                <a href="#" onclick="openDetail()">
+                  <i class="fa-solid fa-info-circle"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-items">2</td>
+              <td class="table-items">BTC-HM-34 </td>
+              <td class="table-items">45,98 213,2323</td>
+              <td class="table-items">Vĩnh Lộc A, Bình Chánh</td>
+              <td class="table-items">Công ty B </td>
+              <td class="icon_detail">
+                <a href="#" onclick="openDetail()">
+                  <i class="fa-solid fa-info-circle"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-items">3</td>
+              <td class="table-items">BT-BH-784  </td>
+              <td class="table-items">99 78.2323</td>
+              <td class="table-items">Trần Phú, quận 5</td>
+              <td class="table-items">Đỗ Gia V  </td>
+              <td class="icon_detail">
+                <a href="#" onclick="openDetail()">
+                  <i class="fa-solid fa-info-circle"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-items">4</td>
+              <td class="table-items">BT-OC-231  </td>
+              <td class="table-items">884 77,456456</td>
+              <td class="table-items">Bình Thạnh</td>
+              <td class="table-items">Nguyễn Gia Bảo  </td>
+              <td class="icon_detail">
+                <a href="#" onclick="openDetail()">
+                  <i class="fa-solid fa-info-circle"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </nav>
+    
+  </div>
+
+  <!--Ad detail-->
+  <div id="manage-detail_overlay" onclick="closeDetail()"></div>
+  <div id="manage-detail_popup">
+    <div class="details">
+      <p>
+        <span class="detail_label">
+          Bảng quảng cáo:
+        </span>
+        <span class="detail_text">
+          Trụ, cụm pano
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Mã số:
+        </span>
+        <span class="detail_text">
+          BT-123123
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Điểm đặt tương ứng:
+        </span>
+        <span class="detail_text">
+          Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Nội dung quảng cáo:
+        </span>
+        <span class="detail_text">
+          Cổ động chính trị
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Thông tin người thuê:
+        </span>
+        <span class="detail_text">
+          Công ty A
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Email:
+        </span>
+        <span class="detail_text">
+          congtyAne@gmail.com
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Số điện thoại:
+        </span>
+        <span class="detail_text">
+          09999990
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Địa chỉ:
+        </span>
+        <span class="detail_text">
+          720A Đ. Điện Biên Phủ, Vinhomes Tân Cảng, Bình Thạnh, Thành phố Hồ Chí Minh
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Ngày bắt đầu hợp đồng:
+        </span>
+        <span class="detail_text">
+          01/11/2023
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Ngày kết thúc hợp đồng:
+        </span>
+        <span class="detail_text">
+          01/01/2024
+        </span>
+      </p>
+
+      <img class="details_image" src="../images/image_ads.png" alt="">
+      <div class="remove_button">
+        <button class="btn btn-danger btn-sm">Yêu cầu gỡ bỏ</button>
+      </div>
+   
+      
+      </div>
+    <!-- Remove button at the bottom -->
+    
+  </div>
+  {{!-- <div id="manage-detail-image_popup">
+    
+  </div> --}}
+</main>
+
+{{> sidebar-home-dp}}
+<script>
+    /* Mở popup detail qc */
+    function openDetail() {
+      document.getElementById('manage-detail_overlay').style.display = 'block';
+      document.getElementById('manage-detail_popup').style.display = 'block';
+      //document.getElementById('manage-detail-image_popup').style.display = 'block';
+    }
+
+    function closeDetail() {
+      document.getElementById('manage-detail_overlay').style.display = 'none';
+      document.getElementById('manage-detail_popup').style.display = 'none';
+     // document.getElementById('manage-detail-image_popup').style.display = 'none';
+    }
+</script>

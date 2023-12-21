@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav"></ul>
             </div>
-            <a type="button" class="side-opener" onclick="closeMenu()" style="margin-top: 7%;">
+            <a type="button" class="side-opener" onclick="openSidebar()" style="margin-top: 10%;">
               <i class="fa-solid fa-x fa-2xl" style="color:#ffffff"></i>  
             </a>
           </div>
@@ -15,28 +15,41 @@
       </nav>
       <!-- Menu buttons in the middle -->
       <div class="menu_options_box">
-        <button class="menu_button" onclick="window.location.href='/DistrictList.html'">
+        <button class="menu_button" onclick="window.location.href='/district-list'">
           <span class="menu_button_text">Danh sách Quận, Phường</span>
         </button>
-        <button class="menu_button" onclick="window.location.href='/Ad_Manage.html'">
+        <button class="menu_button" onclick="window.location.href='/ads-manage'">
           <span class="menu_button_text">Quản lý các điểm đặt quảng cáo</span>
         </button>
-        <button class="menu_button" onclick="window.location.href='/Ad_Approve.html'">
+        <button class="menu_button" onclick="window.location.href='/ads-approval'">
           <span class="menu_button_text">Các yêu cầu cấp phép quảng cáo</span>
         </button>
-        <button class="menu_button" onclick="window.location.href='/Report&Solve.html'">
+        <button class="menu_button" onclick="window.location.href='/report-n-solve'">
           <span class="menu_button_text">Các báo cáo và cách thức xử lý </span>
         </button>
-        <button class="menu_button" onclick="window.location.href='/create-account.html'">
+        <button class="menu_button" onclick="window.location.href='/sign-up'">
           <span class="menu_button_text">Tạo tài khoản</span>
         </button>
-        <button class="menu_button" onclick="window.location.href='/Assign-Management-Area.html'">
+        <button class="menu_button" onclick="window.location.href='/assign-management-area'">
           <span class="menu_button_text">Phân công khu vực quản lý </span>
         </button>
       </div>
       
       <!-- Logout button at the bottom -->
       <div style="text-align: center; margin-top: 20px;">
-        <a href="/index.html"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
+        <a href="/"><button class="btn btn-danger btn-sm">Đăng xuất</button></a>
       </div>
     </div>
+
+<script>
+  function openSidebar(){
+    const sidebarStatus = document.getElementById("menu_popup").style.display;
+    if(sidebarStatus === "block"){
+      document.getElementById("menu_popup").style.display = "none";
+    }
+    else{
+      document.getElementById("menu_popup").style.display = "block";
+    }
+  }
+
+</script>

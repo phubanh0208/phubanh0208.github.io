@@ -27,4 +27,22 @@ app.get('/home-district', (req,res) => {
 app.get('/report', (req,res) => {
   res.render('report');
 })
+app.get('/district-list', (req,res) => {
+  res.render('district-list');
+})
+app.get('/ads-manage', (req,res) => {
+  res.render('ads-manage');
+})
+app.get('/ads-approval', (req,res) => {
+  res.render('ads-approval');
+})
+app.get('/report-n-solve', (req,res) => {
+  res.render('report-n-solve');
+})
+app.get('/sign-up', (req,res) => {
+  res.render('sign-up');
+})
+app.get('/assign-management-area', (req,res) => {
+  res.render('/assign-management-area');
+})
 app.listen(port, () => console.log(`Running at http://localhost:${port}`))
