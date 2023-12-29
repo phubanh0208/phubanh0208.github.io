@@ -1,169 +1,136 @@
-
 {{> header-home}}
-<div class="map-user" id="map">
-    <div id="marker" class="marker"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ff0f0f;"></i></div>
-    <div id="info" class="info">
-      <h3>Thông tin địa điểm</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <!-- button qc -->
-    <button id="qc1" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl"
-        style="color: #ae27d3;"></i></button>
-    <button id="qc2" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl"
-        style="color: #ae27d3;"></i></button>
-    <button id="qc3" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl"
-        style="color: #ae27d3;"></i></button>
-    <button id="qc4" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl"
-        style="color: #ae27d3;"></i></button>
-    <button id="qc5" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl"
-        style="color: #ae27d3;"></i></button>
-    <!-- popup -->
-    <div id="overlay" onclick="closePopup()"></div>
-    <div id="popup">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
-      <h2>Thông tin quảng cáo:</h2>
-      <div class="qc-info">
-        <p>
-          <b>Trụm, cụm pano</b><br>
-          Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
-          <hr>
-          Kích thước: 2.5m x 10m<br>
-          Số lượng: 1 trụ/bảng<br>
-          Hình thức: Cổ đông chính trị<br>
-          Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
-          <a href="#" onclick="openDetail()"><i class="fa-solid fa-circle-info fa-2xl" style="color: #7aabff;"></i></a>
-          <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: index 1;
+    }
 
-        </p>
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+</style>
+<div id="map"></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JhbzQ3IiwiYSI6ImNscHBneGhzcDB3cjkyaXFuaHlhN3Jxcm0ifQ.l74B2ZgynwxH8OhjplzVmg';
 
+    // Get the user's current location
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+        enableHighAccuracy: true
+    });
+    function successLocation(position) {
+        const { longitude, latitude } = position.coords;
 
-      </div>
-      <div class="qc-info">
-        <p>
-          <b>Trụm, cụm pano</b><br>
-          Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
-          <hr>
-          Kích thước: 2.5m x 10m<br>
-          Số lượng: 1 trụ/bảng<br>
-          Hình thức: Cổ đông chính trị<br>
-          Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
-          <a a href="#" onclick="openDetail()"><i class="fa-solid fa-circle-info fa-2xl" style="color: #7aabff;"></i></a>
-          <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [longitude, latitude], // starting position [lng, lat]
+            zoom: 15 // starting zoom
 
-        </p>
-      </div>
-      <div class="qc-info">
-        <p>
-          <b>Trụm, cụm pano</b><br>
-          Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
-          <hr>
-          Kích thước: 2.5m x 10m<br>
-          Số lượng: 1 trụ/bảng<br>
-          Hình thức: Cổ đông chính trị<br>
-          Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
-          <a a href="#" onclick="openDetail()"><i class="fa-solid fa-circle-info fa-2xl" style="color: #7aabff;"></i></a>
-          <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+        });
+        // Add markers to the map based on the data passed from the server
+        const data = {{{ locationData }}}; // Use triple-stashes
+    // data.forEach(location => {
+    // const marker1 = new mapboxgl.Marker()
+    //     .setLngLat([106.7116703,10.8429868])
+    //     .addTo(map);
+    //  });
 
-        </p>
-      </div>
+    map.on('load', () => {
 
-      <button onclick="closePopup()">X</button>
-    </div>
-    <!-- button qc -->
-  </div>
-  <!--detail-->
-  <div id="detail_overlay" onclick="closeDetail()"></div>
-  <div id="detail_popup">
-    <div class="details">
-      <h1>Chi tiết</h1>
-      <p>Tên : Trụm, cụm pano</p>
-      <p>Đc: Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1</p>
-      <p>Kích thước: 2.5m x 10m</p>
-      <p>Hình thức: Cổ đông chính trị</p>
-      <p>Ngày hết hạn: 20/11/2024</p>
-      <p>Ngày đăng ký: 20/11/2023</p>
-    </div>
-  </div>
-  <div id="detail_image_popup">
-    <div class="details"><img src="../images/image_ads.png" alt=""></div>
-  </div>
+        //thêm các điểm vào object
+        var feature = [];
+        data.forEach(location => {
+            let title = '<strong>' + location.type + '</strong>';
+            let descrip = '<p>' + location.detail + '</p>';
+            let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
+            let type = '<strong>Chưa huy hoạch</strong>';
+            if (location.condition == 1) {
+                type = '<strong>Đã huy hoạch</strong>';
+            }
+            let detailPopup = {
+                'type': 'Feature',
+                'properties': {
+                    'description': title + descrip + address + type,
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [location.coordinates.y, location.coordinates.x]
+                }
+            };
+            feature.push(detailPopup);    
+        });
+        //thêm điểm vào map
+        map.addSource('places', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': feature,
+            }
+        })
+        // Add a layer showing the places.
+        map.addLayer({
+            'id': 'places',
+            'type': 'circle',
+            'source': 'places',
+            'paint': {
+                'circle-color': '#4264fb',
+                'circle-radius': 6,
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+            }
+        });
 
+        // Create a popup, but don't add it to the map yet.
+        const popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
 
-  <!-- Switch button (on/off) -->
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked="false">
-    <label class="form-check-label" style="color: #ffffff;" for="flexSwitchCheckDefault">Bật biển QC</label>
-  </div>
+        map.on('mouseenter', 'places', (e) => {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
 
-  <script>
-  // Bật nút mở biển Qc
-    $(document).ready(function () {
-      // Khi switch thay đổi trạng thái
-      $("#flexSwitchCheckDefault").change(function () {
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description = e.features[0].properties.description;
 
-        // Nếu switch được bật
-        if ($(this).prop("checked")) {
-          $(".hidden-button").fadeIn(); // Hiển thị các button với hiệu ứng fadeIn
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
 
-        } else {
-          $(".hidden-button").fadeOut(); // Ẩn các button với hiệu ứng fadeOut
-        }
-      });
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        });
+
+        map.on('mouseleave', 'places', () => {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
     });
 
-    /* Mơ popup qc*/
-    function openPopup() {
-      document.getElementById('overlay').style.display = 'block';
-      document.getElementById('popup').style.display = 'block';
     }
 
-    function closePopup() {
-      document.getElementById('overlay').style.display = 'none';
-      document.getElementById('popup').style.display = 'none';
-    }
-
-    /* Mở popup detail qc */
-    function openDetail() {
-      document.getElementById('detail_overlay').style.display = 'block';
-      document.getElementById('detail_popup').style.display = 'block';
-      document.getElementById('detail_image_popup').style.display = 'block';
-    }
-
-    function closeDetail() {
-      document.getElementById('detail_overlay').style.display = 'none';
-      document.getElementById('detail_popup').style.display = 'none';
-      document.getElementById('detail_image_popup').style.display = 'none';
+    function errorLocation() {
+        // Default location (if user denies location access)
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 12 // starting zoom
+        });
     }
 
 
 
-    // Nhap mot diem bat ki
-    document.getElementById('map').addEventListener('contextmenu', function (event) {
-      event.preventDefault();
-      // Lấy tọa độ x và y của sự kiện click
-      var x = event.clientX;
-      var y = event.clientY;
-
-      // Hiển thị marker ở vị trí click
-      var marker = document.getElementById('marker');
-      marker.style.left = x + 'px';
-      marker.style.top = y + 'px';
-      marker.style.display = 'block';
-
-      // Hiển thị thông tin ở vị trí click
-      var info = document.getElementById('info');
-      info.style.left = x + 'px';
-      info.style.top = y - 40 + 'px'; // Đặt thông tin lùi lên trên một chút
-      info.style.display = 'block';
-
-      document.addEventListener('click', function hidePopup(e) {
-        // Kiểm tra xem click có xảy ra bên ngoài pop-up không
-        if (!info.contains(e.target) && !marker.contains(e.target)) {
-          info.style.display = 'none';
-          marker.style.display = 'none';
-          document.removeEventListener('click', hidePopup); // Loại bỏ sự kiện click sau khi pop-up bị ẩn
-        }
-      });
-
-    });
-  </script>  
+</script>
