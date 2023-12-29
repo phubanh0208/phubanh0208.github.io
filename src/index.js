@@ -43,6 +43,6 @@ app.get('/sign-up', (req,res) => {
   res.render('sign-up');
 })
 app.get('/assign-management-area', (req,res) => {
-  res.render('/assign-management-area');
+  res.render('assign-management-area');
 })
 app.listen(port, () => console.log(`Running at http://localhost:${port}`))
