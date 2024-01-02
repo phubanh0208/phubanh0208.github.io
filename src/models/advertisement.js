@@ -9,6 +9,7 @@ const advertisementSchema = new mongoose.Schema({
   },
   address: String,
   owner: String,
+  date: Date,
   // Thêm các trường dữ liệu khác tùy thuộc vào yêu cầu của bạn
 });
 

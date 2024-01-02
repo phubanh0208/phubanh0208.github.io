@@ -13,12 +13,102 @@
         z-index: index 1;
     }
 
-    .mapboxgl-popup {
+    .mapboxgl-popup-content {
+        max-width: 400px;
+        width: 30em;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+    .popup-content-ad {
+
+        border-radius: 0.1em;
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        max-height: 20em; /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+        overflow-y: auto; 
+    }
+
+    .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .popup-close-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .popup-content-ad ul {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        list-style-type: none;
+        /* Loại bỏ kiểu danh sách mặc định */
+        position: relative;
+    }
+
+    /* Remove margin from the last ul element */
+    .popup-content-ad ul:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Add buttons at the bottom of each ul */
+    .popup-content-ad ul::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .popup-content-ad .popup-btn-left {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .popup-content-ad .popup-btn-right{
+        background-color: #ff0000	;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .popup-content-ad a {
+
+        color: #fff;
+        display: inline-block;
+        color: inherit; /* Màu sắc kế thừa từ phần tử cha */
+        text-decoration: none;
     }
 </style>
 <div id="map"></div>
+<!-- Handlebars Template -->
+<script id="info-template" type="text/x-handlebars-template">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h3>{{title}}</h3>
+      <button class="popup-close-btn" onclick="closePopup()">×</button>
+    </div>
+    <ul>
+      <li><strong>Type:</strong> {{type}}</li>
+      <li><strong>Description:</strong> {{description}}</li>
+      <li><strong>Address:</strong> {{address}}</li>
+      <!-- Thêm các trường dữ liệu khác cần hiển thị -->
+    </ul>
+  </div>
+</script>
+
+
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JhbzQ3IiwiYSI6ImNscHBneGhzcDB3cjkyaXFuaHlhN3Jxcm0ifQ.l74B2ZgynwxH8OhjplzVmg';
 
@@ -54,18 +144,34 @@
             let type = '<strong>Chưa huy hoạch</strong>';
             if (location.condition == 1) {
                 type = '<strong>Đã huy hoạch</strong>';
-            }
+            };
+            let adList = '';
+            location.ads.forEach(ads => {
+                let title = '<li><strong>' + ads.type + '</strong></li>';
+                let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
+                let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
+                let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+                let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
+                let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
+                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/infor/'+ads._id+'">Báo cáo sai phạm</a></button>'
+                adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
+            });
+            console.log(adList);
             let detailPopup = {
                 'type': 'Feature',
                 'properties': {
                     'description': title + descrip + address + type,
+                    'adlist': '<div class="popup-content-ad">'+adList+'</div>', 
                 },
                 'geometry': {
                     'type': 'Point',
                     'coordinates': [location.coordinates.y, location.coordinates.x]
                 }
             };
-            feature.push(detailPopup);    
+            feature.push(detailPopup);
+
+
         });
         //thêm điểm vào map
         map.addSource('places', {
@@ -82,7 +188,7 @@
             'source': 'places',
             'paint': {
                 'circle-color': '#4264fb',
-                'circle-radius': 6,
+                'circle-radius': 10,
                 'circle-stroke-width': 2,
                 'circle-stroke-color': '#ffffff'
             }
@@ -91,6 +197,11 @@
         // Create a popup, but don't add it to the map yet.
         const popup = new mapboxgl.Popup({
             closeButton: false,
+            closeOnClick: false
+        });
+        // Create a popup for click, but don't add it to the map yet.
+        const clickPopup = new mapboxgl.Popup({
+            closeButton: true,
             closeOnClick: false
         });
 
@@ -118,6 +229,27 @@
             map.getCanvas().style.cursor = '';
             popup.remove();
         });
+        // Add click event listener
+        map.on('click', 'places', (e) => {
+            // Prevent the default map click behavior
+            e.preventDefault();
+
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description = e.features[0].properties.adlist;
+            console.log(description);
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            clickPopup.setLngLat(coordinates).setHTML(description).addTo(map);
+            
+        });
     });
 
     }
@@ -130,7 +262,7 @@
             zoom: 12 // starting zoom
         });
     }
-
+    
 
 
 </script>
