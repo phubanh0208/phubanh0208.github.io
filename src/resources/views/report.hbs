@@ -1,7 +1,7 @@
 {{> header-home-d}}
 <main class="report-body">
   <section class="left-section">
-      <form>
+      <form action="./{{_id}}" method="post">
           <div class="col-8 d-block d-block">
               <label for="inputName" class="col-0 col-form-label input-title">Họ và Tên</label>                        
               <input type="text" class="form-control input-place" name="inputName" id="inputName" placeholder="Họ và tên">
@@ -22,7 +22,8 @@
               <label for="inputReportInfomation" class="col-0 col-form-label input-title">Nội dung</label>
               <textarea class="form-control input-place" id="textAreaExample" rows="8"></textarea>
           </div>
-      
+            <button type="submit">Submit</button>
+
       </form>
   </section>
   <section class="right-section">
@@ -50,7 +51,7 @@
                       <span class="add-image-text">Thêm ảnh</span>
                   </a>
                   <div class="right-item">
-                      <button data-modal-open id="open-button" type="button" class="btn btn-primary open-button">
+                      <button data-modal-open id="open-button" type="submit" class="btn btn-primary open-button">
                         Báo cáo
                       </button>
                       

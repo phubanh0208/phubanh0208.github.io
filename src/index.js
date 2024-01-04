@@ -5,12 +5,16 @@ import morgan from 'morgan';
 import hbs from 'express-handlebars';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-
+import bodyParser from 'body-parser';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
+
+// Sử dụng body-parser middleware để phân tích dữ liệu POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //dotenv
 dotenv.config();

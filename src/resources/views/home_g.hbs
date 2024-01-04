@@ -90,23 +90,89 @@
         color: inherit; /* Màu sắc kế thừa từ phần tử cha */
         text-decoration: none;
     }
+    #toggleButton {
+    position: absolute;
+    bottom: 10px; /* Điều chỉnh khoảng cách với đáy bản đồ */
+    left: 50%; /* Đưa nút vào giữa theo chiều ngang */
+    transform: translateX(-50%); /* Dịch chuyển nút ngược lại 50% chiều ngang của chính nó */
+    z-index: 1; /* Đảm bảo nút hiển thị trên bản đồ */
+    .layer-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+    }
+
+.layer-button {
+    background-color: #4285f4;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.layer-button.active {
+    background-color: #34a853;
+}
+
+.switch-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    display: none;
+}
+
+.switch-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 17px;
+    cursor: pointer;
+}
+
+.switch-label:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 4px;
+    left: 4px;
+    transition: 0.3s;
+}
+
+.switch-text {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.switch:checked + .switch-label:before {
+    transform: translateX(26px);
+}
+
+
 </style>
 <div id="map"></div>
 <!-- Handlebars Template -->
-<script id="info-template" type="text/x-handlebars-template">
-  <div class="popup-content">
-    <div class="popup-header">
-      <h3>{{title}}</h3>
-      <button class="popup-close-btn" onclick="closePopup()">×</button>
-    </div>
-    <ul>
-      <li><strong>Type:</strong> {{type}}</li>
-      <li><strong>Description:</strong> {{description}}</li>
-      <li><strong>Address:</strong> {{address}}</li>
-      <!-- Thêm các trường dữ liệu khác cần hiển thị -->
-    </ul>
-  </div>
-</script>
+
+<div class="switch-container">
+    <input type="checkbox" id="toggleSwitch" class="switch" checked>
+    <label for="toggleSwitch" class="switch-label"></label>
+    <span class="switch-text">Bật tắt QC</span>
+</div>
+
+
 
 
 <script>
@@ -122,9 +188,11 @@
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             center: [longitude, latitude], // starting position [lng, lat]
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
             zoom: 15 // starting zoom
 
         });
+        map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
         // Add markers to the map based on the data passed from the server
         const data = {{{ locationData }}}; // Use triple-stashes
     // data.forEach(location => {
@@ -133,18 +201,20 @@
     //     .addTo(map);
     //  });
 
-    map.on('load', () => {
+    map.on('load',()=> {
 
         //thêm các điểm vào object
+        var featureCondition1 = [];
+        var featureCondition2 = [];
         var feature = [];
+        
+        //các điểm đã huy hoạch:
         data.forEach(location => {
+            if (location.condition == 1) {
             let title = '<strong>' + location.type + '</strong>';
             let descrip = '<p>' + location.detail + '</p>';
             let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
-            let type = '<strong>Chưa huy hoạch</strong>';
-            if (location.condition == 1) {
-                type = '<strong>Đã huy hoạch</strong>';
-            };
+            let type = '<strong>Đã huy hoạch</strong>';          
             let adList = '';
             location.ads.forEach(ads => {
                 let title = '<li><strong>' + ads.type + '</strong></li>';
@@ -154,10 +224,10 @@
                 let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
                 let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
                 let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
-                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/infor/'+ads._id+'">Báo cáo sai phạm</a></button>'
+                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/'+ads._id+'">Báo cáo sai phạm</a></button>'
                 adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
             });
-            console.log(adList);
+
             let detailPopup = {
                 'type': 'Feature',
                 'properties': {
@@ -169,9 +239,45 @@
                     'coordinates': [location.coordinates.y, location.coordinates.x]
                 }
             };
+            featureCondition1.push(detailPopup);
+            feature.push(detailPopup);
+            };
+        });
+        //cac diem chua huy hoach
+        data.forEach(location => {
+            if (location.condition == 0) {
+            let title = '<strong>' + location.type + '</strong>';
+            let descrip = '<p>' + location.detail + '</p>';
+            let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
+            let type = '<strong>Chưa huy hoạch</strong>';          
+            let adList = '';
+            location.ads.forEach(ads => {
+                let title = '<li><strong>' + ads.type + '</strong></li>';
+                let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
+                let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
+                let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+                let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
+                let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
+                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/'+ads._id+'">Báo cáo sai phạm</a></button>'
+                adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
+            });
+
+            let detailPopup = {
+                'type': 'Feature',
+                'properties': {
+                    'description': title + descrip + address + type,
+                    'adlist': '<div class="popup-content-ad">'+adList+'</div>', 
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [location.coordinates.y, location.coordinates.x]
+                }
+            };
+            featureCondition2.push(detailPopup);
             feature.push(detailPopup);
 
-
+            };
         });
         //thêm điểm vào map
         map.addSource('places', {
@@ -180,20 +286,62 @@
                 'type': 'FeatureCollection',
                 'features': feature,
             }
-        })
-        // Add a layer showing the places.
-        map.addLayer({
+        });
+         map.addLayer({
             'id': 'places',
             'type': 'circle',
             'source': 'places',
             'paint': {
-                'circle-color': '#4264fb',
+                'circle-color': '#ffffff',
+                'circle-radius': 10,
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+            }
+            
+        });
+        //cac diem da huy hoach
+        map.addSource('places1', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': featureCondition1,
+            }
+        });
+        map.addLayer({
+            'id': 'places1',
+            'type': 'circle',
+            'source': 'places1',
+            'paint': {
+                'circle-color': '#310c51',
                 'circle-radius': 10,
                 'circle-stroke-width': 2,
                 'circle-stroke-color': '#ffffff'
             }
         });
+        //cac diem chua huy hoach
+        map.addSource('places2', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features':featureCondition2,
+            }
+        });
+        map.addLayer({
+            'id': 'places2',
+            'type': 'circle',
+            'source': 'places2',
+            'paint': {
+                'circle-color': '#4186cf',
+                'circle-radius': 10,
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+            }
+        });
+       
+        // Add a layer showing the places.
+        
 
+        
         // Create a popup, but don't add it to the map yet.
         const popup = new mapboxgl.Popup({
             closeButton: false,
@@ -204,11 +352,24 @@
             closeButton: true,
             closeOnClick: false
         });
+        const switchButton = document.getElementById('toggleSwitch');
 
+switchButton.addEventListener('change', function () {
+    const isChecked = this.checked;
+
+    // Bật/tắt cả các layer dựa trên trạng thái của switch
+    map.setLayoutProperty('places', 'visibility', isChecked ? 'visible' : 'none');
+    map.setLayoutProperty('places1', 'visibility', isChecked ? 'visible' : 'none');
+    map.setLayoutProperty('places2', 'visibility', isChecked ? 'visible' : 'none');
+});
         map.on('mouseenter', 'places', (e) => {
             // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = 'pointer';
 
+            // Nếu switch không được bật, không hiển thị popup
+    if (!switchButton.checked) {
+        return;
+    }
             // Copy coordinates array.
             const coordinates = e.features[0].geometry.coordinates.slice();
             const description = e.features[0].properties.description;
@@ -229,11 +390,16 @@
             map.getCanvas().style.cursor = '';
             popup.remove();
         });
+
         // Add click event listener
         map.on('click', 'places', (e) => {
             // Prevent the default map click behavior
             e.preventDefault();
 
+            // Nếu switch không được bật, không hiển thị popup
+    if (!switchButton.checked) {
+        return;
+    }
             // Copy coordinates array.
             const coordinates = e.features[0].geometry.coordinates.slice();
             const description = e.features[0].properties.adlist;
@@ -251,8 +417,24 @@
             
         });
     });
+        // Thêm sau đoạn mã JavaScript hiện tại của bạn
+
+
+
+    
+
+    
+
+
 
     }
+
+
+
+
+
+
+
 
     function errorLocation() {
         // Default location (if user denies location access)
@@ -262,7 +444,9 @@
             zoom: 12 // starting zoom
         });
     }
-    
+
+
+
 
 
 </script>
