@@ -1,0 +1,32 @@
+<style>
+  .error{
+    color: red;
+    height: 2em;
+  }
+</style>
+<main class="landing-body">
+  <div class="screen">
+      <h1>BuQC - ỨNG DỤNG QUẢN LÝ BIỂN</h1>
+      <h1>QUẢNG CÁO HÀNG ĐẦU VIỆT NAM</h1>
+      <form action="/login" method="post">
+        <div class="mb-3">
+          <label for="Username" class="label error">Username: Nhập lại tài khoản</label>
+          <input type="text" class="form-control" id="Username_textfield" name="username" required>
+      </div>
+      <label for="Password" class="label error">Password: Nhập lại mật khẩu</label>
+      <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock" name="password" required>
+
+      <button class="btn-nor" type="submit">Login</button>
+       
+      </form>
+      <a href="/home-guest"><button class="btn-nor">Guest</button></a>
+      <div class="icon">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-solid fa-comment-sms"></i>
+          <i class="fa-brands fa-telegram"></i>
+      </div>
+  </div>
+</main> 
+<script>
+  alert("Sai tài khoản hoặc mật khẩu");
+</script>

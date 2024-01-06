@@ -2,42 +2,21 @@
   <div class="screen">
       <h1>BuQC - ỨNG DỤNG QUẢN LÝ BIỂN</h1>
       <h1>QUẢNG CÁO HÀNG ĐẦU VIỆT NAM</h1>
-      <div class="mb-3">
+      <form action="/login" method="post">
+        <div class="mb-3">
           <label for="Username" class="label">Username:</label>
-          <input type="text" class="form-control" id="Username_textfield">
+          <input type="text" class="form-control" id="Username_textfield" name="username" required>
       </div>
       <label for="Password" class="label">Password:</label>
-      <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock">
+      <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock" name="password" required>
+      <button class="btn-nor" type="submit">Login</button>
+      </form>
       <a href="/home-guest"><button class="btn-nor">Guest</button></a>
-      <button class="btn-nor" onclick="openPopup()">Login</button>
       <div class="icon">
           <i class="fa-brands fa-facebook"></i>
           <i class="fa-solid fa-comment-sms"></i>
           <i class="fa-brands fa-telegram"></i>
       </div>
   </div>
-  <div class="overlay" id="overlay"></div>
-  <div class="popup-container" id="popup-landing">
-    <button class="close-popup" onclick="closePopup()">X</button>
-    <div class="popup-content">
-      <a href="/home-district"><button>Quận</button></a>
-    </div>
-    <div class="popup-content">
-      <a href="/home-department"><button>Sở</button></a>
-    </div>
-
-  </div>
+  
 </main> 
-<script>
-
-        function openPopup() {
-          document.getElementById('popup-landing').style.display = 'flex';
-          document.getElementById('overlay').style.display = 'flex';
-        }
-      
-        function closePopup() {
-          document.getElementById('popup-landing').style.display = 'none';
-          document.getElementById('overlay').style.display = 'none';
-        }
-   
-</script>
