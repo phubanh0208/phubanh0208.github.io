@@ -1,5 +1,5 @@
 import nguoidanRoute from './routes/nguoidanRoute.js';
-import phuongRoute from './routes/phuongRoute.js';
+//import phuongRoute from './routes/phuongRoute.js';
 
 import path from 'path';
 import express from 'express';
@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import session from 'express-session';
+import { Strategy as LocalStrategy } from 'passport-local';
 import passportLocalMongoose from 'passport-local-mongoose';
 import User from './models/user.js'; // Đường dẫn tới file user.js
 const __filename = fileURLToPath(import.meta.url);
@@ -60,13 +61,13 @@ app.get('/', (req,res) => {
 })  
 
 //login routes
-router.post('/login', passport.authenticate('local', {
+app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
 }));
 //routes
 app.use('/home-guest', nguoidanRoute)
-app.use('/home_wardUser',phuongRoute)
+//app.use('/home_wardUser',phuongRoute)
 
 
 app.listen(port, () => console.log(`Running at http://localhost:${port}`))
