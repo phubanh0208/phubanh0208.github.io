@@ -1,4 +1,6 @@
 import nguoidanRoute from './routes/nguoidanRoute.js';
+import phuongRoute from './routes/phuongRoute.js';
+
 import path from 'path';
 import express from 'express';
 import morgan from 'morgan';
@@ -6,11 +8,30 @@ import hbs from 'express-handlebars';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-
+import passport from 'passport';
+import session from 'express-session';
+import passportLocalMongoose from 'passport-local-mongoose';
+import User from './models/user.js'; // Đường dẫn tới file user.js
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
+
+//login setup
+app.use(session({
+  secret: 'kichBanMat',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 // Sử dụng body-parser middleware để phân tích dữ liệu POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,18 +59,21 @@ app.get('/', (req,res) => {
   res.render('landing-page');
 })  
 
+//login routes
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+}));
 //routes
 app.use('/home-guest', nguoidanRoute)
+app.use('/home_wardUser',phuongRoute)
 
 
 app.listen(port, () => console.log(`Running at http://localhost:${port}`))
-// app.get('/home-department', (req,res) => {
-//   res.render('home_dp');
-// })
+// c
 // app.get('/home-guest', (req,res) => {
 //   res.render('home_g');
 // })
-// app.get('/home-district', (req,res) => {
 //   res.render('home_d');
 // })
 // app.get('/report', (req,res) => {

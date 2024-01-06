@@ -7,9 +7,12 @@ const advertisementSchema = new mongoose.Schema({
     x: Number,
     y: Number,
   },
-  address: String,
   owner: String,
-  date: Date,
+  date : Date,
+  form: String,      // Trường hình thức
+  category: String,
+  duration: Number,
+  address: String
   // Thêm các trường dữ liệu khác tùy thuộc vào yêu cầu của bạn
 });
 

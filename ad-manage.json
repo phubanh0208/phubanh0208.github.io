@@ -1,0 +1,933 @@
+[
+  {
+    "name": "Hãy bình chọn cho tôi",
+    "type": "Trụm, cụm pano",
+    "size": {
+      "x": 25,
+      "y": 10
+    },
+    "owner": "Công ty a",
+    "_id": {
+      "$oid": "037000028073097728853410"
+    },
+    "date": {
+      "$date": "2023-12-31T17:00:00.000Z"
+    },
+    "form": "Cổ động chính trị",
+    "category": "Đất công/Công viên/Hành lang an toàn giao thông",
+    "duration": 360,
+    "address": "Đồng Khởi - Nguyễn Du (Sở Văn hóa và thể thao)"
+  },
+  {
+    "name": "An toàn giao thông",
+    "type": "Trụm, cụm pano",
+    "size": {
+      "x": 25,
+      "y": 10
+    },
+    "owner": "Công ty b",
+    "_id": {
+      "$oid": "904371166373200648065350"
+    },
+    "date": {
+      "$date": "2023-12-31T17:00:00.000Z"
+    },
+    "form": "Cổ động chính trị",
+    "category": "Đất công/Công viên/Hành lang an toàn giao thông",
+    "duration": 360,
+    "address": "Đồng Khởi - Nguyễn Du (Sở Văn hóa và thể thao)"
+  },
+  {
+    "name": "Do an",
+    "type": "Trụm, cụm pano",
+    "size": {
+      "x": 20,
+      "y": 30
+    },
+    "address": "Đồng Khởi - Nguyễn Du (Sở Văn hóa và thể thao)",
+    "owner": "cong ty a",
+    "_id": {
+      "$oid": "642857677553636170263418"
+    },
+    "date": {
+      "$date": "2023-12-31T17:00:00.000Z"
+    },
+    "form": "Cổ động chính trị",
+    "category": "Đất công/Công viên/Hành lang an toàn giao thông",
+    "duration": 360
+  },
+  {
+    "name": "Hãy bình chọn cho tôi",
+    "type": "Trụm, cụm pano",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "Công ty môi trường AFC",
+    "_id": {
+      "$oid": "926627039086843797292537"
+    },
+    "date": {
+      "$date": "2021-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trong công viên",
+    "category": "Công viên",
+    "duration": 360,
+    "address": "Công viên Tao Đàn"
+  },
+  {
+    "name": "An toàn giao thông",
+    "type": "Trụm, cụm pano",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "Công ty môi trường AFC",
+    "_id": {
+      "$oid": "247029672650660526530075"
+    },
+    "date": {
+      "$date": "2021-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trong công viên",
+    "category": "Công viên",
+    "duration": 360,
+    "address": "Công viên Tao Đàn"
+  },
+  {
+    "name": "Giới thiệu sản phẩm",
+    "type": "Ảnh động",
+    "size": {
+      "x": 30,
+      "y": 40
+    },
+    "owner": "Công ty thực phẩm KCB",
+    "_id": {
+      "$oid": "460110709913175427971049"
+    },
+    "date": {
+      "$date": "2020-11-04T17:00:00.000Z"
+    },
+    "form": "Biển quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "3-5, Đ. Sương Nguyệt Anh (Fusion Suites Sai Gon)"
+  },
+  {
+    "name": "Hỗ trợ vay vốn",
+    "type": "Áp phích",
+    "size": {
+      "x": 15,
+      "y": 25
+    },
+    "owner": "Ngân hàng CCB",
+    "_id": {
+      "$oid": "891704763252769893962163"
+    },
+    "date": {
+      "$date": "2021-08-25T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo tại chợ",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Phan Chu Trinh (Chợ Bến Thành)"
+  },
+  {
+    "name": "Hỗ trợ vay vốn",
+    "type": "Áp phích",
+    "size": {
+      "x": 15,
+      "y": 25
+    },
+    "owner": "Ngân hàng CCB",
+    "_id": {
+      "$oid": "231539940307890495034682"
+    },
+    "date": {
+      "$date": "2021-08-25T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo tại chợ",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Phan Chu Trinh (Chợ Bến Thành)"
+  },
+  {
+    "name": "Hỗ trợ vay vốn",
+    "type": "Áp phích",
+    "size": {
+      "x": 15,
+      "y": 25
+    },
+    "owner": "Ngân hàng CCB",
+    "_id": {
+      "$oid": "429063584961681554774031"
+    },
+    "date": {
+      "$date": "2021-08-25T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo tại chợ",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Phan Chu Trinh (Chợ Bến Thành)"
+  },
+  {
+    "name": "Quảng cáo khai trương nhà ",
+    "type": "Biển quảng cáo",
+    "size": {
+      "x": 20,
+      "y": 30
+    },
+    "owner": "Nhà hàng ASN",
+    "_id": {
+      "$oid": "862692636164220681699275"
+    },
+    "date": {
+      "$date": "2021-03-15T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "90 Huyền Trân Công Chúa"
+  },
+  {
+    "name": "Tuyên truyền vận động ",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 20
+    },
+    "owner": "Tổ chức Chữ Thập Đỏ",
+    "_id": {
+      "$oid": "652447911532458131699734"
+    },
+    "date": {
+      "$date": "2021-03-15T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Nguyễn Thị Minh Khai"
+  },
+  {
+    "name": "Tuyên dụng nhân viên",
+    "type": "Quảng cáo đường phố",
+    "size": {
+      "x": 25,
+      "y": 35
+    },
+    "owner": "Công ty bđs KKC",
+    "_id": {
+      "$oid": "595854959071792775397517"
+    },
+    "date": {
+      "$date": "2021-03-15T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng ",
+    "duration": 360,
+    "address": "Trần Hưng Đạo"
+  },
+  {
+    "name": "Tuyên dụng nhân viên",
+    "type": "Quảng cáo đường phố",
+    "size": {
+      "x": 25,
+      "y": 35
+    },
+    "owner": "Công ty bđs KKC",
+    "_id": {
+      "$oid": "697891001140800114861127"
+    },
+    "date": {
+      "$date": "2021-03-15T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng ",
+    "duration": 360,
+    "address": "Trần Hưng Đạo"
+  },
+  {
+    "name": "Quảng cáo khai trương quán net",
+    "type": "Quảng cáo điện tử",
+    "size": {
+      "x": 30,
+      "y": 35
+    },
+    "owner": "Net gamming ARG",
+    "_id": {
+      "$oid": "826414889756773932011752"
+    },
+    "date": {
+      "$date": "2022-06-20T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Nguyễn Văn Cừ"
+  },
+  {
+    "name": "Giới thiệu sản phẩm mới",
+    "type": "băng rôn",
+    "size": {
+      "x": 15,
+      "y": 18
+    },
+    "owner": "Công ty thực phẩm BBD",
+    "_id": {
+      "$oid": "180461701995555618906551"
+    },
+    "date": {
+      "$date": "2023-11-12T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Tôn Thất Tùng"
+  },
+  {
+    "name": "Tuyên truyền ngày Phật Đảng",
+    "type": "áp phích",
+    "size": {
+      "x": 20,
+      "y": 25
+    },
+    "owner": "Hội phật giáo ADP",
+    "_id": {
+      "$oid": "607901159719857411045249"
+    },
+    "date": {
+      "$date": "2023-11-12T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Bùi Thị Xuân"
+  },
+  {
+    "name": "Quảng cáo sản phẩm mới",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 27,
+      "y": 35
+    },
+    "owner": "Công ty xe đạp 134",
+    "_id": {
+      "$oid": "263269831436413283352472"
+    },
+    "date": {
+      "$date": "2023-04-30T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo tại cửa hàng",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "253 Nguyễn Trọng Tuyển"
+  },
+  {
+    "name": "Giới thiệu sản phẩm",
+    "type": "áp phích",
+    "size": {
+      "x": 25,
+      "y": 10
+    },
+    "owner": "Công ty giày dép Ook",
+    "_id": {
+      "$oid": "140119873713821318290179"
+    },
+    "date": {
+      "$date": "2023-11-28T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Nguyễn Thị Huỳnh"
+  },
+  {
+    "name": "Nâng cao nhận thức cộng đồng",
+    "type": "băng rôn",
+    "size": {
+      "x": 8,
+      "y": 25
+    },
+    "owner": "Bệnh viên trung ương B",
+    "_id": {
+      "$oid": "286982665766572797954507"
+    },
+    "date": {
+      "$date": "2023-11-28T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo tại cửa hàng",
+    "category": "Đất hợp đồngg",
+    "duration": 360,
+    "address": "92AB Nguyễn Trọng Tuyển (Art Land)"
+  },
+  {
+    "name": "Quảng cáo",
+    "type": "quảng cáo điện tử",
+    "size": {
+      "x": 24,
+      "y": 30
+    },
+    "owner": "Net gamming CKF",
+    "_id": {
+      "$oid": "025793662790501281456899"
+    },
+    "date": {
+      "$date": "2023-11-28T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Nguyễn Thị Huỳnh"
+  },
+  {
+    "name": "Tuyển dụng nhân viên",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 12,
+      "y": 25
+    },
+    "owner": "Công ty GH",
+    "_id": {
+      "$oid": "668784800490118743271061"
+    },
+    "date": {
+      "$date": "2023-12-15T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo tại cửa hàng",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "138 Trần Huy Liệu"
+  },
+  {
+    "name": "Quảng cáo tín dụng ngân hàng",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 12,
+      "y": 25
+    },
+    "owner": "Ngân hàng GFB",
+    "_id": {
+      "$oid": "493794432349889772507261"
+    },
+    "date": {
+      "$date": "2022-12-01T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "Nam Kỳ Khởi Nghĩa"
+  },
+  {
+    "name": "Quảng cáo sản phẩm ghế massage",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 38,
+      "y": 40
+    },
+    "owner": "Công ty ghế massage OFFA",
+    "_id": {
+      "$oid": "094957638316595564798513"
+    },
+    "date": {
+      "$date": "2023-12-01T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "23 Lê Duẩn"
+  },
+  {
+    "name": "Quảng cáo sản phẩm ghế massage",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 38,
+      "y": 40
+    },
+    "owner": "Công ty ghế massage OFFA",
+    "_id": {
+      "$oid": "452925016327301360342133"
+    },
+    "date": {
+      "$date": "2023-12-01T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "23 Lê Duẩn"
+  },
+  {
+    "name": "Quảng cáo Sushi Hokkaido Sachi Pasteur",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 25,
+      "y": 30
+    },
+    "owner": "tiệm Sushi Hokkaido Sachi",
+    "_id": {
+      "$oid": "565712770459195118622462"
+    },
+    "date": {
+      "$date": "2023-06-01T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "180 Pasteur"
+  },
+  {
+    "name": "Tuyên truyền hiến tặng máu",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "bệnh viện đa khoa Pasteur",
+    "_id": {
+      "$oid": "861448582012268116092843"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Nguyễn Thị Minh Khai"
+  },
+  {
+    "name": "Tuyên truyền hiến tặng máu",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "bệnh viện đa khoa Pasteur",
+    "_id": {
+      "$oid": "966488258126379240217637"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Nguyễn Thị Minh Khai"
+  },
+  {
+    "name": "Quảng cáo công ty Xi măng ĐL",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "công ty Xi măng ĐL",
+    "_id": {
+      "$oid": "976148671221153026973839"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "Võ Văn Tần"
+  },
+  {
+    "name": "Quảng cáo khách sạn",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 20,
+      "y": 35
+    },
+    "owner": "KHÁCH SẠN JULY STAR 2r",
+    "_id": {
+      "$oid": "482486834371153702939787"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "43 Trương Định"
+  },
+  {
+    "name": "Tuyên truyền ngày Quốc Khánh",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "Sở văn hóa và du lịch TPHCM",
+    "_id": {
+      "$oid": "340915689509644459985106"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Cầu vượt thép (Bùng binh dân chủ)"
+  },
+  {
+    "name": "Tuyên truyền ngày Quốc Khánh",
+    "type": "quảng cáo điện tử",
+    "size": {
+      "x": 12,
+      "y": 20
+    },
+    "owner": "Sở văn hóa và du lịch TPHCM",
+    "_id": {
+      "$oid": "784889907033096612417401"
+    },
+    "date": {
+      "$date": "2023-10-12T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Cầu vượt thép (Bùng binh dân chủ)"
+  },
+  {
+    "name": "Tuyên truyền ngày Quốc Khánh",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 11
+    },
+    "owner": "Sở văn hóa và du lịch TPHCM",
+    "_id": {
+      "$oid": "653100497298439375939642"
+    },
+    "date": {
+      "$date": "2023-10-10T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Cầu vượt thép (Bùng binh dân chủ)"
+  },
+  {
+    "name": "Tuyên truyền hiến tặng máu",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "bệnh viện đa khoa Pasteur",
+    "_id": {
+      "$oid": "148388230247102784999039"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "34 Lương Định Của"
+  },
+  {
+    "name": "Giới thiệu giày trượt patin",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "công ty dụng cụ thể thao STR",
+    "_id": {
+      "$oid": "604124991497777800906593"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "QPH6+8M4 - Cầu Ba Son (Khu công viên giải trí D-Joy)"
+  },
+  {
+    "name": "Giới thiệu ván trượt patin",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "công ty dụng cụ thể thao STR",
+    "_id": {
+      "$oid": "890034582546823732848414"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "QPH6+8M4 - Cầu Ba Son (Khu công viên giải trí D-Joy)"
+  },
+  {
+    "name": "Tuyên truyền tái chế rác",
+    "type": "băng rôn",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "Sở vệ sinh môi trường TPHCM",
+    "_id": {
+      "$oid": "354847108348319403463357"
+    },
+    "date": {
+      "$date": "2023-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trong công viên",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "31/2 Lương Định Của (Saigon riverside park)"
+  },
+  {
+    "name": "Quảng cáo phòng gym",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 15,
+      "y": 20
+    },
+    "owner": "California Fitness gym",
+    "_id": {
+      "$oid": "162287725029735891101235"
+    },
+    "date": {
+      "$date": "2022-11-21T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên cửa hàng",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "33 Lương Định Của"
+  },
+  {
+    "name": "Quảng cáo thuê căn hộ",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 12,
+      "y": 20
+    },
+    "owner": "Công ty BĐS KK",
+    "_id": {
+      "$oid": "431340235780081772048262"
+    },
+    "date": {
+      "$date": "2022-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Lương Định Của"
+  },
+  {
+    "name": "Quảng cáo lễ hội Hoa quả",
+    "type": "băng rôn",
+    "size": {
+      "x": 20,
+      "y": 15
+    },
+    "owner": "Sở văn hóa & giáo dục TPHCM",
+    "_id": {
+      "$oid": "766285269334845937895195"
+    },
+    "date": {
+      "$date": "2023-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Trần Bạch Đằng"
+  },
+  {
+    "name": "Quảng cáo lễ hội Hoa quả",
+    "type": "băng rôn",
+    "size": {
+      "x": 20,
+      "y": 15
+    },
+    "owner": "Sở văn hóa & giáo dục TPHCM",
+    "_id": {
+      "$oid": "178677661521749372195078"
+    },
+    "date": {
+      "$date": "2023-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Trần Bạch Đằng"
+  },
+  {
+    "name": "Quảng cáo lễ hội Hoa quả",
+    "type": "băng rôn",
+    "size": {
+      "x": 20,
+      "y": 15
+    },
+    "owner": "Sở văn hóa & giáo dục TPHCM",
+    "_id": {
+      "$oid": "507942881012050737326424"
+    },
+    "date": {
+      "$date": "2023-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Trần Bạch Đằng"
+  },
+  {
+    "name": "Quảng cáo lễ hội Hoa quả",
+    "type": "băng rôn",
+    "size": {
+      "x": 20,
+      "y": 15
+    },
+    "owner": "Sở văn hóa & giáo dục TPHCM",
+    "_id": {
+      "$oid": "779568497968854452763824"
+    },
+    "date": {
+      "$date": "2023-12-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Trần Bạch Đằng"
+  },
+  {
+    "name": "Quảng cáo trò chơi thực tế ảo",
+    "type": "biển quảng cáo điện tử",
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "owner": "Khu vui chơi điện tử AGG",
+    "_id": {
+      "$oid": "347819313761664992497522"
+    },
+    "date": {
+      "$date": "2021-10-11T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "Đường D2"
+  },
+  {
+    "name": "Quảng cáo bãi giữ xe",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 15,
+      "y": 5
+    },
+    "owner": "Bãi Giữ Xe Ô Tô & Rửa Xe Thuận Phát",
+    "_id": {
+      "$oid": "156094459489835075877024"
+    },
+    "date": {
+      "$date": "2023-10-20T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "699 Bình Quới"
+  },
+  {
+    "name": "Quán cáo đồ ăn",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 15,
+      "y": 5
+    },
+    "owner": "Quán Rạch Dừa",
+    "_id": {
+      "$oid": "054637120141357091733339"
+    },
+    "date": {
+      "$date": "2023-12-20T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Bình Quới"
+  },
+  {
+    "name": "Quán cáo dịch vụ CSKH",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 15,
+      "y": 10
+    },
+    "owner": "Công Ty Tnhh Mtv Thương Mại Dịch Vụ ",
+    "_id": {
+      "$oid": "908246870453101020489167"
+    },
+    "date": {
+      "$date": "2023-02-28T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất công",
+    "duration": 360,
+    "address": "Hẻm 352 Bình Quới"
+  },
+  {
+    "name": "Quán cáo điểm du lịch",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 20,
+      "y": 18
+    },
+    "owner": "Hồ sen chú Mỹ ",
+    "_id": {
+      "$oid": "276767934897549919787847"
+    },
+    "date": {
+      "$date": "2023-02-28T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "RP8W+2V2 (Hồ sen chú Mỹ)"
+  },
+  {
+    "name": "Quán cáo cửa hàng hoa hồng",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 10,
+      "y": 12
+    },
+    "owner": "Thế Giới Hoa Hồng Ngoại ",
+    "_id": {
+      "$oid": "133103128252947665733456"
+    },
+    "date": {
+      "$date": "2024-01-01T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "558 Bình Quới (Thế Giới Hoa Hồng Ngoại)"
+  },
+  {
+    "name": "Quán cáo hồ câu cá",
+    "type": "biển quảng cáo",
+    "size": {
+      "x": 10,
+      "y": 10
+    },
+    "owner": "Hồ Câu cá  ",
+    "_id": {
+      "$oid": "496195481059477067525957"
+    },
+    "date": {
+      "$date": "2024-01-02T17:00:00.000Z"
+    },
+    "form": "Khu vực quảng cáo trên đường phố",
+    "category": "Đất hợp đồng",
+    "duration": 360,
+    "address": "Phường 28 quận Bình Thạnh"
+  }
+]
