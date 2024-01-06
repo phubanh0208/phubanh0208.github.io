@@ -7,7 +7,9 @@ const userSchema = new mongoose.Schema({
   password: String,
   email: String,
   phone: String,
-  role: Number
+  role: Number,
+  ward: String,
+  district: String
   // Thêm các trường khác nếu cần
 });
 

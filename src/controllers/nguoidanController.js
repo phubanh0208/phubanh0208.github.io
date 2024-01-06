@@ -72,8 +72,8 @@ class nguoidanController {
                     return;
                 }
 
-                const formData = req.body;
-                const uploadedImages = req.files || [];
+                let formData = req.body;
+                let uploadedImages = req.files || [];
 
                 // Xử lý dữ liệu tùy theo nhu cầu của bạn
                 console.log('Received form data:', formData);

@@ -18,13 +18,14 @@ import session from 'express-session';
 import { Strategy as LocalStrategy } from 'passport-local';
 import passportLocalMongoose from 'passport-local-mongoose';
 import flash from 'connect-flash';
-
+import cors from 'cors'
 import User from './models/user.js'; // Đường dẫn tới file user.js
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
 
+app.use(cors());
 //login setup
 app.use(session({
   secret: 'kichBanMat',

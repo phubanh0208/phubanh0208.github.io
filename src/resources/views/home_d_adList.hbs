@@ -1,0 +1,142 @@
+{{> header-home-d}}
+
+<main class="ads-manage">
+  <div class="ads-table-container">
+    <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
+      <div class="header">
+        <h2 style="font-size: 2em;">CÁC ĐIỂM QUẢNG CÁO PHƯỜNG {{phuong}} , QUẬN {{quan}}</h2>
+      </div>
+      <div class="comboList-container">
+        <div class="comboList">
+          {{!-- <label for="district">Quận:</label>
+          <select id="district">
+            <option value="district1">Quận 1</option>
+            <option value="district2">Quận 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+        <div class="comboList">
+          {{!-- <label for="ward">Phường:</label>
+          <select id="ward">
+            <option value="ward1">Phường 1</option>
+            <option value="ward2">Phường 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+      </div>
+      <div class="table-container">
+        <table style="background-color: #BABEFE;">
+          <thead>
+            <tr>
+              <th style="width: 5em;  border: solid 1px black;">STT</th>
+              <th style="width: 10em; border: solid 1px black;">Hình thức</th>
+              <th style="width: 20em; border: solid 1px black;">Loại vị trí</th>
+              <th style="width: 20em; border: solid 1px black;">Địa chỉ</th>
+              <th style="width: 20em; border: solid 1px black;">Huy hoạch</th>
+              <th class="icon_detail"></th>
+            </tr>
+          </thead>
+          <!-- Table data -->
+          <tbody>
+            {{{locationtableShow}}}
+          </tbody>
+        </table>
+      </div>
+    </nav>
+    
+  </div>
+
+  <!--Ad detail-->
+  <div id="manage-detail_overlay" onclick="closeDetail()"></div>
+  <div id="manage-detail_popup">
+    <div class="details">
+      <p>
+        <span class="detail_label">
+          Bảng quảng cáo:
+        </span>
+        <span class="detail_text">
+          Trụ, cụm pano
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Kích thước:
+        </span>
+        <span class="detail_text">
+          Cổ động chính trị
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Điểm đặt tương ứng:
+        </span>
+        <span class="detail_text">
+          Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Phân loại:
+        </span>
+        <span class="detail_text">
+          Cổ động chính trị
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Nội dung quảng cáo:
+        </span>
+        <span class="detail_text">
+          Cổ động chính trị
+        </span>
+      </p>
+      </p>
+      <p>
+        <span class="detail_label">
+          Ngày bắt đầu hợp đồng:
+        </span>
+        <span class="detail_text">
+          01/11/2023
+        </span>
+      </p>
+      <p>
+        <span class="detail_label">
+          Ngày kết thúc hợp đồng:
+        </span>
+        <span class="detail_text">
+          01/01/2024
+        </span>
+      </p>
+
+      <img class="details_image" src="../images/image_ads.png" alt="">
+      <div class="remove_button">
+        <button class="btn btn-danger btn-sm">Yêu cầu gỡ bỏ</button>
+      </div>
+   
+      
+      </div>
+    <!-- Remove button at the bottom -->
+    
+  </div>
+  {{!-- <div id="manage-detail-image_popup">
+    
+  </div> --}}
+</main>
+
+{{> sidebar-home-d}}
+<script>
+    const data1 ={{userData}}
+    console.log(data1);
+    /* Mở popup detail qc */
+    function openDetail() {
+      document.getElementById('manage-detail_overlay').style.display = 'block';
+      document.getElementById('manage-detail_popup').style.display = 'block';
+      //document.getElementById('manage-detail-image_popup').style.display = 'block';
+    }
+
+    function closeDetail() {
+      document.getElementById('manage-detail_overlay').style.display = 'none';
+      document.getElementById('manage-detail_popup').style.display = 'none';
+     // document.getElementById('manage-detail-image_popup').style.display = 'none';
+    }
+</script>
