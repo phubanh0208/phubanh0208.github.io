@@ -1,0 +1,109 @@
+{{> header-home-d}}
+
+<main class="report-body">
+    <section class="left-section">
+        <form id="reportForm" action="./{{_id}}" method="post" enctype="multipart/form-data">
+            <!-- Tên  -->
+            <div class="col-8 d-block">
+                <label for="inputName" class="col-0 col-form-label input-title">Chỉnh sửa tên</label>
+                <input type="text" class="form-control input-place" name="inputName" id="inputName"
+                    placeholder="Họ và tên" required>
+            </div>
+
+            <!-- Loại -->
+            <div class="col-8 d-block">
+                <label for="inputType" class="col-0 col-form-label input-title">Chỉnh sửa loại bảng</label>
+                <input type="text" class="form-control input-place" name="inputType" id="inputType"
+                    placeholder="Trụm cụm,..." required>
+            </div>
+
+            
+            <!-- Size -->
+            <div class="col-8 d-block">
+                <label for="inputSize" class="col-0 col-form-label input-title">Kích thước (m)</label>
+                <input type="text" class="form-control input-place" name="inputSize" id="inputSize" placeholder="10,20"
+                    pattern="\d+,\d+" title="Nhập theo định dạng x,y (ví dụ: 10,20)" required>
+            </div>
+
+            <!-- Thời hạn -->
+            <div class="col-8 d-block">
+                <label for="inputDuration" class="col-0 col-form-label input-title">Thời hạn (ngày)</label>
+                <input type="text" class="form-control input-place" name="inputDuration" id="inputDuration"
+                    placeholder="365" required>
+            </div>
+
+            <!-- Lý do -->
+            <div class="col-8 d-block">
+                <label for="inputReportInfomation" class="col-0 col-form-label input-title">Lý do</label>
+                <textarea class="form-control input-place" id="textAreaExample" name="inputReportInformation" rows="8"
+                    required></textarea>
+            </div>
+
+            <!-- Hình ảnh (Tối đa 2 file) -->
+            <div class="col-8 d-block">
+                <label for="inputImage" class="col-0 col-form-label input-title">Hình ảnh (Tối đa 2 file)</label>
+                <input type="file" class="form-control-file" id="imageInput" name="images" accept="image/*" multiple
+                    required>
+                <button id="open-button-outside" class="btn btn-primary open-button" type="submit">
+                    Gửi
+                </button>
+            </div>
+        </form>
+
+
+    </section>
+    <section class="right-section">
+        <div class="report-info">
+            <div class="card text-center">
+                <h3 class="card-title">Yêu cầu chỉnh sửa bảng QC</h3>
+                <div class="card-text-container shadow-lg">
+                   
+                    <h4 class="card-text-title">
+                        {{type}}
+                    </h4>
+                    <h4 class="card-text-title">
+                        Tên: {{name}}
+                    </h4>
+                    <p class="card-text-1">
+                        {{address}}
+                    </p>
+                    <hr>
+                    <p class="card-text-2">
+                        Kích thước:{{size.x}}m x {{size.y}}m <br>
+                        Số lượng: 1 trụ/bảng <br>
+                        Phân loại: {{category}} <br>
+                        Ngày đăng ký: {{dateVN}} <br>
+                        Thời gian đăng ký : {{duration}} ngày <br>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="sn-icon text-end">
+            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="https://www.whatsapp.com"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
+            <a href="https://www.web.telegram.org"></a><i class="fa-brands fa-telegram fa-xl"></i></i>
+        </div>
+    </section>
+</main>
+
+{{> sidebar-home-d}}
+
+<script>
+    // Lấy tham chiếu đến form và nút báo cáo
+    const reportForm = document.getElementById('reportForm');
+    const openButtonOutside = document.getElementById('open-button-outside');
+    const imageInput = document.getElementById('imageInput');
+
+
+    // Thêm sự kiện click vào nút báo cáo ngoài form
+    openButtonOutside.addEventListener('click', function () {
+        // Kiểm tra số lượng file đã chọn
+        if (imageInput.files.length > 2) {
+            alert('Chỉ được chọn tối đa 2 file.');
+            event.preventDefault();
+
+        }
+    });
+
+</script>

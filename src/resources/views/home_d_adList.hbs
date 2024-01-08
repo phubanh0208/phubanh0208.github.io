@@ -1,5 +1,26 @@
 {{> header-home-d}}
+<style>
+   #manage-detail_popup {
 
+        border-radius: 0.1em;
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        max-height: 40em; /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+        overflow-y: auto; 
+    }
+  li {
+    font-size: medium;
+    
+  }
+  #manage-detail_popup ul{
+     border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        list-style-type: none;
+        /* Loại bỏ kiểu danh sách mặc định */
+        position: relative;
+  }
+</style>
 <main class="ads-manage">
   <div class="ads-table-container">
     <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
