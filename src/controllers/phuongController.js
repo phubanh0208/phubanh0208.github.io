@@ -48,7 +48,7 @@ class phuongController {
             console.log(userData);
             const locationData = await Location.find();
             locationData.forEach(location => {
-                if (location.ward == userData.ward && location.district == userData.district) {
+                if (1==1) {
                 let index = '<td class="table-items">'+i+'</td>';
                 let title = '<td class="table-items">' + location.type + '</td>';
                 let descrip = '<td class="table-items">' + location.detail + '</td>';
