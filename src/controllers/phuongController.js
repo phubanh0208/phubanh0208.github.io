@@ -30,10 +30,10 @@ class phuongController {
     // [GET] /work
     async home(req, res) {
         try {
-            // const locationData = JSON.stringify(await Location.find());
-            // //console.log(locationData);
-            // res.render('home_g', { locationData });\
-            res.render('home_d')
+            const locationData = JSON.stringify(await Location.find());
+            //console.log(locationData);
+            res.render('home_d', { locationData });
+           
         } catch (error) {
             console.error('Error retrieving location data:', error);
             res.status(500).send('Internal Server Error');
@@ -67,9 +67,16 @@ class phuongController {
                     adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
                 });
                 let locationinfor = '<tr>'+index+title + descrip + address + type+
-                '<td class="icon_detail"><a href="#" onclick="openDetail()"><i class="fa-solid fa-info-circle"></i></a></td>'+'</tr>';
+                '<td class="icon_detail"><a href="#" onclick="openDetail'+i+'()"><i class="fa-solid fa-info-circle"></i></a></td>'+'</tr>';
     
-                detailPopup += adList;
+                detailPopup += '<div id="manage-detail_popup"  class="popup'+i+'"'+'>'+adList+`<img class="details_image" src="../images/image_ads.png" alt="">
+                <div class="remove_button">
+                  <button class="btn btn-danger btn-sm">Yêu cầu gỡ bỏ</button>
+                </div>
+             
+                
+                </div>
+              <!-- Remove button at the bottom -->`
                 locationtable+=locationinfor;
                 i++;
                 };
@@ -77,7 +84,7 @@ class phuongController {
             console.log(locationtable);
             //console.log(locationData);
           
-            res.render('home_d_adList',{phuong:userData.ward,quan:userData.district,locationtableShow:locationtable});
+            res.render('home_d_adList',{phuong:userData.ward,quan:userData.district,locationtableShow:locationtable,detailLocation: detailPopup, i:i});
     
         } catch (error) {
             console.error('Error retrieving location data:', error);

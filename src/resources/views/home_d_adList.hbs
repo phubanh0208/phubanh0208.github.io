@@ -43,100 +43,45 @@
         </table>
       </div>
     </nav>
-    
+
   </div>
 
   <!--Ad detail-->
   <div id="manage-detail_overlay" onclick="closeDetail()"></div>
-  <div id="manage-detail_popup">
-    <div class="details">
-      <p>
-        <span class="detail_label">
-          Bảng quảng cáo:
-        </span>
-        <span class="detail_text">
-          Trụ, cụm pano
-        </span>
-      </p>
-      <p>
-        <span class="detail_label">
-          Kích thước:
-        </span>
-        <span class="detail_text">
-          Cổ động chính trị
-        </span>
-      </p>
-      <p>
-        <span class="detail_label">
-          Điểm đặt tương ứng:
-        </span>
-        <span class="detail_text">
-          Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1
-        </span>
-      </p>
-      <p>
-        <span class="detail_label">
-          Phân loại:
-        </span>
-        <span class="detail_text">
-          Cổ động chính trị
-        </span>
-      </p>
-      <p>
-        <span class="detail_label">
-          Nội dung quảng cáo:
-        </span>
-        <span class="detail_text">
-          Cổ động chính trị
-        </span>
-      </p>
-      </p>
-      <p>
-        <span class="detail_label">
-          Ngày bắt đầu hợp đồng:
-        </span>
-        <span class="detail_text">
-          01/11/2023
-        </span>
-      </p>
-      <p>
-        <span class="detail_label">
-          Ngày kết thúc hợp đồng:
-        </span>
-        <span class="detail_text">
-          01/01/2024
-        </span>
-      </p>
 
-      <img class="details_image" src="../images/image_ads.png" alt="">
-      <div class="remove_button">
-        <button class="btn btn-danger btn-sm">Yêu cầu gỡ bỏ</button>
-      </div>
-   
-      
-      </div>
-    <!-- Remove button at the bottom -->
-    
-  </div>
-  {{!-- <div id="manage-detail-image_popup">
-    
-  </div> --}}
+  {{{detailLocation}}}
+
 </main>
 
 {{> sidebar-home-d}}
 <script>
-    const data1 ={{userData}}
-    console.log(data1);
-    /* Mở popup detail qc */
-    function openDetail() {
-      document.getElementById('manage-detail_overlay').style.display = 'block';
-      document.getElementById('manage-detail_popup').style.display = 'block';
-      //document.getElementById('manage-detail-image_popup').style.display = 'block';
-    }
+  let index = {{ i }};
 
-    function closeDetail() {
-      document.getElementById('manage-detail_overlay').style.display = 'none';
-      document.getElementById('manage-detail_popup').style.display = 'none';
-     // document.getElementById('manage-detail-image_popup').style.display = 'none';
+
+  // Tạo các hàm openDetail và closeDetail tương ứng với index
+  // Tạo các hàm openDetail và closeDetail tương ứng với index
+  for (let y = 1; y <= index; y++) {
+    let classname = 'popup' + y;
+    window['openDetail' + y] = function () {
+
+      console.log(classname);
+      document.getElementById('manage-detail_overlay').style.display = 'block';
+      document.getElementsByClassName(classname)[0].style.display = 'block';
+      //document.getElementsByClassName('manage-detail-image_popup' + i)[0].style.display = 'block';
+    };
+  }
+
+  function closeDetail(){ 
+ document.getElementById('manage-detail_overlay').style.display = 'none';    
+    // Đóng tất cả các popup từ 1 đến index
+    for (let i = 1; i <= index; i++) {
+        var popupElement = document.getElementsByClassName('popup' + i);
+
+        if (popupElement.length > 0) {
+            popupElement[0].style.display = 'none';
+        }
     }
+    
+  }
+
 </script>

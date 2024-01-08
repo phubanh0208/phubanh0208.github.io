@@ -1,172 +1,453 @@
 {{> header-home-d}}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
-<!--Map container  -->
-    <div class="map-user" id="map">
-    <div id="marker" class="marker"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ff0f0f;"></i></div>
-    <div id="info" class="info">
-        <h3>Thông tin địa điểm</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <!-- button qc -->
-      <button id="qc1" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
-      <button id="qc2" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
-      <button id="qc3" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
-      <button id="qc4" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
-      <button id="qc5" class="hidden-button" onclick="openPopup()"><i class="fa-solid fa-location-dot fa-2xl" style="color: #ae27d3;"></i></button>
-      <!-- popup -->
-      <div id="overlay" onclick="closePopup()"></div>
-      <div id="popup">
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: index 1;
+    }
 
-        <h2>Thông tin quảng cáo:</h2>
-        <div class="qc-info">
-          <p>
-              <b>Trụm, cụm pano</b><br>
-              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
-              <hr>
-              Kích thước: 2.5m x 10m<br>
-              Số lượng: 1 trụ/bảng<br>
-              Hình thức: Cổ đông chính trị<br>
-              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
-              <a href="#" onclick="openDetail()"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
-              <a href="/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+    .mapboxgl-popup-content {
+        max-width: 400px;
+        width: 30em;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
 
-          </p> 
-          
-          
-        </div>
-        <div class="qc-info">
-          <p>
-              <b>Trụm, cụm pano</b><br>
-              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
-              <hr>
-              Kích thước: 2.5m x 10m<br>
-              Số lượng: 1 trụ/bảng<br>
-              Hình thức: Cổ đông chính trị<br>
-              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
-              <a href="/home-district/detail"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
-              <a href="/home-district/report.html"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+    .popup-content-ad {
 
-          </p> 
-        </div>
-        <div class="qc-info">
-          <p>
-              <b>Trụm, cụm pano</b><br>
-              Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1<br>
-              <hr>
-              Kích thước: 2.5m x 10m<br>
-              Số lượng: 1 trụ/bảng<br>
-              Hình thức: Cổ đông chính trị<br>
-              Phân loại: Đất công/Công viên/Hành lang an toàn giao thông
-              <a href="/home-district/detail"><i class="fa-solid fa-info fa-2xl" style="color: #7aabff;"></i></a>
-              <a href="/home-district/report"><i class="fa-solid fa-circle-exclamation fa-2xl" style="color: #ff0019;"></i></a>
+        border-radius: 0.1em;
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        max-height: 20em; /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+        overflow-y: auto; 
+    }
 
-          </p> 
-        </div>
+    .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
 
-        <button onclick="closePopup()">X</button>
-      </div>
-    <!-- button qc -->
-    </div>
-    <!--detail-->
-    <div id="detail_overlay" onclick="closeDetail()"></div>
-    <div id="detail_popup">
-      <div class="details">
-        <h1>Chi tiết</h1>
-        <p>Tên : Trụm, cụm pano</p>
-        <p>Đc: Đồng Khởi - Nguyễn Du (Sở văn hóa và thể thao), Phường Bến Nghé, Quận 1</p>
-        <p>Kích thước: 2.5m x 10m</p>
-        <p>Hình thức: Cổ đông chính trị</p>
-        <p>Ngày hết hạn: 20/11/2024</p>
-        <p>Ngày đăng ký: 20/11/2023</p>
-      </div>
-    </div>
-    <div id="detail_image_popup">
-      <div class="details"><img src="../images/image_ads.png" alt=""></div>
-    </div>
+    .popup-close-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .popup-content-ad ul {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        list-style-type: none;
+        /* Loại bỏ kiểu danh sách mặc định */
+        position: relative;
+    }
+
+    /* Remove margin from the last ul element */
+    .popup-content-ad ul:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Add buttons at the bottom of each ul */
+    .popup-content-ad ul::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .popup-content-ad .popup-btn-left {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .popup-content-ad .popup-btn-right{
+        background-color: #ff0000	;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .popup-content-ad a {
+
+        color: #fff;
+        display: inline-block;
+        color: inherit; /* Màu sắc kế thừa từ phần tử cha */
+        text-decoration: none;
+    }
+    #toggleButton {
+    position: absolute;
+    bottom: 10px; /* Điều chỉnh khoảng cách với đáy bản đồ */
+    left: 50%; /* Đưa nút vào giữa theo chiều ngang */
+    transform: translateX(-50%); /* Dịch chuyển nút ngược lại 50% chiều ngang của chính nó */
+    z-index: 1; /* Đảm bảo nút hiển thị trên bản đồ */
+    .layer-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+    }
+
+.layer-button {
+    background-color: #4285f4;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.layer-button.active {
+    background-color: #34a853;
+}
+
+.switch-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    display: none;
+}
+
+.switch-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 17px;
+    cursor: pointer;
+}
+
+.switch-label:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 4px;
+    left: 4px;
+    transition: 0.3s;
+}
+
+.switch-text {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.switch:checked + .switch-label:before {
+    transform: translateX(26px);
+}
 
 
+</style>
+<div id="map"></div>
+<!-- Handlebars Template -->
 
-    <!-- Switch button (on/off) -->
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch"id="flexSwitchCheckDefault" checked="false">
-      <label class="form-check-label" style="color: #ffffff;" for="flexSwitchCheckDefault">Bật biển QC</label>
-    </div>
+<div class="switch-container">
+    <input type="checkbox" id="toggleSwitch" class="switch" checked>
+    <label for="toggleSwitch" class="switch-label"></label>
+    <span class="switch-text">Bật tắt QC</span>
+</div>
 
 
-    {{> sidebar-home-d}}
+{{> sidebar-home-d}}
+
+
 <script>
-  // Bật nút mở biển Qc
-  $(document).ready(function() {
-    // Khi switch thay đổi trạng thái
-    $("#flexSwitchCheckDefault").change(function() {
-        // Nếu switch được bật
-        if ($(this).prop("checked")) {
-            $(".hidden-button").fadeIn(); // Hiển thị các button với hiệu ứng fadeIn
-        } else {
-            $(".hidden-button").fadeOut(); // Ẩn các button với hiệu ứng fadeOut
-        }
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JhbzQ3IiwiYSI6ImNscHBneGhzcDB3cjkyaXFuaHlhN3Jxcm0ifQ.l74B2ZgynwxH8OhjplzVmg';
+
+    // Get the user's current location
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+        enableHighAccuracy: true
     });
-  });
+    function successLocation(position) {
+        const { longitude, latitude } = position.coords;
 
-/* Mơ popup qc*/
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [longitude, latitude], // starting position [lng, lat]
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            zoom: 15 // starting zoom
 
-  function openPopup() {
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('popup').style.display = 'block';
-  }
+        });
+        map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
+        // Add markers to the map based on the data passed from the server
+        const data = {{{ locationData }}}; // Use triple-stashes
+    // data.forEach(location => {
+    // const marker1 = new mapboxgl.Marker()
+    //     .setLngLat([106.7116703,10.8429868])
+    //     .addTo(map);
+    //  });
 
-  function closePopup() {
-    document.getElementById('overlay').style.display = 'none';
-    document.getElementById('popup').style.display = 'none';
-  }
+    map.on('load',()=> {
 
-  /* Mở popup detail qc */
-  function openDetail() {
-    document.getElementById('detail_overlay').style.display = 'block';
-    document.getElementById('detail_popup').style.display = 'block';
-    document.getElementById('detail_image_popup').style.display = 'block';
-  }
+        //thêm các điểm vào object
+        var featureCondition1 = [];
+        var featureCondition2 = [];
+        var feature = [];
+        
+        //các điểm đã huy hoạch:
+        data.forEach(location => {
+            if (location.condition == 1) {
+            let title = '<strong>' + location.type + '</strong>';
+            let descrip = '<p>' + location.detail + '</p>';
+            let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
+            let type = '<strong>Đã huy hoạch</strong>';          
+            let adList = '';
+            location.ads.forEach(ads => {
+                let title = '<li><strong>' + ads.type + '</strong></li>';
+                let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
+                let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
+                let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+                let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
+                let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
+                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/'+ads._id+'">Báo cáo sai phạm</a></button>'
+                adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
+            });
 
-  function closeDetail() {
-    document.getElementById('detail_overlay').style.display = 'none';
-    document.getElementById('detail_popup').style.display = 'none';
-    document.getElementById('detail_image_popup').style.display = 'none';
-  }
+            let detailPopup = {
+                'type': 'Feature',
+                'properties': {
+                    'description': title + descrip + address + type,
+                    'adlist': '<div class="popup-content-ad">'+adList+'</div>', 
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [location.coordinates.y, location.coordinates.x]
+                }
+            };
+            featureCondition1.push(detailPopup);
+            feature.push(detailPopup);
+            };
+        });
+        //cac diem chua huy hoach
+        data.forEach(location => {
+            if (location.condition == 0) {
+            let title = '<strong>' + location.type + '</strong>';
+            let descrip = '<p>' + location.detail + '</p>';
+            let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
+            let type = '<strong>Chưa huy hoạch</strong>';          
+            let adList = '';
+            location.ads.forEach(ads => {
+                let title = '<li><strong>' + ads.type + '</strong></li>';
+                let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
+                let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
+                let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+                let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
+                let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
+                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/'+ads._id+'">Báo cáo sai phạm</a></button>'
+                adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
+            });
 
-  /* Mở popup Menu */
+            let detailPopup = {
+                'type': 'Feature',
+                'properties': {
+                    'description': title + descrip + address + type,
+                    'adlist': '<div class="popup-content-ad">'+adList+'</div>', 
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [location.coordinates.y, location.coordinates.x]
+                }
+            };
+            featureCondition2.push(detailPopup);
+            feature.push(detailPopup);
 
+            };
+        });
+        //thêm điểm vào map
+        map.addSource('places', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': feature,
+            }
+        });
+         map.addLayer({
+            'id': 'places',
+            'type': 'circle',
+            'source': 'places',
+            'paint': {
+                'circle-color': '#ffffff',
+                'circle-radius': 10,
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+            }
+            
+        });
+        //cac diem da huy hoach
+        map.addSource('places1', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': featureCondition1,
+            }
+        });
+        map.addLayer({
+            'id': 'places1',
+            'type': 'circle',
+            'source': 'places1',
+            'paint': {
+                'circle-color': '#310c51',
+                'circle-radius': 10,
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+            }
+        });
+        //cac diem chua huy hoach
+        map.addSource('places2', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features':featureCondition2,
+            }
+        });
+        map.addLayer({
+            'id': 'places2',
+            'type': 'circle',
+            'source': 'places2',
+            'paint': {
+                'circle-color': '#4186cf',
+                'circle-radius': 10,
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+            }
+        });
+       
+        // Add a layer showing the places.
+        
 
+        
+        // Create a popup, but don't add it to the map yet.
+        const popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
+        // Create a popup for click, but don't add it to the map yet.
+        const clickPopup = new mapboxgl.Popup({
+            closeButton: true,
+            closeOnClick: false
+        });
+        const switchButton = document.getElementById('toggleSwitch');
 
+switchButton.addEventListener('change', function () {
+    const isChecked = this.checked;
 
-// Nhap mot diem bat ki
-document.getElementById('map').addEventListener('contextmenu', function(event) {
-  event.preventDefault();
-  // Lấy tọa độ x và y của sự kiện click
-  var x = event.clientX;
-  var y = event.clientY;
-
-  // Hiển thị marker ở vị trí click
-  var marker = document.getElementById('marker');
-  marker.style.left = x + 'px';
-  marker.style.top = y + 'px';
-  marker.style.display = 'block';
-
-  // Hiển thị thông tin ở vị trí click
-  var info = document.getElementById('info');
-  info.style.left = x + 'px';
-  info.style.top = y - 40 + 'px'; // Đặt thông tin lùi lên trên một chút
-  info.style.display = 'block';
-
-  document.addEventListener('click', function hidePopup(e) {
-    // Kiểm tra xem click có xảy ra bên ngoài pop-up không
-    if (!info.contains(e.target) && !marker.contains(e.target)) {
-        info.style.display = 'none';
-        marker.style.display = 'none';
-        document.removeEventListener('click', hidePopup); // Loại bỏ sự kiện click sau khi pop-up bị ẩn
-    } 
-  });
-  
+    // Bật/tắt cả các layer dựa trên trạng thái của switch
+    map.setLayoutProperty('places', 'visibility', isChecked ? 'visible' : 'none');
+    map.setLayoutProperty('places1', 'visibility', isChecked ? 'visible' : 'none');
+    map.setLayoutProperty('places2', 'visibility', isChecked ? 'visible' : 'none');
 });
+        map.on('mouseenter', 'places', (e) => {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+
+            // Nếu switch không được bật, không hiển thị popup
+    if (!switchButton.checked) {
+        return;
+    }
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description = e.features[0].properties.description;
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        });
+
+        map.on('mouseleave', 'places', () => {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
+
+        // Add click event listener
+        map.on('click', 'places', (e) => {
+            // Prevent the default map click behavior
+            e.preventDefault();
+
+            // Nếu switch không được bật, không hiển thị popup
+    if (!switchButton.checked) {
+        return;
+    }
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description = e.features[0].properties.adlist;
+            console.log(description);
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            clickPopup.setLngLat(coordinates).setHTML(description).addTo(map);
+            
+        });
+    });
+        // Thêm sau đoạn mã JavaScript hiện tại của bạn
+
+
+
+    
+
+    
+
+
+
+    }
+
+
+
+
+
+
+
+
+    function errorLocation() {
+        // Default location (if user denies location access)
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 12 // starting zoom
+        });
+    }
+
+
+
 
 
 </script>
