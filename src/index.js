@@ -19,11 +19,15 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import passportLocalMongoose from 'passport-local-mongoose';
 import flash from 'connect-flash';
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 import User from './models/user.js'; // Đường dẫn tới file user.js
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
+
+
+app.use(cookieParser());
 
 app.use(cors());
 //login setup

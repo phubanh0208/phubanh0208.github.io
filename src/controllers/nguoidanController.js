@@ -6,7 +6,7 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname,join } from 'path';
 import ReportLocation from "../models/reportLocation.js";
-
+import cookieParser from "cookie-parser";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const parentDirectory = join(__dirname, '../public/images/report-images');
@@ -95,9 +95,19 @@ class nguoidanController {
                     Images: listImage, // Thay uploadedImagePaths bằng đường dẫn thực tế của ảnh đã tải lên
                     status: 'Chưa xử lý' // Đặt trạng thái là 'Chưa xử lý' khi mới tạo báo cáo
                 });
+                
+                function getCookie(name) {
+                    const value = `; ${document.cookie}`;
+                    const parts = value.split(`; ${name}=`);
+                    if (parts.length === 2) return parts.pop().split(';').shift();
+                    }   
+                // Tìm điểm có id quảng cáo khớp với adId
+                const point = await Location.findOne({ 'ads._id': req.params.id});
+                // Lưu tọa độ vào cookies
+                let coordinatesxy= [point.coordinates.y,point.coordinates.x];
                 console.log(newReport);
                 await newReport.save();
-                res.render('alert');
+                res.render('alert',{coordinatesxy});
             });
         } catch (error) {
             console.error('Unexpected error:', error);
@@ -181,4 +191,6 @@ class nguoidanController {
    
 
 }
+ // Hàm lấy giá trị của cookie theo tên
+ 
 export default new nguoidanController();  

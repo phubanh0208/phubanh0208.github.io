@@ -253,8 +253,8 @@
                     let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
                     let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
                     let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
-                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="./infor/' + ads._id + '">Thông tin</a></button>'
-                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="./report/' + ads._id + '">Báo cáo sai phạm</a></button>'
+                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/' + ads._id + '">Thông tin</a></button>'
+                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/' + ads._id + '">Báo cáo sai phạm</a></button>'
                     adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
                 });
 
@@ -560,12 +560,13 @@
         map.getCanvas().style.cursor = '';
         popup.remove();
     });
-
+    let currentPopup =null;
     // Add click event listener
     map.on('click', 'places', (e) => {
         // Prevent the default map click behavior
         e.preventDefault();
-
+        // Đóng popup hiện tại nếu có
+   
         // Nếu switch không được bật, không hiển thị popup
         if (!switchButton.checked) {
             return;
@@ -584,6 +585,7 @@
         // Populate the popup and set its coordinates
         // based on the feature found.
         clickPopup.setLngLat(coordinates).setHTML(description).addTo(map);
+            
 
     });
     });
@@ -592,11 +594,13 @@
     map.on('click', (e) => {
     const coordinates = e.lngLat.toArray();
     let popup = new mapboxgl.Popup();
-
+     
     // Tạo Popup và thực hiện reverse geocoding
       popup.setLngLat(coordinates)
         .setHTML('<p>Loading...</p>')
         .addTo(map);
+
+    
     // Sử dụng Mapbox Geocoding API để lấy địa chỉ từ tọa độ
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates[0]},${coordinates[1]}.json?access_token=${mapboxgl.accessToken}`)
         .then(response => response.json())
@@ -637,13 +641,30 @@
 <li><strong><p>${address}, Phường ${ward}, Quận ${district}</p></strong></li>
 <button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/reportLocation/?address=${address}&ward=${ward}&district=${district}&latitude=${coordinates[0]}&longitude=${coordinates[1]}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #fffff;"></i>  Báo cáo sai phạm</a></button></ul>
 </div>`);
+       
+
         })
         .catch(error => console.error('Error:', error));
 });
 
     
-
+    {
+        
+    }
+     
+     
+     
+        // Lấy dữ liệu điểm từ cookies (nếu có)
+    const savedPoints = JSON.parse(localStorage.getItem('userPoints'));
+    // Hiển thị điểm gắn từ cookies
+    savedPoints.forEach(point =>{
+        new mapboxgl.Marker()
+        .setLngLat(point)
+        .addTo(map);
+    console.log(point)});
     
+
+   
 
 
 
@@ -667,5 +688,6 @@
 
 
 
-
+    
+    
 </script>

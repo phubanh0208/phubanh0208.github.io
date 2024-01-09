@@ -1,3 +1,25 @@
+
 <h1>Data sent successfully!</h1>
-    <p>Thank you for your submission.</p>
-    <p><a href="/home-guest">Back to Home</a></p>
+<p>Thank you for your submission.</p>
+<p><a href="/home-guest">Back to Home</a></p>
+<script>
+// Lấy dữ liệu điểm từ cookies (nếu có)
+let coordinates1=[];
+coordinates1 = [{{{coordinatesxy}}}]  ;
+const dataToStore =[
+  coordinates1[0],
+  coordinates1[1],
+];
+
+// Lấy mảng từ localStorage (nếu không tồn tại, sẽ trả về mảng trống)
+let myArray = JSON.parse(localStorage.getItem('userPoints')) || [];
+
+// Thêm giá trị mới vào mảng
+myArray.push(dataToStore);
+
+// Lưu mảng lại vào localStorage
+localStorage.setItem('userPoints', JSON.stringify(myArray));
+const value = localStorage.getItem('userPoints');
+console.log(value);
+
+</script>
