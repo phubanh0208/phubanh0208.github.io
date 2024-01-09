@@ -2,6 +2,9 @@ import express, { Router } from "express";
 import nguoidanController from '../controllers/nguoidanController.js';
 
 const router = express.Router();
+router.get('/reportLocation/', nguoidanController.reportLocation) ;
+router.post('/reportLocation/',nguoidanController.postReportLocation);
+
 router.get('/report/:id', nguoidanController.reportAd) ;
 router.post('/report/:id',nguoidanController.postReportAd);
 router.get('/infor/:id', nguoidanController.inforAd) ;

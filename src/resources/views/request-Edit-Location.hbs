@@ -2,48 +2,46 @@
 
 <main class="report-body">
     <section class="left-section">
-        <form id="reportForm" action="./{{_id}}" method="post" enctype="multipart/form-data">
+        <form id="reportForm" action="./{{_id}}" method="post" >
             <!-- Loại bảng qc -->
             <div class="col-8 d-block">
-                <label for="inputName" class="col-0 col-form-label input-title">Chỉnh loại quảng cáo</label>
-                <input type="text" class="form-control input-place" name="inputName" id="inputName"
-                    placeholder="Họ và tên" required>
+                <label for="inputType" class="col-0 col-form-label input-title">Chỉnh sửa loại quảng cáo</label>
+                <input type="text" class="form-control input-place" name="inputType" id="inputType"
+                    placeholder="Cổ đông chính trị,.." >
             </div>
 
             <!-- Loại đất -->
             <div class="col-8 d-block">
-                <label for="inputType" class="col-0 col-form-label input-title">Chỉnh sửa loại đất</label>
-                <input type="text" class="form-control input-place" name="inputType" id="inputType"
-                    placeholder="Trụm cụm,..." required>
+                <label for="inputDetail" class="col-0 col-form-label input-title">Chỉnh sửa loại đất</label>
+                <input type="text" class="form-control input-place" name="inputDetail" id="inputDetail"
+                    placeholder="Đất công viên,..." >
             </div>
-
-
-            <!-- Size -->
+            {{!-- Huy hoach --}}
             <div class="col-8 d-block">
-                <label for="inputSize" class="col-0 col-form-label input-title">Kích thước (m)</label>
-                <input type="text" class="form-control input-place" name="inputSize" id="inputSize" placeholder="10,20"
-                    pattern="\d+,\d+" title="Nhập theo định dạng x,y (ví dụ: 10,20)" required>
+                <label for="inputCondition" class="col-0 col-form-label input-title">Cập nhật huy hoạch</label>
+                <select id="inputCondition" class="form-control input-place" name="inputCondition">
+                    <option value="1">Đã huy hoạch  </option>
+                    <option value="0">Chưa huy hoạch</option>
+                </select>
             </div>
-
-            <!-- Thời hạn -->
+              <!-- Cập nhật địa chỉ -->
             <div class="col-8 d-block">
-                <label for="inputDuration" class="col-0 col-form-label input-title">Thời hạn (ngày)</label>
-                <input type="text" class="form-control input-place" name="inputDuration" id="inputDuration"
-                    placeholder="365" required>
+                <label for="inputAddress" class="col-0 col-form-label input-title">Chỉnh sửa địa chỉ</label>
+                <input type="text" class="form-control input-place" name="inputAddress" id="inputAddress"
+                    placeholder="123 Lý Tự Trọng,..." >
             </div>
-
             <!-- Lý do -->
             <div class="col-8 d-block">
-                <label for="inputReportInfomation" class="col-0 col-form-label input-title">Lý do</label>
-                <textarea class="form-control input-place" id="textAreaExample" name="inputReportInformation" rows="4"
-                    required></textarea>
+                <label for="inputLocationInfomation" class="col-0 col-form-label input-title">Lý do</label>
+                <textarea class="form-control input-place" id="textAreaExample" name="inputLocationInfomation" rows="4"
+                    ></textarea>
             </div>
             <div class="col-8 d-block">
 
-          <button id="open-button-outside" class="btn btn-primary open-button" type="submit">
+                <button id="open-button-outside" class="btn btn-primary open-button" type="submit">
                     Gửi
                 </button>
-                            </div>
+            </div>
 
         </form>
 
@@ -67,7 +65,7 @@
                         Loại đất : {{detail}}<br>
                         Số lượng bảng quảng cáo: {{numberOfAds}} <br>
                         <label for="myCheckbox">Huy hoạch</label>
-                       <input type="checkbox" id="myCheckbox" name="myCheckbox" value="1" checked disabled>
+                        <input type="checkbox" id="myCheckbox" name="myCheckbox" value="1" checked disabled>
 
                     </p>
                 </div>
@@ -89,14 +87,12 @@
     var checkbox = document.getElementById('myCheckbox');
 
     // Khai báo biến của bạn
-    var myVariable = {{condition}}; // Đặt giá trị tùy thuộc vào biến thực tế của bạn
+    var myVariable = {{ condition }}; // Đặt giá trị tùy thuộc vào biến thực tế của bạn
 
     // Kiểm tra giá trị biến và chọn hoặc không chọn checkbox tương ứng
     if (myVariable === 1) {
-      checkbox.checked = true;
+        checkbox.checked = true;
     } else {
-      checkbox.checked = false;
+        checkbox.checked = false;
     }
-  </script>
-
 </script>

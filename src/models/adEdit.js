@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const adSchema = new mongoose.Schema({
+    adId: String,
     name: String,
     type: String, 
     size: {

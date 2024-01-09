@@ -1,4 +1,8 @@
 {{> header-home}}
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+ 
 <style>
     body {
         margin: 0;
@@ -24,8 +28,9 @@
         border-radius: 0.1em;
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        max-height: 20em; /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
-        overflow-y: auto; 
+        max-height: 20em;
+        /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+        overflow-y: auto;
     }
 
     .popup-header {
@@ -76,100 +81,117 @@
         cursor: pointer;
     }
 
-    .popup-content-ad .popup-btn-right{
-        background-color: #ff0000	;
+    .popup-content-ad .popup-btn-right {
+        background-color: #ff0000;
         color: #fff;
         border: none;
         padding: 5px 10px;
         cursor: pointer;
     }
+
     .popup-content-ad a {
 
         color: #fff;
         display: inline-block;
-        color: inherit; /* Màu sắc kế thừa từ phần tử cha */
+        color: inherit;
+        /* Màu sắc kế thừa từ phần tử cha */
         text-decoration: none;
     }
+
     #toggleButton {
-    position: absolute;
-    bottom: 10px; /* Điều chỉnh khoảng cách với đáy bản đồ */
-    left: 50%; /* Đưa nút vào giữa theo chiều ngang */
-    transform: translateX(-50%); /* Dịch chuyển nút ngược lại 50% chiều ngang của chính nó */
-    z-index: 1; /* Đảm bảo nút hiển thị trên bản đồ */
-    .layer-toggle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
+        position: absolute;
+        bottom: 10px;
+        /* Điều chỉnh khoảng cách với đáy bản đồ */
+        left: 50%;
+        /* Đưa nút vào giữa theo chiều ngang */
+        transform: translateX(-50%);
+        /* Dịch chuyển nút ngược lại 50% chiều ngang của chính nó */
+        z-index: 1;
+
+        /* Đảm bảo nút hiển thị trên bản đồ */
+        .layer-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
     }
 
-.layer-button {
-    background-color: #4285f4;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
-}
+    .layer-button {
+        background-color: #4285f4;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
 
-.layer-button.active {
-    background-color: #34a853;
-}
+    .layer-button.active {
+        background-color: #34a853;
+    }
 
-.switch-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-}
+    .switch-container {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+    }
+    .input-group{
+        position: absolute;
+        width: 30%;
+        top: 10%;
+        left: 20%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: left;
+        z-index: 1;
+    }
+    .switch {
+        display: none;
+    }
 
-.switch {
-    display: none;
-}
+    .switch-label {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        background-color: #ccc;
+        border-radius: 17px;
+        cursor: pointer;
+    }
 
-.switch-label {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    background-color: #ccc;
-    border-radius: 17px;
-    cursor: pointer;
-}
+    .switch-label:before {
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: white;
+        top: 4px;
+        left: 4px;
+        transition: 0.3s;
+    }
 
-.switch-label:before {
-    content: '';
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: white;
-    top: 4px;
-    left: 4px;
-    transition: 0.3s;
-}
+    .switch-text {
+        margin-left: 10px;
+        font-size: 16px;
+    }
 
-.switch-text {
-    margin-left: 10px;
-    font-size: 16px;
-}
-
-.switch:checked + .switch-label:before {
-    transform: translateX(26px);
-}
-
-
+    .switch:checked+.switch-label:before {
+        transform: translateX(26px);
+    }
 </style>
-<div id="map"></div>
+<div id="map">
+     
+</div>
 <!-- Handlebars Template -->
 
 <div class="switch-container">
     <input type="checkbox" id="toggleSwitch" class="switch" checked>
     <label for="toggleSwitch" class="switch-label"></label>
-    <span class="switch-text">Bật tắt QC</span>
+    <span class="switch-text">Bật tắt QC    </span>
 </div>
 
 
@@ -192,7 +214,14 @@
             zoom: 15 // starting zoom
 
         });
-        map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
+
+        map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+       // Add the control to the map.
+        map.addControl(
+            new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        }));
         // Add markers to the map based on the data passed from the server
         const data = {{{ locationData }}}; // Use triple-stashes
     // data.forEach(location => {
@@ -201,81 +230,100 @@
     //     .addTo(map);
     //  });
 
-    map.on('load',()=> {
-
+    map.on('load', () => {
+        
+        
         //thêm các điểm vào object
         var featureCondition1 = [];
         var featureCondition2 = [];
         var feature = [];
-        
+        var featureNonAd= [];
         //các điểm đã huy hoạch:
         data.forEach(location => {
             if (location.condition == 1) {
-            let title = '<strong>' + location.type + '</strong>';
-            let descrip = '<p>' + location.detail + '</p>';
-            let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
-            let type = '<strong>Đã huy hoạch</strong>';          
-            let adList = '';
-            location.ads.forEach(ads => {
-                let title = '<li><strong>' + ads.type + '</strong></li>';
-                let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
-                let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
-                let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
-                let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
-                let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
-                let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
-                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/'+ads._id+'">Báo cáo sai phạm</a></button>'
-                adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
-            });
+                let title = '<strong>' + location.type + '</strong>';
+                let descrip = '<p>' + location.detail + '</p>';
+                let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
+                let type = '<strong>Đã huy hoạch</strong>';
+                let adList = '';
+                location.ads.forEach(ads => {
+                    let title = '<li><strong>' + ads.type + '</strong></li>';
+                    let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
+                    let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
+                    let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+                    let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
+                    let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="./infor/' + ads._id + '">Thông tin</a></button>'
+                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="./report/' + ads._id + '">Báo cáo sai phạm</a></button>'
+                    adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
+                });
 
-            let detailPopup = {
-                'type': 'Feature',
-                'properties': {
-                    'description': title + descrip + address + type,
-                    'adlist': '<div class="popup-content-ad">'+adList+'</div>', 
-                },
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [location.coordinates.y, location.coordinates.x]
-                }
-            };
-            featureCondition1.push(detailPopup);
-            feature.push(detailPopup);
+                let detailPopup = {
+                    'type': 'Feature',
+                    'properties': {
+                        'description': title + descrip + address + type,
+                        'adlist': '<div class="popup-content-ad">' + adList + '</div>',
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [location.coordinates.y, location.coordinates.x]
+                    }
+                };
+               let nonAD = {
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [location.coordinates.y, location.coordinates.x]
+                    }
+                };
+                if (location.numberOfAds == 0) featureNonAd.push(nonAD);
+            
+            
+                featureCondition1.push(detailPopup);
+                feature.push(detailPopup);
             };
         });
         //cac diem chua huy hoach
         data.forEach(location => {
             if (location.condition == 0) {
-            let title = '<strong>' + location.type + '</strong>';
-            let descrip = '<p>' + location.detail + '</p>';
-            let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
-            let type = '<strong>Chưa huy hoạch</strong>';          
-            let adList = '';
-            location.ads.forEach(ads => {
-                let title = '<li><strong>' + ads.type + '</strong></li>';
-                let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
-                let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
-                let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
-                let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
-                let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
-                let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/'+ads._id+'">Thông tin</a></button>'
-                let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/'+ads._id+'">Báo cáo sai phạm</a></button>'
-                adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
-            });
+                let title = '<strong>' + location.type + '</strong>';
+                let descrip = '<p>' + location.detail + '</p>';
+                let address = '<p>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</p>';
+                let type = '<strong>Chưa huy hoạch</strong>';
+                let adList = '';
+                location.ads.forEach(ads => {
+                    let title = '<li><strong>' + ads.type + '</strong></li>';
+                    let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
+                    let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
+                    let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+                    let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
+                    let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/' + ads._id + '">Thông tin</a></button>'
+                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/' + ads._id + '">Báo cáo sai phạm</a></button>'
+                    adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
+                });
 
-            let detailPopup = {
-                'type': 'Feature',
-                'properties': {
-                    'description': title + descrip + address + type,
-                    'adlist': '<div class="popup-content-ad">'+adList+'</div>', 
-                },
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [location.coordinates.y, location.coordinates.x]
-                }
-            };
-            featureCondition2.push(detailPopup);
-            feature.push(detailPopup);
+                let detailPopup = {
+                    'type': 'Feature',
+                    'properties': {
+                        'description': title + descrip + address + type,
+                        'adlist': '<div class="popup-content-ad">' + adList + '</div>',
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [location.coordinates.y, location.coordinates.x]
+                    }
+                };
+                let nonAD = {
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [location.coordinates.y, location.coordinates.x]
+                    }
+                };
+                if (location.numberOfAds == 0) featureNonAd.push(nonAD);
+                featureCondition2.push(detailPopup);
+                feature.push(detailPopup);
 
             };
         });
@@ -285,46 +333,90 @@
             'data': {
                 'type': 'FeatureCollection',
                 'features': feature,
-            }
+
+            },
+            'cluster': true,
+            'clusterMaxZoom': 14, // Max zoom to cluster points on
+            'clusterRadius': 50 // R
         });
-         map.addLayer({
+
+        map.addLayer({
             'id': 'places',
             'type': 'circle',
             'source': 'places',
             'paint': {
-                'circle-color': '#ffffff',
-                'circle-radius': 10,
+                'circle-color': 'transparent',
+                'circle-radius': 4,
                 'circle-stroke-width': 2,
                 'circle-stroke-color': '#ffffff'
             }
-            
+
         });
+        ///điểm ko quản cáo
+         map.addSource('nonAD', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': featureNonAd,
+            },
+            'cluster': true,
+            'clusterMaxZoom': 14, // Max zoom to cluster points on
+            'clusterRadius': 50 // R
+        });
+         map.addLayer({
+            'id': 'nonAD',
+            'type': 'circle',
+            'source': 'nonAD',
+            'paint': {
+                'circle-color': '#f1111f',
+                'circle-radius': 10,
+                'circle-stroke-width': 3,
+                'circle-stroke-color': '#f1111f'
+            }
+            });
         //cac diem da huy hoach
         map.addSource('places1', {
             'type': 'geojson',
             'data': {
                 'type': 'FeatureCollection',
                 'features': featureCondition1,
-            }
+            },
+            'cluster': true,
+            'clusterMaxZoom': 14, // Max zoom to cluster points on
+            'clusterRadius': 50 // R
         });
         map.addLayer({
             'id': 'places1',
             'type': 'circle',
             'source': 'places1',
             'paint': {
-                'circle-color': '#310c51',
+                'circle-color': '#D0A2F7',
                 'circle-radius': 10,
                 'circle-stroke-width': 2,
                 'circle-stroke-color': '#ffffff'
-            }
+            },
+        });
+        map.addLayer({
+            'id': 'qc',
+            'type': 'symbol',
+            'source': 'places1',
+            'layout': {
+                    'text-field': 'QC',
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                    
+                }
         });
         //cac diem chua huy hoach
         map.addSource('places2', {
             'type': 'geojson',
             'data': {
                 'type': 'FeatureCollection',
-                'features':featureCondition2,
-            }
+                'features': featureCondition2,
+            },
+            'cluster': true,
+            'clusterMaxZoom': 14, // Max zoom to cluster points on
+            'clusterRadius': 50 // R
         });
         map.addLayer({
             'id': 'places2',
@@ -338,88 +430,216 @@
             }
         });
        
-        // Add a layer showing the places.
+        // Add a layer nonad
         
 
+
+        //cluster
+
+        {
+             map.addLayer({
+                id: 'cluster-count1',
+                type: 'symbol',
+                source: 'places1',
+                filter: ['has', 'point_count'],
+                layout: {
+                    'text-field': ['get', 'point_count_abbreviated'],
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                    
+                }
+            });
+            map.addLayer({
+                id: 'cluster-count2',
+                type: 'symbol',
+                source: 'places2',
+                filter: ['has', 'point_count'],
+                layout: {
+                    'text-field': ['get', 'point_count_abbreviated'],
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                    
+                }
+            });
+            //địa điểm hiện tại
+                    const { longitude, latitude } = position.coords;
+
+              map.addSource('currentLocation', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [{
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [longitude, latitude]
+                    },
+                    'properties': {
+                        'title': 'Địa điểm hiện tại',
+                    },
+                },]
+            },
+           
+        });
+         map.addLayer({
+            'id': 'current',
+            'type': 'circle',
+            'source': 'currentLocation',
+            'paint': {
+                'circle-color': '#ff0011',
+                'circle-radius': 8,
+                'circle-stroke-width': 3,
+                'circle-stroke-color': '#f1111f'
+            }
+            });
+        map.addLayer({
+            'id': 'current2',
+            'type': 'symbol',
+            'source': 'currentLocation',
+            'layout': {
+                    'text-field':  ['get', 'title'],
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12,
+                     'text-anchor': 'bottom',
+                }
+            });
+        //thêm các điểm vào object
+        }
+   
+    // Create a popup, but don't add it to the map yet.
+    const popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+    // Create a popup for click, but don't add it to the map yet.
+    const clickPopup = new mapboxgl.Popup({
+        closeButton: true,
+        closeOnClick: true
+    });
+    const switchButton = document.getElementById('toggleSwitch');
+
+    switchButton.addEventListener('change', function () {
+        const isChecked = this.checked;
+
+        // Bật/tắt cả các layer dựa trên trạng thái của switch
+        map.setLayoutProperty('places', 'visibility', isChecked ? 'visible' : 'none');
+        map.setLayoutProperty('places1', 'visibility', isChecked ? 'visible' : 'none');
+        map.setLayoutProperty('places2', 'visibility', isChecked ? 'visible' : 'none');
         
-        // Create a popup, but don't add it to the map yet.
-        const popup = new mapboxgl.Popup({
-            closeButton: false,
-            closeOnClick: false
-        });
-        // Create a popup for click, but don't add it to the map yet.
-        const clickPopup = new mapboxgl.Popup({
-            closeButton: true,
-            closeOnClick: false
-        });
-        const switchButton = document.getElementById('toggleSwitch');
+        map.setLayoutProperty('cluster-count2', 'visibility', isChecked ? 'visible' : 'none');
+        map.setLayoutProperty('cluster-count1', 'visibility', isChecked ? 'visible' : 'none');
+        map.setLayoutProperty('qc', 'visibility', isChecked ? 'visible' : 'none');
+        map.setLayoutProperty('nonAD', 'visibility', isChecked ? 'visible' : 'none');
+ 
+    });
+    map.on('mouseenter', 'places', (e) => {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+        
+        // Nếu switch không được bật, không hiển thị popup
+        if (!switchButton.checked) {
+            return;
+        }
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.description;
 
-switchButton.addEventListener('change', function () {
-    const isChecked = this.checked;
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
 
-    // Bật/tắt cả các layer dựa trên trạng thái của switch
-    map.setLayoutProperty('places', 'visibility', isChecked ? 'visible' : 'none');
-    map.setLayoutProperty('places1', 'visibility', isChecked ? 'visible' : 'none');
-    map.setLayoutProperty('places2', 'visibility', isChecked ? 'visible' : 'none');
-});
-        map.on('mouseenter', 'places', (e) => {
-            // Change the cursor style as a UI indicator.
-            map.getCanvas().style.cursor = 'pointer';
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    });
 
-            // Nếu switch không được bật, không hiển thị popup
-    if (!switchButton.checked) {
-        return;
-    }
-            // Copy coordinates array.
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const description = e.features[0].properties.description;
+    map.on('mouseleave', 'places', () => {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
 
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
+    // Add click event listener
+    map.on('click', 'places', (e) => {
+        // Prevent the default map click behavior
+        e.preventDefault();
 
-            // Populate the popup and set its coordinates
-            // based on the feature found.
-            popup.setLngLat(coordinates).setHTML(description).addTo(map);
-        });
+        // Nếu switch không được bật, không hiển thị popup
+        if (!switchButton.checked) {
+            return;
+        }
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.adlist;
+        console.log(description);
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
 
-        map.on('mouseleave', 'places', () => {
-            map.getCanvas().style.cursor = '';
-            popup.remove();
-        });
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        clickPopup.setLngLat(coordinates).setHTML(description).addTo(map);
 
-        // Add click event listener
-        map.on('click', 'places', (e) => {
-            // Prevent the default map click behavior
-            e.preventDefault();
-
-            // Nếu switch không được bật, không hiển thị popup
-    if (!switchButton.checked) {
-        return;
-    }
-            // Copy coordinates array.
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const description = e.features[0].properties.adlist;
-            console.log(description);
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
-
-            // Populate the popup and set its coordinates
-            // based on the feature found.
-            clickPopup.setLngLat(coordinates).setHTML(description).addTo(map);
-            
-        });
+    });
     });
         // Thêm sau đoạn mã JavaScript hiện tại của bạn
 
+    map.on('click', (e) => {
+    const coordinates = e.lngLat.toArray();
+    let popup = new mapboxgl.Popup();
 
+    // Tạo Popup và thực hiện reverse geocoding
+      popup.setLngLat(coordinates)
+        .setHTML('<p>Loading...</p>')
+        .addTo(map);
+    // Sử dụng Mapbox Geocoding API để lấy địa chỉ từ tọa độ
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates[0]},${coordinates[1]}.json?access_token=${mapboxgl.accessToken}`)
+        .then(response => response.json())
+        .then(data => {
+            let address = data.features[0].properties.address;
+            if (address === undefined) {
+                address = data.features[0].place_name;
+            }
+            let subaddress='';
+            let index = address.indexOf(',');
+            let index2= address.indexOf('St');
+            if (index2 !== -1) {
+                subaddress = address.substring(0,index2 ).trim();
+                address =subaddress;
+            } else if (index !== -1) {
+                subaddress = address.substring(0,index).trim();
+                address =subaddress;
+            } 
+            
+
+            let ward = data.features[0].context[0].text;
+            ward = ward.replace("Phường ", "").trim();
+
+            let district = data.features[0].context[2].text;
+            district = district.replace("Quận ", "").trim();
+
+            console.log(data,ward,district);
+            // Cập nhật Popup với địa chỉ đã lấy được
+            popup.setHTML(`<div class="popup-content-ad">
+<ul>
+<li><strong><i class="fa-solid fa-circle-check fa-xl" style="color: #2c74f2;"></i>   Thông tin bảng quảng cáo</strong></li>
+<li>Chưa có dữ liệu</li>
+</ul>
+
+<ul>
+<li><strong><i class="fa-regular fa-circle-check fa-xl" style="color: #2acf46;"></i>  Thông tin địa điểm</strong></li>
+
+<li><strong><p>${address}, Phường ${ward}, Quận ${district}</p></strong></li>
+<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/reportLocation/?address=${address}&ward=${ward}&district=${district}&latitude=${coordinates[0]}&longitude=${coordinates[1]}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #fffff;"></i>  Báo cáo sai phạm</a></button></ul>
+</div>`);
+        })
+        .catch(error => console.error('Error:', error));
+});
 
     
 
@@ -444,7 +664,6 @@ switchButton.addEventListener('change', function () {
             zoom: 12 // starting zoom
         });
     }
-
 
 
 

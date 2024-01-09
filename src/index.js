@@ -4,8 +4,8 @@ import checkAdmin from './middleware/checkWardUser.js';
 // Import connectDB function
 import connectDB from './config/db.js';
 
-import auth from './routes/auth.js'
-
+import auth from './routes/auth.js';
+import nodemailer from 'nodemailer';
 import path from 'path';
 import express from 'express';
 import morgan from 'morgan';
@@ -98,7 +98,11 @@ connectDB();
 
 //homepage
 app.get('/', (req,res) => {
+
   res.render('landing-page');
+
+
+
 })  
 
 //login routes
@@ -160,3 +164,35 @@ app.listen(port, () => console.log(`Running at http://localhost:${port}`))
 //   res.render('assign-management-area');
 // })
 // app.listen(port, () => console.log(`Running at http://localhost:${port}`))
+
+
+
+
+// // Tạo một transporter
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   host: 'smtp.gmail.com',
+//   port: 587,
+//   secure: false,
+//   auth: {
+//     user: process.env.MAIL_USER, // Địa chỉ email của bạn
+//     pass: process.env.APP_PASSWORD, // Mật khẩu của bạn
+//   },
+// });
+
+// // Cấu hình nội dung email
+// const mailOptions = {
+//   from: 'buqcptudw@gmail.com',
+//   to: 'phubanh0208@gmail.com', // Địa chỉ email của người nhận
+//   subject: 'Test Email',
+//   text: 'Hello, this is a test email!',
+// };
+
+// // Gửi email
+// transporter.sendMail(mailOptions, (error, info) => {
+//   if (error) {
+//     console.error('Error sending email:', error);
+//   } else {
+//     console.log('Email sent:', info.response);
+//   }
+// });

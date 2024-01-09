@@ -1,6 +1,7 @@
 import Location from "../models/location.js";
 import Advertisement from "../models/advertisement.js";
 import adEdit from "../models/adEdit.js";
+import locationEdit from "../models/locationEdit.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from 'url';
@@ -136,6 +137,7 @@ class phuongController {
             
                 const [x, y] = inputSize.split(',');
                 let newReport = new adEdit({
+                    adId: req.params.id,
                     name: inputName,
                     type: inputType,
                     size: {
@@ -168,7 +170,38 @@ class phuongController {
             res.status(500).send('Internal Server Error');
         }
     }
-
+    async postEditLocation(req, res) {
+        try {
+            const inputType = req.body.inputType;
+            const inputDetail = req.body.inputDetail;
+            const inputCondition = req.body.inputCondition;
+            const inputAddress = req.body.inputAddress;
+            const inputLocationInfomation = req.body.inputLocationInfomation;
+          
+            // Log form data (you can save it to a database or perform any other action)
+            console.log('Form Data:');
+            console.log('Loại quảng cáo:', inputType);
+            console.log('Loại đất:', inputDetail);
+            console.log('Cập nhật huy hoạch:', inputCondition);
+            console.log('Địa chỉ:', inputAddress);
+            console.log('Lý do:', inputLocationInfomation);
+            let newReport = new locationEdit({
+                locationId: req.params.id,
+                address: inputAddress,
+                detail: inputDetail,
+                type: inputType,
+                condition: inputCondition,
+                Information: inputLocationInfomation,
+                status: 'Chưa xử lý' // Đặt trạng thái là 'Chưa xử lý' khi mới tạo báo cáo
+            });
+            console.log(newReport);
+            await newReport.save();
+            res.render('alert');
+        } catch (error) {
+            console.error('Unexpected error:', error);
+            res.status(500).send('Unexpected error');
+        }
+    }
 
 
 }
