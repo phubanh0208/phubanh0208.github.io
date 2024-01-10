@@ -1,9 +1,58 @@
 {{> header-home}}
 
+<style>
+    .container-product-info {
+        width: 100%;
+        overflow: hidden;
+        /* Clear floats */
+        display: inline-block;
+        margin-top: 5rem;
+    }
 
-<div >
-    <img src="/images/infor/{{_id}}.png" alt="">
-    <p>Tên: {{name}}</p>
-    <p>Loại: {{type}}</p> 
-    <p>Ngày hết hạn: {{date}}</p>   
+    .product-info {
+        display: flex;
+        align-items: center;
+        /* Căn giữa theo chiều dọc */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        /* Clear floats */
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .product-info img {
+        max-width: 55%;
+        padding: 2%;
+        float: left;
+        margin-right: 15px;
+        border-radius: 5px;
+    }
+
+    .product-info__details {
+        overflow: hidden;
+        /* Clear floats */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* Căn giữa theo chiều dọc */
+    }
+
+    .product-info__details p {
+        margin: 5px 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+    }
+</style>
+
+<div class="container-product-info">
+    <div class="product-info">
+        <img src="/images/infor/{{_id}}.png" alt="">
+        <div class="product-info__details">
+            <p>Tên: {{name}}</p>
+            <p>Loại: {{type}}</p>
+            <p>Ngày hết hạn: {{date}}</p>
+        </div>
+    </div>
 </div>
