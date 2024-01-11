@@ -21,6 +21,9 @@ import flash from 'connect-flash';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import User from './models/user.js'; // Đường dẫn tới file user.js
+import helpers from './helper/helper.js';
+import exphbs from 'express-handlebars';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -92,8 +95,9 @@ app.use(express.static(path.join(__dirname,'models')));
 app.use(express.static(path.join(__dirname,'controllers')));
 
 app.use(morgan('combined'));
+app.engine('hbs', exphbs.engine({ helpers: helpers, extname: '.hbs' })); // Use exphbs instead of hbs
 
-app.engine('hbs',hbs.engine({ extname: '.hbs' }));
+
 app.set('view engine', 'hbs');
 app.set('views','./src/resources/views');
 

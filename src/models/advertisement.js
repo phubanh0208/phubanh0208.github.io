@@ -12,7 +12,8 @@ const advertisementSchema = new mongoose.Schema({
   form: String,      // Trường hình thức
   category: String,
   duration: Number,
-  address: String
+  address: String,
+  image: Buffer
   // Thêm các trường dữ liệu khác tùy thuộc vào yêu cầu của bạn
 });
 

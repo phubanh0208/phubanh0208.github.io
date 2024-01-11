@@ -4,6 +4,14 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
  
 <style>
+    .marker123 {
+  background-image: url("images/warning.png");
+  background-size: cover;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+     
     body {
         margin: 0;
         padding: 0;
@@ -138,6 +146,15 @@
         display: flex;
         align-items: center;
     }
+    #toggleSavedMarkers {
+        position: absolute;
+        bottom: 20px;
+        left: 70%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+
+    }
     .input-group{
         position: absolute;
         width: 30%;
@@ -195,7 +212,11 @@
 </div>
 
 
-
+<div id="toggleSavedMarkers" class="layer-toggle">
+    <input type="checkbox" id="savedMarkerToggleSwitch" class="switch" checked>
+    <label for="savedMarkerToggleSwitch" class="switch-label"></label>
+    <span class="switch-text">Ẩn/Hiện Báo cáo</span>
+</div>
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JhbzQ3IiwiYSI6ImNscHBneGhzcDB3cjkyaXFuaHlhN3Jxcm0ifQ.l74B2ZgynwxH8OhjplzVmg';
@@ -253,8 +274,8 @@
                     let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
                     let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
                     let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
-                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/' + ads._id + '">Thông tin</a></button>'
-                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/' + ads._id + '">Báo cáo sai phạm</a></button>'
+                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="/home-guest/infor/' + ads._id + '">Thông tin</a></button>'
+                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="/home-guest/report/' + ads._id + '">Báo cáo sai phạm</a></button>'
                     adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
                 });
 
@@ -298,8 +319,8 @@
                     let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
                     let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
                     let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
-                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="home-guest/infor/' + ads._id + '">Thông tin</a></button>'
-                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/report/' + ads._id + '">Báo cáo sai phạm</a></button>'
+                    let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="/home-guest/infor/' + ads._id + '">Thông tin</a></button>'
+                    let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="/home-guest/report/' + ads._id + '">Báo cáo sai phạm</a></button>'
                     adList += '<ul>' + title + address + size + count + type + detail + button1 + button2 + '</ul>';
                 });
 
@@ -374,6 +395,7 @@
                 'circle-stroke-color': '#f1111f'
             }
             });
+           
         //cac diem da huy hoach
         map.addSource('places1', {
             'type': 'geojson',
@@ -429,7 +451,28 @@
                 'circle-stroke-color': '#ffffff'
             }
         });
-       
+       map.addLayer({
+            'id': 'qc2',
+            'type': 'symbol',
+            'source': 'places2',
+            'layout': {
+                    'text-field': 'QC',
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                    
+                }
+        });
+          map.addLayer({
+            'id': 'non',
+            'type': 'symbol',
+            'source': 'nonAD',
+            'layout': {
+                    'text-field': 'No',
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                    
+                }
+        });
         // Add a layer nonad
         
 
@@ -481,17 +524,9 @@
             },
            
         });
-         map.addLayer({
-            'id': 'current',
-            'type': 'circle',
-            'source': 'currentLocation',
-            'paint': {
-                'circle-color': '#ff0011',
-                'circle-radius': 8,
-                'circle-stroke-width': 3,
-                'circle-stroke-color': '#f1111f'
-            }
-            });
+        new mapboxgl.Marker()
+                .setLngLat([longitude, latitude])
+                .addTo(map)
         map.addLayer({
             'id': 'current2',
             'type': 'symbol',
@@ -500,7 +535,7 @@
                     'text-field':  ['get', 'title'],
                     'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
                     'text-size': 12,
-                     'text-anchor': 'bottom',
+                     
                 }
             });
         //thêm các điểm vào object
@@ -639,7 +674,7 @@
 <li><strong><i class="fa-regular fa-circle-check fa-xl" style="color: #2acf46;"></i>  Thông tin địa điểm</strong></li>
 
 <li><strong><p>${address}, Phường ${ward}, Quận ${district}</p></strong></li>
-<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="home-guest/reportLocation/?address=${address}&ward=${ward}&district=${district}&latitude=${coordinates[0]}&longitude=${coordinates[1]}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #fffff;"></i>  Báo cáo sai phạm</a></button></ul>
+<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="/home-guest/reportLocation/?address=${address}&ward=${ward}&district=${district}&latitude=${coordinates[0]}&longitude=${coordinates[1]}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #fffff;"></i>  Báo cáo sai phạm</a></button></ul>
 </div>`);
        
 
@@ -657,14 +692,46 @@
         // Lấy dữ liệu điểm từ cookies (nếu có)
     const savedPoints = JSON.parse(localStorage.getItem('userPoints'));
     // Hiển thị điểm gắn từ cookies
-    savedPoints.forEach(point =>{
-        new mapboxgl.Marker()
-        .setLngLat(point)
-        .addTo(map);
-    console.log(point)});
+    let reportMarker=[];
+    savedPoints.forEach(point => {
+        reportMarker.push(new mapboxgl.Marker({
+            className: 'marker123',
+             color:  '#ff0000',
+             scale: 0.00000000000001,
+        })
+                .setLngLat(point)
+                .addTo(map))
+                    console.log(point);
+
+        });
     
 
-   
+    const savedMarkerToggleSwitch = document.getElementById('savedMarkerToggleSwitch');
+    savedMarkerToggleSwitch.addEventListener('change', function () {
+    //if (savedPoints) return;
+    const isChecked = this.checked;
+    console.log(isChecked);
+    // Bật/tắt các marker gắn từ cookies dựa trên trạng thái của switch
+    if (isChecked) {
+        // Hiển thị marker
+        reportMarker=[];
+        savedPoints.forEach(point => {
+        reportMarker.push(new mapboxgl.Marker({
+             className: 'marker123',
+             color:  '#ff0000',
+             scale: 0.00000000000001,
+        })
+                .setLngLat(point)
+                .addTo(map))
+        });
+        console.log(reportMarker);
+    } else {
+        reportMarker.forEach(point=>{
+            point.remove();
+        })
+    }
+});
+
 
 
 

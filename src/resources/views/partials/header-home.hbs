@@ -11,7 +11,59 @@
           <a class="nav-link active text-size" style="color: #ffffff;" aria-current="page" href="/home-guest">Home</a>
         </li>
       </ul>
-      <a class="angle" href="../"><i class="fa-solid fa-angle-left fa-xl" style="color: #ffffff;"></i></a>
+      <ul class="nav nav-pills nav-fill">
+
+        <!-- Thêm dropdown item -->
+        <li class="nav-item dropdown">
+          <a style="color: #ffffff;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Chức năng
+          </a>
+          <!-- Thẻ <ul> con chứa các mục dropdown -->
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <form id="sendDataForm" action="/home-guest/report-detail" method="post">
+              <!-- Thêm thẻ input ẩn để chứa dữ liệu từ LocalStorage -->
+              <input type="hidden" id="myDataInput" name="myData" value="">
+
+              <button type="submit" class="dropdown-item"
+                style="background-color: transparent; border: none; cursor: pointer;">
+                <i class="fa-solid fa-file fa-xl" style="color: #8d18b4;"></i> Các báo cáo đã gửi
+              </button>
+            </form>
+            <li><a class="dropdown-item" href="" onclick="clearLocalStorage()">Xóa điểm báo cáo</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/"><i class="fa-solid fa-angle-left fa-xl"
+                  style="color: #8d18b4;"></i>Thoát</a></li>
+          </ul>
+        </li>
+      </ul>
+
     </div>
   </div>
 </nav>
+<script>
+  // Hàm xóa localStorage
+  function clearLocalStorage() {
+    localStorage.removeItem('userPoints');
+    console.log('localStorage cleared');
+  }
+
+  const myData = JSON.parse(localStorage.getItem('userPoints'));
+    console.log(myData);
+  // Lắng nghe sự kiện submit của form
+  document.getElementById('sendDataForm').addEventListener('submit', function (event) {
+    // Ngăn chặn hành vi mặc định của form (tránh chuyển hướng)
+    event.preventDefault();
+
+    // Lấy dữ liệu từ LocalStorage
+    const myData = JSON.parse(localStorage.getItem('userPoints'));
+    console.log
+    // Đặt giá trị của input ẩn
+    document.getElementById('myDataInput').value = JSON.stringify(myData);
+
+    // Submit form
+    this.submit();
+  });
+</script>

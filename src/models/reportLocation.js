@@ -13,7 +13,9 @@ const reportSchema = new mongoose.Schema({
         x:Number,
         y:Number,
       },
-    Images: [{ type: String }] ,// Lưu trữ đường dẫn của ảnh
+      Solution:  { type: String },
+
+      Images: [Buffer],
     status: { type: String, enum: ['Chưa xử lý', 'Đang xử lý', 'Đã xử lý'], default: 'Chưa xử lý' }
 }, { timestamps: true });
 

@@ -2,11 +2,13 @@ import Location from "../models/location.js";
 import Advertisement from "../models/advertisement.js";
 import adEdit from "../models/adEdit.js";
 import locationEdit from "../models/locationEdit.js";
+import Report from "../models/report.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import moment from "moment";
+import ReportLocation from "../models/reportLocation.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const parentDirectory = join(__dirname, '../public/images/request-edit');
@@ -33,11 +35,48 @@ class phuongController {
         try {
             const locationData = JSON.stringify(await Location.find());
             //console.log(locationData);
-            res.render('home_d', { locationData });
+           // console.log(req.user)
+            let adRP = await Report.find({
+                $and: [
+                  { ward: req.user.ward },
+                  { district: req.user.district }
+                  // Bạn có thể thêm các điều kiện khác vào đây nếu cần
+                ]
+              });            
+              let LocationRP = await ReportLocation.find({
+                $and: [
+                  { ward: req.user.ward },
+                  { district: req.user.district }
+                  // Bạn có thể thêm các điều kiện khác vào đây nếu cần
+                ]
+              });   
+              console.log(LocationRP);
+              
+              const locationReports = LocationRP.map(LocationRP => LocationRP.toJSON());
+              const adReports = adRP.map(adRP => adRP.toJSON());
+              
+              res.render('home_d', { locationData,locationReports,adReports });
 
         } catch (error) {
             console.error('Error retrieving location data:', error);
             res.status(500).send('Internal Server Error');
+        }
+    }
+    async inforAd(req, res) {
+        try {
+            const userId = req.params.id;
+            const result = await Advertisement.findById(userId);
+
+            // Chuyển đổi buffer sang dữ liệu base64
+            const imageBase64 = result.image.toString('base64');
+
+            // Thêm đường dẫn URL của ảnh vào dữ liệu
+            result.imageUrl = `data:image/png;base64,${imageBase64}`;
+
+            res.render('inforAd-d', result);
+        } catch (error) {
+            console.error('Error retrieving location data:', error);
+            res.status(500).send('Infor AD Error');
         }
     }
     async adList(req, res) {
@@ -64,8 +103,9 @@ class phuongController {
                         let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
                         let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
                         let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
+                        let button1 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="/home_wardUser/infor/' + ads._id + '">Thông tin</a></button>'
                         let button2 = '<button class="popup-btn-right" onclick="handleRightButtonClick()"><a href="request-edit/' + ads._id + '">Yêu cầu chỉnh sửa</a></button>'
-                        adList += '<ul>' + title + address + size + count + type + detail + button2 + '</ul>';
+                        adList += '<ul>' + title + address + size + count + type + detail +button1+ button2 + '</ul>';
                     });
                     let locationinfor = '<tr>' + index + title + descrip + address + type +
                         '<td class="icon_detail"><button href="#" onclick="openDetail' + i + '()"><i class="fa-solid fa-info-circle"></i></button></td>' + '</tr>';
@@ -87,6 +127,69 @@ class phuongController {
 
             res.render('home_d_adList', { phuong: userData.ward, quan: userData.district, locationtableShow: locationtable, detailLocation: detailPopup, i: i });
 
+        } catch (error) {
+            console.error('Error retrieving location data:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+    async reportList(req, res) {
+        try {
+            
+            let adData = await Report.find({
+                $and: [
+                  { ward: req.user.ward },
+                  { district: req.user.district }
+                  // Bạn có thể thêm các điều kiện khác vào đây nếu cần
+                ]
+              });            
+              let locationData = await ReportLocation.find({
+                $and: [
+                  { ward: req.user.ward },
+                  { district: req.user.district }
+                  // Bạn có thể thêm các điều kiện khác vào đây nếu cần
+                ]
+              });   
+            let image = [];
+            locationData.forEach(data => {
+                let imageBase = data.Images[0] ? data.Images[0].toString('base64') : '';
+                let imageUrl = `data:image/png;base64,${imageBase}`;
+                let imageBase1 = data.Images[1] ? data.Images[1].toString('base64') : '';
+                let imageUrl1 = `data:image/png;base64,${imageBase1}`;
+                image.push([imageUrl, imageUrl1]);
+
+            });
+            const locationReports = locationData.map(locationData => locationData.toJSON());
+            let index = 0;
+            locationReports.forEach(data => {
+                let formattedDate = moment(data.createdAt).format("DD [Tháng] MM YYYY");
+                data.dateVN = formattedDate;
+                data.Url1 = JSON.stringify(image[index][0]);
+                data.Url2 = JSON.stringify(image[index][1]);
+                index++;
+            });
+            image = [];
+            adData.forEach(data => {
+                let imageBase = data.Images[0] ? data.Images[0].toString('base64') : '';
+                let imageUrl = `data:image/png;base64,${imageBase}`;
+                let imageBase1 = data.Images[1] ? data.Images[1].toString('base64') : '';
+                let imageUrl1 = `data:image/png;base64,${imageBase1}`;
+                image.push([imageUrl, imageUrl1]);
+            });
+            const adReports = adData.map(adData => adData.toJSON());
+            let index2 = 0;
+            adReports.forEach(data => {
+                let formattedDate = moment(data.createdAt).format("DD [Tháng] MM YYYY");
+                data.dateVN = formattedDate;
+                data.Url1 = JSON.stringify(image[index2][0]);
+                data.Url2 = JSON.stringify(image[index2][1]);
+                index2++;
+            });
+
+
+
+            const userData = req.user;
+            // console.log(adData);
+            res.render('report-list', { locationReports, adReports,wardid:req.user.ward,districtid:req.user.district });
         } catch (error) {
             console.error('Error retrieving location data:', error);
             res.status(500).send('Internal Server Error');
@@ -203,6 +306,21 @@ class phuongController {
         }
     }
 
+    //api
+    async updateStatus(req, res) {
+        try {
+          const { reportId, newStatus,inputValue } = req.body;
+            
+          // Thực hiện cập nhật giá trị trong MongoDB
+          await ReportLocation.findByIdAndUpdate(reportId, { status: newStatus,Solution:inputValue });
+          await Report.findByIdAndUpdate(reportId, { status: newStatus });
+          res.json({ success: true, message: 'Cập nhật thành công' });
+        } catch (error) {
+          console.error('Lỗi cập nhật status:', error);
+          res.status(500).json({ success: false, message: 'Lỗi cập nhật status' });
+        }
+      };
+      
 
 }
 export default new phuongController();  
