@@ -2,6 +2,8 @@ import express, { Router } from "express";
 import phuongController from '../controllers/phuongController.js';
 
 const router = express.Router();
+router.get('/request-lisencing', phuongController.requestAd) ;
+
 router.post('/updateStatus', phuongController.updateStatus); // Đặt tên và đường dẫn endpoint theo ý muốn
 router.get('/infor/:id', phuongController.inforAd) ;
 router.get('/reports-list', phuongController.reportList) ;

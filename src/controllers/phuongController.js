@@ -86,7 +86,11 @@ class phuongController {
             let i = 1;
             const userData = req.user;
             console.log(userData);
-            const locationData = await Location.find();
+            const locationData = await Location.find({$and: [
+                { ward: req.user.ward },
+                { district: req.user.district }
+                // Bạn có thể thêm các điều kiện khác vào đây nếu cần
+              ]});
             locationData.forEach(location => {
                 if (1 == 1) {
                     let index = '<td class="table-items">' + i + '</td>';
@@ -305,6 +309,20 @@ class phuongController {
             res.status(500).send('Unexpected error');
         }
     }
+
+    async requestAd(req, res) {
+        try {
+            let userId = req.params.id;
+            let result = await Location.findById(userId);
+            res.render('request-lisencing', result);
+
+        } catch (error) {
+            console.error('Error retrieving location data:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+
+
 
     //api
     async updateStatus(req, res) {
