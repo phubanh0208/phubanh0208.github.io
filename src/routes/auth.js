@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { username, password, email, phone,role=1} = req.body;
-    const user = await User.create({ username, password, email, phone,role});
-    res.redirect('/');
+    const { username, password, email, phone,ward,district,role=1} = req.body;
+    const user = await User.create({ username, password, email, phone,ward,district,role});
+    res.redirect('/admin');
   } catch (error) {
     console.error('Lỗi đăng ký:', error);
     res.redirect('/register');

@@ -2,7 +2,7 @@
 
 <main class="report-body">
     <section class="left-section">
-        <form id="reportForm" action="./{{_id}}" method="post">
+        <form id="reportForm" action="./{{_id}}" method="post" enctype="multipart/form-data">
             <!-- Tên  -->
             <div class="col-8 d-block">
                 <label for="inputName" class="col-0 col-form-label input-title">Chỉnh sửa tên</label>
@@ -17,7 +17,7 @@
                     placeholder="Trụm cụm,..." required>
             </div>
 
-            
+
             <!-- Size -->
             <div class="col-8 d-block">
                 <label for="inputSize" class="col-0 col-form-label input-title">Kích thước (m)</label>
@@ -45,7 +45,7 @@
                 <input type="file" class="form-control-file" id="imageInput" name="images" accept="image/*" multiple
                     required>
                 <button id="open-button-outside" class="btn btn-primary open-button" type="submit">
-                    Gửi
+                    Báo cáo
                 </button>
             </div>
         </form>
@@ -57,7 +57,7 @@
             <div class="card text-center">
                 <h3 class="card-title">Yêu cầu chỉnh sửa bảng QC</h3>
                 <div class="card-text-container shadow-lg">
-                   
+
                     <h4 class="card-text-title">
                         {{type}}
                     </h4>

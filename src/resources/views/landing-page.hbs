@@ -1,22 +1,94 @@
+<style>
+  .popup {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    width: 50em;
+    border-style: solid;
+    border-radius: 3em;
+    background-color: #D0A2F7;
+    background: linear-gradient(201deg, #9799e7 20%, #c7a8e2 50%);
+    padding: 2em;
+  }
+</style>
 <main class="landing-body">
   <div class="screen">
-      <h1>BuQC - ỨNG DỤNG QUẢN LÝ BIỂN</h1>
-      <h1>QUẢNG CÁO HÀNG ĐẦU VIỆT NAM</h1>
-      <form action="/login" method="post">
-        <div class="mb-3">
-          <label for="Username" class="label">Username:</label>
-          <input type="text" class="form-control" id="Username_textfield" name="username" required>
+    <h1>BuQC - ỨNG DỤNG QUẢN LÝ BIỂN</h1>
+    <h1>QUẢNG CÁO HÀNG ĐẦU VIỆT NAM</h1>
+    <form action="/login" method="post">
+      <div class="mb-3">
+        <label for="Username" class="label">Username:</label>
+        <input type="text" class="form-control" id="Username_textfield" name="username" required>
       </div>
       <label for="Password" class="label">Password:</label>
-      <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock" name="password" required>
+      <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock"
+        name="password" required>
       <button class="btn-nor" type="submit">Login</button>
-      </form>
-      <a href="/home-guest"><button class="btn-nor">Guest</button></a>
-      <div class="icon">
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-solid fa-comment-sms"></i>
-          <i class="fa-brands fa-telegram"></i>
-      </div>
+    </form>
+    <a href="/home-guest"><button class="btn-nor">Guest</button></a>
+    <div class="icon">
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-solid fa-comment-sms"></i>
+      <i class="fa-brands fa-telegram"></i>
+    </div>
+    <a href="#" id="forgotPasswordLink" style="color: red;">Quên mật khẩu</a>
   </div>
-  
-</main> 
+  <!-- Popup quên mật khẩu -->
+  <div id="forgotPasswordPopup" class="popup">
+    <form id="forgotPasswordForm" action="/forgot-password/reset" method="post">
+      <div class="mb-3">
+        <label for="email" class="label">Nhập email, OTP sẽ gửi về bạn:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <button class="btn-nor" type="button" id="sendOTPButton">Gửi OTP</button>
+      </div>
+      <!-- Các trường khác nếu cần -->
+      <div class="mb-3">
+        <label for="otp" class="label">Nhập OTP:</label>
+        <input type="text" class="form-control" id="otp" name="otp" required>
+      </div>
+      <!-- Nút gửi OTP -->
+      <button class="btn-nor" type="submit" id="confirmOTPButton">Xác nhận</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Lắng nghe sự kiện khi nhấp vào liên kết "Quên mật khẩu"
+      document.getElementById('forgotPasswordLink').addEventListener('click', function (event) {
+        event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của liên kết
+
+        // Hiển thị popup quên mật khẩu
+        document.getElementById('forgotPasswordPopup').style.display = 'block';
+      });
+
+      // Lắng nghe sự kiện khi nhấp vào nút "Gửi OTP"
+      document.getElementById('sendOTPButton').addEventListener('click', function () {
+        const email = document.getElementById('email').value;
+        // Gửi yêu cầu cập nhật đến máy chủ
+        $.ajax({
+          type: 'POST', // Hoặc 'PUT' tùy thuộc vào cách bạn đã thiết lập server
+          url: '/forgot-password/otpsend', // Địa chỉ API hoặc endpoint trên máy chủ xử lý cập nhật
+          data: { email },
+          // Thêm các trường dữ liệu khác cần cập nhật tại đây
+          success: function (response) {
+            console.log('Cập nhật thành công');
+          },
+          error: function (error) {
+            // Xử lý lỗi (nếu cần)
+            console.error('Lỗi khi cập nhật: ', error);
+          }
+        });
+      });
+
+      // Lắng nghe sự kiện khi nhấp vào nút "Xác nhận OTP"
+      document.getElementById('confirmOTPButton').addEventListener('click', function () {
+        const email = document.getElementById('email').value;
+        const otp = document.getElementById('otp').value;
+
+        // Gửi yêu cầu đến máy chủ để xác nhận OTP
+        // Sử dụng AJAX hoặc Fetch API để gửi yêu cầu đến API của bạn
+        // Sau đó, có thể xử lý kết quả trả về từ máy chủ, ví dụ: hiển thị thông báo
+      });
+    });
+  </script>

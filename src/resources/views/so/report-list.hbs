@@ -1,0 +1,346 @@
+{{> header-home-dp}}
+<style>
+  .status-dropdown{
+    width: 10em;
+    text-align: center;
+  }
+  #manage-detail_popup {
+
+    border-radius: 0.1em;
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    max-height: 40em;
+    /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+    overflow-y: auto;
+  }
+
+  li {
+    font-size: medium;
+
+  }
+
+  #manage-detail_popup ul {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    /* Loại bỏ kiểu danh sách mặc định */
+    position: relative;
+  }
+  .custom-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 9999; /* Đặt z-index cao để đảm bảo popup xuất hiện trên cùng */
+      display: none;
+      width: 45em;
+     
+    }
+    .custom-popup img{
+      height: 20em;
+      width: 20em;
+    }
+    .conten-popup{
+       max-height: 30em;
+        /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+        overflow-y: auto;
+    }
+</style>
+<main class="ads-manage">
+  <div class="ads-table-container">
+    <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
+      <div class="header">
+        <h2 style="font-size: 2em;">DANH SÁCH BÁO CÁO </h2>
+      </div>
+             
+      <div class="comboList-container">
+        
+        <div class="comboList">
+          {{!-- <label for="district">Quận:</label>
+          <select id="district">
+            <option value="district1">Quận 1</option>
+            <option value="district2">Quận 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+        <div class="comboList">
+          {{!-- <label for="ward">Phường:</label>
+          <select id="ward">
+            <option value="ward1">Phường 1</option>
+            <option value="ward2">Phường 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+      </div>
+      <div class="table-container">
+                             <H3>Địa điểm:</H3>
+
+        <table style="background-color: #BABEFE;">
+          <thead>
+            <tr>
+              <th style="width: 5em; border: solid 1px black;">STT</th>
+              <th style="width: 15em; border: solid 1px black;">Địa chỉ</th>
+              <th style="width: 7em; border: solid 1px black;">Phường</th>
+              <th style="width: 5em; border: solid 1px black;">Quận</th>
+              <th style="width: 20em; border: solid 1px black;">Tọa độ</th>
+              <th style="width: 15em; border: solid 1px black;">Thời gian gửi</th>
+              <th style="width: 5em; border: solid 1px black;">Tình trạng</th>
+              <th style="width: 7em; border: solid 1px black;">Chi tiết <i class="fa-solid fa-info-circle"
+                  style="color: #001d57;"></i></th>
+                    <th style="width: 20em; border: solid 1px black;">Cách thức xử lý <i class="fa-solid fa-info-circle"
+                  style="color: #001d57;"></i></th>
+        
+            </tr>
+          </thead>
+          <!-- Table data -->
+          <tbody>
+          <tbody>
+            {{#each locationReports}}
+            <tr>
+              <td class="table-items">{{@index}}</td>
+
+              <td class="table-items">{{address}}</td>
+              <td class="table-items">{{ward}}</td>
+              <td class="table-items">{{district}}</td>
+              <td class="table-items">{{coordinates.x}}, {{coordinates.y}}</td>
+              <td class="table-items">{{dateVN}}</td>              
+              <td class="table-items status-column">
+                <p class="status-dropdown status-column" data-original-status="{{status}}">
+                 {{status}}
+                </p>
+              </td>
+              <td class="table-items">
+                <button class="btn btn-info show-details-btn"
+                  data-image="{{@index}}" data-information="{{Information}}">
+                  Infor
+                </button>
+              </td>
+               <td class="table-items ">
+                {{Solution}}
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+          </tbody>
+          
+        </table>
+      </div>
+
+       <div class="table-container">
+
+        <table style="background-color: #BABEFE;">
+          <thead>
+            
+            <tr>
+               <th style="width: 5em; border: solid 1px black;">STT</th>
+              <th style="width: 15em; border: solid 1px black;">Địa chỉ</th>
+              <th style="width: 7em; border: solid 1px black;">Phường</th>
+              <th style="width: 5em; border: solid 1px black;">Quận</th>
+              <th style="width: 20em; border: solid 1px black;">Tọa độ</th>
+              <th style="width: 15em; border: solid 1px black;">Thời gian gửi</th>
+              <th style="width: 5em; border: solid 1px black;">Tình trạng</th>
+              <th style="width: 7em; border: solid 1px black;">Chi tiết <i class="fa-solid fa-info-circle"
+                  style="color: #001d57;"></i></th>
+                    <th style="width: 20em; border: solid 1px black;">Cách thức xử lý <i class="fa-solid fa-info-circle"
+                  style="color: #001d57;"></i></th>
+        
+            </tr>
+          </thead>
+          <!-- Table data -->
+          <H3>Biển QC:</H3>
+          <tbody>
+          <tbody>
+            {{#each adReports}}
+            <tr>
+              <td class="table-items">{{@index}}</td>
+
+              <td class="table-items">{{address}}</td>
+              <td class="table-items">{{ward}}</td>
+              <td class="table-items">{{district}}</td>
+              <td class="table-items">{{coordinates.x}}, {{coordinates.y}}</td>
+              <td class="table-items">{{dateVN}}</td>
+               <td class="table-items status-column">
+                <p class="status-dropdown status-column" data-original-status="{{status}}">
+                 {{status}}
+                </p>
+              </td>
+              <td class="table-items">
+                <button class="btn btn-info show-details-btn"
+                  data-image1="{{@index}}" data-information="{{Information}}">
+                  Infor
+                </button>
+              </td>
+               <td class="table-items ">
+                {{Solution}}
+              </td>
+              
+            </tr>
+            {{/each}}
+          </tbody>
+          </tbody>
+          
+        </table>
+      </div>
+    </nav>
+
+  </div>
+  <!-- Đối với Location Reports -->
+ 
+</main>
+{{> sidebar-home-dp}}
+
+<script>
+
+    let imagePopUp =[];
+    let adPopup=[];
+    let url1='';
+    let url2='';
+    {{#each locationReports}}
+    imagePopUp.push([{{{Url1}}},{{{Url2}}}]);
+    {{/each}}
+
+    {{#each adReports}}
+    adPopup.push([{{{Url1}}},{{{Url2}}}]);
+    {{/each}}
+   $(document).ready(function() {
+    // Khi click vào phần tử có class là 'show-details-btn'
+    $('.show-details-btn').on('click', function() {
+        // Lấy dữ liệu từ các thuộc tính data để hiển thị
+        let imageIndex = $(this).data('image');
+        let imageUrl = imagePopUp[imageIndex]
+        if (imageIndex === undefined){
+          imageIndex=$(this).data('image1');
+          imageUrl=adPopup[imageIndex];
+        }
+         const Infor = $(this).data('information');
+        // Tạo thẻ HTML popup
+        let popupHtml = `
+            <div class="custom-popup">
+                <div class="conten-popup">
+                <img src="${imageUrl[0]}" alt="Image">
+                <img src="${imageUrl[1]}" alt="Image">
+                <h3>Thông tin báo cáo: </h3>
+                <p>${Infor}<p>
+                <!-- Các phần tử khác có thể thêm vào popup -->
+                </div>
+                <button type="button" class="close-popup-btn btn btn-danger">Đóng</button>
+
+            </div>
+        `;
+         if (imageUrl[1]=='data:image/png;base64,'){
+            popupHtml = `
+            <div class="custom-popup">
+                <div class="conten-popup">
+                <img src="${imageUrl[0]}" alt="Image">
+                <h3>Thông tin báo cáo: </h3>
+                <p>${Infor}<p>
+                <!-- Các phần tử khác có thể thêm vào popup -->
+                </div>
+                <button type="button" class="close-popup-btn btn btn-danger">Đóng</button>
+
+            </div>
+        `;
+        }
+        // Chèn thẻ HTML popup vào body
+        $('body').append(popupHtml);
+
+        // Hiển thị popup
+        $('.custom-popup').fadeIn();
+
+        // Khi click vào nút đóng
+        $('.close-popup-btn').on('click', function() {
+            // Ẩn popup và xóa khỏi DOM
+            $('.custom-popup').fadeOut(function() {
+                $(this).remove();
+            });
+        });
+    });
+});
+
+
+ $(document).ready(function() {
+    $('.status-column').each(function() {
+      var statusText = $(this).text().trim();
+      var color = '';
+      
+      if (statusText === 'Chưa xử lý') {
+        color = 'red';
+      } else if (statusText === 'Đang xử lý') {
+        color = 'yellow';
+      } else {
+        color = 'green';
+      }
+
+      $(this).css('color', color);
+    });
+  });
+
+ $(document).ready(function () {
+
+
+
+    // Loop qua mỗi phần tử .status-column
+    $('.status-column').each(function () {
+      const originalStatus = $(this).find('.status-dropdown').data('original-status');
+
+      // Thiết lập giá trị mặc định cho select
+      $(this).find('.status-dropdown option[value="' + originalStatus + '"]').prop('selected', true);
+    });
+    $('.submit-button').on('click', function () {
+     const newStatus = $(this).closest('tr').find('.status-dropdown').val();
+      const originalStatus = $(this).closest('tr').find('.status-dropdown').data('original-status');
+      const reportId = $(this).data('report-id');
+      const inputValue = $(this).closest('tr').find('.additional-input').val();
+
+      if (newStatus !== originalStatus) {
+        // Gửi dữ liệu lên server thông qua AJAX
+        $.ajax({
+          url: '/home_wardUser/updateStatus', // Đặt đường dẫn endpoint tương ứng
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ reportId, newStatus,inputValue }),
+          success: function (response) {
+            console.log(response.message);
+          },
+          error: function (error) {
+            console.error('Lỗi AJAX:', error);
+          },
+        });
+      } else {
+        console.log('Không có thay đổi trong giá trị.');
+      }
+    });
+  
+    $('.submit-button1').on('click', function () {
+      const newStatus = $(this).closest('tr').find('.status-dropdown').val();
+      const originalStatus = $(this).closest('tr').find('.status-dropdown').data('original-status');
+      const reportId = $(this).data('report-id');
+
+
+      if (newStatus !== originalStatus) {
+        // Gửi dữ liệu lên server thông qua AJAX
+        $.ajax({
+          url: '/home_wardUser/updateStatus', // Đặt đường dẫn endpoint tương ứng
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ reportId, newStatus }),
+          success: function (response) {
+            console.log(response.message);
+          },
+          error: function (error) {
+            console.error('Lỗi AJAX:', error);
+          },
+        });
+      } else {
+        console.log('Không có thay đổi trong giá trị.');
+      }
+    });
+  
+  });
+
+  
+</script>

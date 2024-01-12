@@ -270,8 +270,9 @@
                 location.ads.forEach(ads => {
                     let title = '<li><strong>' + ads.type + '</strong></li>';
                     let address = '<li>' + location.address + ', Phường ' + location.ward + ', Quận ' + location.district + '</li>';
-                    let size = '<li><strong>Kích thước: </strong>: ' + ads.size.x + 'm x ' + ads.size.y + 'm' + '</li>';
-                    let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
+let sizeX = ads.size && ads.size.x ? ads.size.x : 'N/A';
+let sizeY = ads.size && ads.size.y ? ads.size.y : 'N/A';
+let size = '<li><strong>Kích thước: </strong>: ' + sizeX + 'm x ' + sizeY + 'm' + '</li>';                    let count = '<li><strong>Số lượng: </strong> 1 trụ / bảng</li>';
                     let type = '<li><strong>Hình thức: </strong>' + location.type + '</li>';
                     let detail = '<li><strong>Phân loại: </strong>' + location.detail + '</li>';
                     let button1 = '<button class="popup-btn-left" onclick="handleLeftButtonClick()"><a href="/home-guest/infor/' + ads._id + '">Thông tin</a></button>'

@@ -1,6 +1,7 @@
 import nguoidanRoute from './routes/nguoidanRoute.js';
 import phuongRoute from './routes/phuongRoute.js';
 import checkAdmin from './middleware/checkWardUser.js';
+import admin from './routes/admin.js';
 // Import connectDB function
 import connectDB from './config/db.js';
 
@@ -23,7 +24,8 @@ import cookieParser from 'cookie-parser';
 import User from './models/user.js'; // Đường dẫn tới file user.js
 import helpers from './helper/helper.js';
 import exphbs from 'express-handlebars';
-
+import password from './routes/password.js'
+import checkAdmin2 from './middleware/checkDisUser.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -116,10 +118,22 @@ app.get('/', (req,res) => {
 //login routes
 
 app.post('/login', passport.authenticate('local', {
-  successRedirect: '/home_wardUser',
   failureRedirect: '/login-fail',
-  failureFlash: true,  // Bật chức năng cảnh báo
-}));
+  failureFlash: true,
+}), (req, res) => {
+  // Middleware sau khi xác thực thành công
+  const userRole = req.user.role; // Giả sử có một trường 'role' trong đối tượng user
+
+  // Kiểm tra và chuyển hướng tương ứng
+  if (userRole === 1) {
+    res.redirect('/home_wardUser');
+  } else if (userRole === 2) {
+    res.redirect('/admin');
+  } else {
+    // Trường hợp không xác định
+    res.redirect('/login-fail');
+  }
+});
 
 // Route cho trang đăng nhập thất bại
 app.get('/login-fail', (req, res) => {
@@ -137,10 +151,12 @@ app.get('/logout', (req, res) => {
 });
 
 //register
-app.use('/register',auth);
+app.use('/register',checkAdmin2,auth);
+app.use('/forgot-password',password)
 //routes
 app.use('/home-guest', nguoidanRoute)
 app.use('/home_wardUser', checkAdmin, phuongRoute)
+app.use('/admin', checkAdmin2, admin)
 
 
 app.listen(port, () => console.log(`Running at http://localhost:${port}`))

@@ -1,17 +1,38 @@
+{{> header-home-dp}}
+<main class="landing-body">
+
 <!-- register.html -->
-<form action="/register" method="POST">
-  <label for="username">Tên người dùng:</label>
-  <input type="text" id="username" name="username" required>
+<div class="screen">
+  <form action="/register" method="POST">
+  <div class="mb-3">
+        <label for="Username" class="label">Username:</label>
+        <input type="text" class="form-control" id="Username_textfield" name="username" required>
+      </div>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+   <div class="mb-3">
+        <label for="email" class="label">Email:</label>
+        <input type="email" class="form-control" id="Username_textfield" name="email" required>
+      </div>
+ <div class="mb-3">
+        <label for="password" class="label">password:</label>
+        <input type="password" class="form-control" id="Username_textfield" name="password" required>
+      </div>
+<div class="mb-3">
+        <label for="phone" class="label">phone:</label>
+        <input type="text" class="form-control" id="Username_textfield" name="phone" required>
+      </div>
 
-  <label for="password">Mật khẩu:</label>
-  <input type="password" id="password" name="password" required>
-
-<label for="phone">Số điện thoại</label>
-  <input type="text" id="phone" name="phone" required>
-  
-
-  <button type="submit">Đăng ký</button>
+ <label for="ward">Phường:</label>
+  <input type="text" id="ward" name="ward" required>
+   <label for="district">Quận</label>
+  <input type="text" id="district" name="district" required>
+      <button class="btn-nor" type="submit">Tạo tài khoản</button>
 </form>
+
+</div>
+
+
+
+</main>
+
+{{> sidebar-home-dp}}

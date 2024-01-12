@@ -1,0 +1,357 @@
+{{> header-home-dp}}
+<style>
+  .status-dropdown{
+    width: 10em;
+    text-align: center;
+  }
+  #manage-detail_popup {
+
+    border-radius: 0.1em;
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    max-height: 40em;
+    /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+    overflow-y: auto;
+  }
+
+  li {
+    font-size: medium;
+
+  }
+
+  #manage-detail_popup ul {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    /* Loại bỏ kiểu danh sách mặc định */
+    position: relative;
+  }
+  .custom-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 9999; /* Đặt z-index cao để đảm bảo popup xuất hiện trên cùng */
+      display: none;
+      width: 45em;
+     
+    }
+    .custom-popup img{
+      height: 20em;
+      width: 20em;
+    }
+    .conten-popup{
+       max-height: 30em;
+        /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+        overflow-y: auto;
+    }
+    .popup p{
+      text-align: left;
+    }
+    
+/* Style for the hover container */
+.hover-container {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Style for the popup */
+.popup {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 20em;
+}
+
+/* Show the popup when hovering over the container */
+.hover-container:hover .popup {
+  display: block;
+}
+</style>
+<main class="ads-manage">
+  <div class="ads-table-container">
+    <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
+      <div class="header">
+        <h2 style="font-size: 2em;">DANH SÁCH CÁC YÊU CẦU CẤP PHÉP  </h2>
+      </div>
+             
+      <div class="comboList-container">
+        
+        <div class="comboList">
+          {{!-- <label for="district">Quận:</label>
+          <select id="district">
+            <option value="district1">Quận 1</option>
+            <option value="district2">Quận 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+        <div class="comboList">
+          {{!-- <label for="ward">Phường:</label>
+          <select id="ward">
+            <option value="ward1">Phường 1</option>
+            <option value="ward2">Phường 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+      </div>
+      <div class="table-container">
+                             <H3>CÁC CẤP PHÉP :</H3>
+
+        <table style="background-color: #BABEFE;">
+          <thead>
+            <tr>
+              <th style="width: 5em; border: solid 1px black;">STT</th>
+              <th style="width: 10em; border: solid 1px black;">Địa chỉ</th>
+              <th style="width: 5em; border: solid 1px black;">Phường</th>
+              <th style="width: 5em; border: solid 1px black;">Quận</th>
+                            <th style="width: 10em; border: solid 1px black;">Công ty</th>
+                            <th style="width: 10em; border: solid 1px black;">Loại</th>
+                        <th style="width: 10em; border: solid 1px black;">Ngày bắt đầu</th>
+              <th style="width: 5em; border: solid 1px black;">Thời hạn</th>
+              <th style="width: 10em; border: solid 1px black;">Tình trạng</th>
+              <th style="width: 7em; border: solid 1px black;">Chi tiết <i class="fa-solid fa-info-circle"
+                  style="color: #001d57;"></i></th>
+                <th style="width: 7em; border: solid 1px black;"><i class="fa-solid fa-pen"
+                  style="color: #001d57;"></i>Cập nhật</th>   
+                 <th style="width: 7em; border: solid 1px black;"><i class="fa-solid fa-pen"
+                  style="color: #001d57;"></i>Duyệt</th>   
+            </tr>
+          </thead>
+          <!-- Table data -->
+          <tbody>
+         
+          <tbody>
+            {{#each request}}
+            <tr>
+              <td class="table-items">{{@index}}</td>
+
+              <td class="table-items">{{address}}</td>
+              <td class="table-items">{{ward}}</td>
+              <td class="table-items">{{district}}</td>
+              <td class="table-items">
+               <div class="hover-container">
+                  {{owner}}
+                  <div class="popup">
+                   <p>
+                    Công ty: {{owner}} <br>
+                    Thông tin công ty: {{ownerInfor}}<br>
+                    Email: {{ownerEmail}}<br>
+                    Phone: {{ownerPhone}}
+                   </p>
+
+                  </div>
+                </div>
+              </td>
+              <td class="table-items">{{type}}</td>
+              <td class="table-items">{{dateVN}}</td>    
+              <td class="table-items">{{duration}} Ngày</td>              
+              <td class="table-items status-column" >{{status}}</td>    
+              <td class="table-items">
+                <button class="btn btn-info show-details-btn"
+                  data-image="{{@index}}" data-information=" <p>
+    Tên Biển QC : {{name}} <br>
+    Chi tiết: {{inforAd}} <br>
+    Kích thước: {{size.x}}m X {{size.y}}m <br>
+    Hình thức: {{form}} <br>
+    Loại đất: {{category}} <br>
+    </p>">
+                  Infor
+                </button>
+              </td>
+              <td class="table-items">
+                <button class="btn btn-danger submit-button" data-report-id="{{_id}}" data-status="{{status}}" >
+                  Xóa
+                </button>
+              </td>
+               <td class="table-items">
+                <button class="btn btn-success submit-button2" data-report-id="{{_id}}" data-status="{{status}}" >
+                  OK
+                </button>
+              </td>
+            </tr>
+
+            {{/each}}
+          </tbody>
+        
+        
+          </tbody>
+          
+        </table>
+      </div>
+
+    </nav>
+
+   
+  </div>
+  <!-- Đối với Location Reports -->
+ 
+</main>
+{{> sidebar-home-dp}}
+
+<script>
+
+    let imagePopUp =[];
+
+    {{#each request}}
+    imagePopUp.push([{{{Url1}}},{{{Url2}}}]);
+    {{/each}}
+
+   $(document).ready(function() {
+    // Khi click vào phần tử có class là 'show-details-btn'
+    $('.show-details-btn').on('click', function() {
+        // Lấy dữ liệu từ các thuộc tính data để hiển thị
+        let imageIndex = $(this).data('image');
+        let imageUrl = imagePopUp[imageIndex]
+        const Infor = $(this).data('information');
+        // Tạo thẻ HTML popup
+        let popupHtml = `
+            <div class="custom-popup">
+                <div class="conten-popup">
+                <img src="${imageUrl[0]}" alt="Image">
+                <img src="${imageUrl[1]}" alt="Image">
+                <h3>Thông tin Biển QC: </h3>
+                ${Infor}
+                <!-- Các phần tử khác có thể thêm vào popup -->
+                </div>
+                <button type="button" class="close-popup-btn btn btn-danger">Đóng</button>
+
+            </div>
+        `;
+         if (imageUrl[1]=='data:image/png;base64,'){
+            popupHtml = `
+            <div class="custom-popup">
+                <div class="conten-popup">
+                <img src="${imageUrl[0]}" alt="Image">
+                <h3>Thông tin Biển QC: </h3>
+                <p>${Infor}<p>
+                <!-- Các phần tử khác có thể thêm vào popup -->
+                </div>
+                <button type="button" class="close-popup-btn btn btn-danger">Đóng</button>
+
+            </div>
+        `;
+        }
+        // Chèn thẻ HTML popup vào body
+        $('body').append(popupHtml);
+
+        // Hiển thị popup
+        $('.custom-popup').fadeIn();
+
+        // Khi click vào nút đóng
+        $('.close-popup-btn').on('click', function() {
+            // Ẩn popup và xóa khỏi DOM
+            $('.custom-popup').fadeOut(function() {
+                $(this).remove();
+            });
+        });
+    });
+});
+
+
+ $(document).ready(function() {
+    $('.status-column').each(function() {
+      var statusText = $(this).text().trim();
+      var color = '';
+      
+      if (statusText === 'Chưa xử lý') {
+        color = 'red';
+      } else if (statusText === 'Đang xử lý') {
+        color = 'yellow';
+      } else {
+        color = 'green';
+      }
+
+      $(this).css('color', color);
+    });
+  });
+
+ $(document).ready(function () {
+
+
+
+    // Loop qua mỗi phần tử .status-column
+    $('.status-column').each(function () {
+      const originalStatus = $(this).find('.status-dropdown').data('original-status');
+
+      // Thiết lập giá trị mặc định cho select
+      $(this).find('.status-dropdown option[value="' + originalStatus + '"]').prop('selected', true);
+    });
+    
+
+    $('.submit-button').on('click', function () {
+    // Lấy thông tin từ thuộc tính dữ liệu
+    let reportId = $(this).data('report-id');
+    let status = $(this).data('status');
+    console.log(status);
+    let condition=0;
+    // Kiểm tra điều kiện để xác định có thể xóa hay không
+   {
+    // Gửi yêu cầu cập nhật đến máy chủ
+    $.ajax({
+      type: 'POST', // Hoặc 'PUT' tùy thuộc vào cách bạn đã thiết lập server
+      url: '/admin/update-request', // Địa chỉ API hoặc endpoint trên máy chủ xử lý cập nhật
+      data: {reportId,condition},
+        // Thêm các trường dữ liệu khác cần cập nhật tại đây
+  
+      success: function (response) {
+        // Xử lý kết quả thành công (nếu cần)
+        console.log('Cập nhật thành công');
+        window.location.href = '/admin/request-list';
+
+      },
+      error: function (error) {
+        // Xử lý lỗi (nếu cần)
+        console.error('Lỗi khi cập nhật: ', error);
+      }
+    });
+  } 
+  });
+ 
+ 
+   $('.submit-button2').on('click', function () {
+    // Lấy thông tin từ thuộc tính dữ liệu
+    let reportId = $(this).data('report-id');
+    let status = $(this).data('status');
+    let condition=1;
+    console.log(reportId);
+    // Kiểm tra điều kiện để xác định có thể xóa hay không
+   {
+    // Gửi yêu cầu cập nhật đến máy chủ
+    $.ajax({
+      type: 'POST', // Hoặc 'PUT' tùy thuộc vào cách bạn đã thiết lập server
+      url: '/admin/update-request', // Địa chỉ API hoặc endpoint trên máy chủ xử lý cập nhật
+      data: {reportId,condition},
+        // Thêm các trường dữ liệu khác cần cập nhật tại đây
+  
+      success: function (response) {
+        // Xử lý kết quả thành công (nếu cần)
+        console.log('Cập nhật thành công');
+        window.location.href = '/admin/request-list';
+
+      },
+      error: function (error) {
+        // Xử lý lỗi (nếu cần)
+        console.error('Lỗi khi cập nhật: ', error);
+      }
+    });
+  } 
+  });
+ 
+ 
+ 
+ 
+  });
+
+  
+</script>

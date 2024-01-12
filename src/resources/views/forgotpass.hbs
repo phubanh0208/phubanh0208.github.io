@@ -1,0 +1,51 @@
+<main class="landing-body">
+  <div class="screen">
+    <h1>ĐỔI MẬT KHẨU</h1>
+    <form id="loginForm" action="/" method="get">
+      <div class="mb-3">
+        <label for="Username" class="label" data-id="{{emailCheck}}">Username:</label>
+        <input type="text" class="form-control" id="Username_textfield" name="username" required>
+      </div>
+      <label for="Password" class="label">Password:</label>
+      <input type="password" class="form-control" id="Pass_textfield" aria-describedby="passwordHelpBlock" name="password" required>
+      <button class="btn-nor" type="submit">Login</button>
+    </form>
+    <div class="icon">
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-solid fa-comment-sms"></i>
+      <i class="fa-brands fa-telegram"></i>
+    </div>
+  </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Lắng nghe sự kiện submit của form
+    $('#loginForm').submit(function (event) {
+      // Ngăn chặn chuyển hướng mặc định của form
+      event.preventDefault();
+
+      // Lấy giá trị từ các trường input
+      const username = $('#Username_textfield').val();
+      const password = $('#Pass_textfield').val();
+      const emailCheckValue = $('#Username_textfield').prev('label').data('id');
+
+      // Gửi dữ liệu đến server
+      $.ajax({
+        type: 'POST', // Có thể sử dụng 'POST' hoặc 'GET' tùy vào cấu hình server
+        url: '/forgot-password/update', // Thay đổi đường dẫn tới API endpoint của bạn
+        data: { username: username, password: password,email:emailCheckValue},
+        success: function (response) {
+          // Xử lý kết quả từ server (nếu cần)
+          console.log(response);
+          window.location.href = '/';
+        },
+        error: function (error) {
+          // Xử lý lỗi (nếu có)
+          console.error(error);
+        }
+      });
+    });
+  });
+</script>

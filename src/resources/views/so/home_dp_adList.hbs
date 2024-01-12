@@ -1,0 +1,168 @@
+{{> header-home-dp}}
+<style>
+  #manage-detail_popup {
+
+    border-radius: 0.1em;
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    max-height: 40em;
+    /* Đặt chiều cao tối đa của danh sách, điều này có thể điều chỉnh tùy ý */
+    overflow-y: auto;
+  }
+
+  li {
+    font-size: medium;
+
+  }
+
+  #manage-detail_popup ul {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    /* Loại bỏ kiểu danh sách mặc định */
+    position: relative;
+  }
+</style>
+<main class="ads-manage">
+  <div class="ads-table-container">
+    <nav class="navbar navbar-expand-sm navbar-light navbar2 justify-content-spacebetween">
+      <div class="header">
+        <h2 style="font-size: 2em;">CÁC ĐIỂM QUẢNG CÁO</h2>
+      </div>
+      <div class="comboList-container">
+        <div class="comboList">
+          {{!-- <label for="district">Quận:</label>
+          <select id="district">
+            <option value="district1">Quận 1</option>
+            <option value="district2">Quận 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+        <div class="comboList">
+          {{!-- <label for="ward">Phường:</label>
+          <select id="ward">
+            <option value="ward1">Phường 1</option>
+            <option value="ward2">Phường 2</option>
+            <!-- Add more options as needed -->
+          </select> --}}
+        </div>
+      </div>
+      <div class="table-container">
+        <table style="background-color: #BABEFE;">
+          <thead>
+            <tr>
+              <th style="width: 5em;  border: solid 1px black;">STT</th>
+              <th style="width: 10em; border: solid 1px black;">Hình thức</th>
+              <th style="width: 20em; border: solid 1px black;">Loại vị trí</th>
+              <th style="width: 20em; border: solid 1px black;">Địa chỉ</th>
+              <th style="width: 20em; border: solid 1px black;">Huy hoạch</th>
+              <th style="width: 5em; border: solid 1px black;">Xóa</th>
+              <th style="width: 5em; border: solid 1px black;" class="icon_detail"></th>
+            </tr>
+          </thead>
+          <!-- Table data -->
+          <tbody>
+            {{{locationtableShow}}}
+          </tbody>
+        </table>
+      </div>
+    </nav>
+
+  </div>
+
+  <!--Ad detail-->
+  <div id="manage-detail_overlay" onclick="closeDetail()"></div>
+
+  {{{detailLocation}}}
+
+</main>
+
+{{> sidebar-home-dp}}
+<script>
+  let index = {{ i }};
+
+
+  // Tạo các hàm openDetail và closeDetail tương ứng với index
+  // Tạo các hàm openDetail và closeDetail tương ứng với index
+  for (let y = 1; y <= index; y++) {
+    let classname = 'popup' + y;
+    window['openDetail' + y] = function () {
+
+      console.log(classname);
+      document.getElementById('manage-detail_overlay').style.display = 'block';
+      document.getElementsByClassName(classname)[0].style.display = 'block';
+      //document.getElementsByClassName('manage-detail-image_popup' + i)[0].style.display = 'block';
+    };
+  }
+
+  function closeDetail() {
+    document.getElementById('manage-detail_overlay').style.display = 'none';
+    // Đóng tất cả các popup từ 1 đến index
+    for (let i = 1; i <= index; i++) {
+      var popupElement = document.getElementsByClassName('popup' + i);
+
+      if (popupElement.length > 0) {
+        popupElement[0].style.display = 'none';
+      }
+    }
+
+  }
+
+  $(document).ready(function () {
+    // Lắng nghe sự kiện khi nút button được click
+    $('.show-details-btn').on('click', function () {
+      // Lấy giá trị của thuộc tính data-idlocation
+      const idLocation = $(this).data('idlocation');
+
+      $.ajax({
+        type: 'POST', // Hoặc 'PUT' tùy thuộc vào cách bạn đã thiết lập server
+        url: '/admin/detele-location', // Địa chỉ API hoặc endpoint trên máy chủ xử lý cập nhật
+        data: { idLocation },
+        // Thêm các trường dữ liệu khác cần cập nhật tại đây
+        success: function (response) {
+          // Xử lý kết quả thành công (nếu cần)
+          console.log(idLocation);
+          console.log('Cập nhật thành công');
+         window.location.href = '/admin/ads-manage';
+
+        },
+        error: function (error) {
+          // Xử lý lỗi (nếu cần)
+          console.error('Lỗi khi cập nhật: ', idLocation);
+        }
+      });
+      // Thực hiện các hành động khác dựa trên ID Location
+    });
+  
+     $('.clickon').on('click', function () {
+      // Lấy giá trị của thuộc tính data-idlocation
+      const idAd = $(this).data('idads');
+
+      $.ajax({
+        type: 'POST', // Hoặc 'PUT' tùy thuộc vào cách bạn đã thiết lập server
+        url: '/admin/detele-ad', // Địa chỉ API hoặc endpoint trên máy chủ xử lý cập nhật
+        data: { idAd },
+        // Thêm các trường dữ liệu khác cần cập nhật tại đây
+        success: function (response) {
+          // Xử lý kết quả thành công (nếu cần)
+          console.log(idAd);
+          console.log('Cập nhật thành công');
+         window.location.href = '/admin/ads-manage';
+
+        },
+        error: function (error) {
+          // Xử lý lỗi (nếu cần)
+          console.error('Lỗi khi cập nhật: ', idAd);
+        }
+      });
+
+
+    });
+  
+  
+  
+  
+  
+  });
+</script>

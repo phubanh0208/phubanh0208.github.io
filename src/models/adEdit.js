@@ -10,7 +10,7 @@ const adSchema = new mongoose.Schema({
     }, 
     duration:  Number, 
     Information:  String,
-    Images: [{ type: String }] ,// Lưu trữ đường dẫn của ảnh
+    Images: [Buffer] ,// Lưu trữ đường dẫn của ảnh
     status: { type: String, enum: ['Chưa xử lý', 'Đang xử lý', 'Đã xử lý'], default: 'Chưa xử lý' }
 }, { timestamps: true });
 
